@@ -9,18 +9,43 @@
 .catalog-hero {
   position: relative;
   overflow: hidden;
-  padding-block: 48px 56px;
-  background: var(--color-bg);
+  padding-block: 64px 72px;
+  background: var(--color-bg-subtle);
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Soft ambient wash + faint blueprint grid across the whole header,
+   restrained so it reads as engineering/industrial rather than retail */
+.catalog-hero::before {
+  content: "";
+  position: absolute;
+  inset: -30% -10% auto -10%;
+  height: 520px;
+  background: radial-gradient(
+    55% 100% at 50% 0%,
+    var(--color-sky-tint) 0%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
 .catalog-hero-inner {
-  text-align: center;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: 56px;
+}
+
+.catalog-hero-content {
+  text-align: start;
 }
 
 .catalog-hero .breadcrumb {
   display: block;
-  text-align: center;
+  text-align: start;
   margin: 0 0 22px;
   font-size: 13px;
   letter-spacing: 0.01em;
@@ -50,20 +75,123 @@
 }
 
 .catalog-hero-title {
-  margin: 0 0 14px;
-  font-size: clamp(30px, 4vw, 44px);
-  line-height: 1.2;
-  font-weight: 700;
+  margin: 0 0 16px;
+  font-size: clamp(32px, 4.4vw, 48px);
+  line-height: 1.22;
+  font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--color-text);
 }
 
 .catalog-hero-text {
-  max-width: 560px;
-  margin-inline: auto;
-  font-size: 16px;
-  line-height: 1.75;
+  max-width: 480px;
+  font-size: 16.5px;
+  line-height: 1.85;
   color: var(--color-text-muted);
+}
+
+/* ---------- Visual placeholder: engineering illustration frame ---------- */
+.catalog-hero-visual {
+  position: relative;
+}
+
+.catalog-hero-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Technical corner brackets — viewfinder / blueprint framing cue */
+.catalog-hero-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-sky-dark);
+  opacity: 0.55;
+  z-index: 2;
+}
+
+[data-theme="dark"] .catalog-hero-corner {
+  border-color: var(--color-sky);
+}
+
+.catalog-hero-corner--tl {
+  top: 14px;
+  inset-inline-start: 14px;
+  border-width: 2px 0 0 2px;
+}
+
+.catalog-hero-corner--tr {
+  top: 14px;
+  inset-inline-end: 14px;
+  border-width: 2px 2px 0 0;
+}
+
+.catalog-hero-corner--bl {
+  bottom: 14px;
+  inset-inline-start: 14px;
+  border-width: 0 0 2px 2px;
+}
+
+.catalog-hero-corner--br {
+  bottom: 14px;
+  inset-inline-end: 14px;
+  border-width: 0 2px 2px 0;
+}
+
+.catalog-hero-illustration {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--color-text);
+}
+
+.catalog-hero-illustration .equip-grid {
+  fill: var(--color-text);
+  opacity: 0.06;
+}
+
+[data-theme="dark"] .catalog-hero-illustration .equip-grid {
+  opacity: 0.09;
+}
+
+.catalog-hero-illustration .equip-line {
+  stroke: currentColor;
+  stroke-opacity: 0.82;
+}
+
+.catalog-hero-illustration .equip-node {
+  fill: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .catalog-hero-illustration .equip-node {
+  fill: var(--color-sky);
+}
+
+.catalog-hero-illustration .equip-cable {
+  stroke: currentColor;
+  stroke-opacity: 0.35;
+  fill: none;
+}
+
+.catalog-hero-illustration .equip-insulator ellipse {
+  fill: none;
+  stroke: currentColor;
+  stroke-opacity: 0.75;
+  stroke-width: 1.6;
+}
+
+.catalog-hero-illustration .equip-dim line {
+  stroke: var(--color-sky-dark);
+  stroke-opacity: 0.5;
+}
+
+[data-theme="dark"] .catalog-hero-illustration .equip-dim line {
+  stroke: var(--color-sky);
 }
 
 /* ---------- Toolbar: search + filters + sort ---------- */
@@ -436,7 +564,28 @@
 /* ---------- Responsive ---------- */
 @media (max-width: 760px) {
   .catalog-hero {
-    padding-block: 36px 44px;
+    padding-block: 40px 48px;
+  }
+
+  .catalog-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .catalog-hero-content {
+    text-align: center;
+  }
+
+  .catalog-hero .breadcrumb {
+    text-align: center;
+  }
+
+  .catalog-hero-text {
+    margin-inline: auto;
+  }
+
+  .catalog-hero-frame {
+    aspect-ratio: 16 / 10;
   }
 
   .catalog-section {
