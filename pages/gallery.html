@@ -1,0 +1,1909 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>پروژه‌ها | مانیرو</title>
+    <meta
+      name="description"
+      content="مانیرو — طراحی و ساخت دکل‌های برق و تجهیزات برق صنعتی."
+    />
+    <link rel="stylesheet" href="../css/base/font.css" />
+    <link rel="stylesheet" href="../css/base/style.css" />
+    <link rel="stylesheet" href="../css/layout/header.css" />
+    <link rel="stylesheet" href="../css/pages/gallery/projects-hero.css" />
+    <link rel="stylesheet" href="../css/pages/gallery/projects-gallery.css" />
+    <link rel="stylesheet" href="../css/base/reveal.css" />
+    <link rel="stylesheet" href="../css/base/responsive.css" />
+    <link rel="stylesheet" href="../css/layout/footer.css" />
+
+    <script>
+      (function () {
+        var saved = localStorage.getItem("maniro-theme");
+        var prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = saved ? saved : prefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
+
+    <header class="site-header" id="site-header">
+      <div class="navbar container">
+        <a href="../index.html" class="brand" aria-label="مانیرو — صفحه اصلی">
+          <img
+            src="../assets/images/logo/logo.png"
+            alt="مانیرو پاسارگاد"
+            class="brand-logo"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="brand-name">مانیرو</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links" aria-label="ناوبری اصلی">
+          <a href="../index.html" class="nav-link">خانه</a>
+          <a href="about.html" class="nav-link">درباره ما</a>
+          <a href="services.html" class="nav-link">خدمات</a>
+          <a href="gallery.html" class="nav-link is-active">پروژه‌ها</a>
+          <a href="catalog.html" class="nav-link">کاتالوگ</a>
+          <a href="contact.html" class="nav-link">تماس با ما</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="تغییر حالت تیره/روشن"
+            aria-pressed="false"
+          >
+            <svg
+              class="icon icon-sun"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg
+              class="icon icon-moon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+            </svg>
+          </button>
+
+          <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- ============ Projects / Hero ============ -->
+      <section class="projects-hero" id="projects-hero">
+        <div class="projects-hero-bg" aria-hidden="true">
+          <svg
+            viewBox="0 0 1600 700"
+            preserveAspectRatio="xMidYMax slice"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <pattern
+                id="projGrid"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle cx="1.4" cy="1.4" r="1.4" class="grid-dot" />
+              </pattern>
+              <radialGradient id="projGlow" cx="50%" cy="30%" r="60%">
+                <stop
+                  offset="0%"
+                  stop-color="var(--color-sky)"
+                  stop-opacity="0.35"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="var(--color-sky)"
+                  stop-opacity="0"
+                />
+              </radialGradient>
+            </defs>
+
+            <!-- بلوپرینت پس‌زمینه -->
+            <rect x="0" y="0" width="1600" height="700" fill="url(#projGrid)" />
+
+            <!-- درخشش نرم -->
+            <circle
+              cx="800"
+              cy="220"
+              r="380"
+              class="glow"
+              fill="url(#projGlow)"
+            />
+
+            <!-- خط افق -->
+            <line
+              x1="0"
+              y1="560"
+              x2="1600"
+              y2="560"
+              class="horizon-line"
+              stroke-width="1.5"
+            />
+
+            <!-- کابل‌های آویزان بین دکل‌ها -->
+            <path
+              d="M120 380 Q330 300 540 210"
+              class="pylon-cable"
+              stroke-width="2"
+              fill="none"
+            />
+            <path
+              d="M660 210 Q800 280 940 240"
+              class="pylon-cable"
+              stroke-width="2"
+              fill="none"
+            />
+            <path
+              d="M1060 240 Q1240 300 1420 220"
+              class="pylon-cable"
+              stroke-width="2"
+              fill="none"
+            />
+
+            <!-- دکل ۱ -->
+            <g>
+              <path
+                d="M120 250 L60 560 M120 250 L180 560"
+                class="pylon-line"
+                stroke-width="3"
+                stroke-linecap="round"
+                fill="none"
+              />
+              <path
+                d="M75 300 L165 300"
+                class="pylon-line"
+                stroke-width="3"
+                stroke-linecap="round"
+                fill="none"
+              />
+              <path
+                d="M95 350 L160 430 M145 350 L80 430 M95 350 L145 350 M80 430 L160 430"
+                class="pylon-line"
+                stroke-width="1.4"
+                stroke-opacity="0.5"
+                fill="none"
+              />
+              <circle cx="120" cy="250" r="5" class="pylon-node" />
+              <circle cx="75" cy="300" r="5" class="pylon-node" />
+              <circle cx="165" cy="300" r="5" class="pylon-node" />
+            </g>
+
+            <!-- دکل ۲ (بزرگ‌ترین، مرکزی) -->
+            <g>
+              <path
+                d="M800 120 L680 560 M800 120 L920 560"
+                class="pylon-line"
+                stroke-width="4"
+                stroke-linecap="round"
+                fill="none"
+              />
+              <path
+                d="M660 210 L940 210"
+                class="pylon-line"
+                stroke-width="4"
+                stroke-linecap="round"
+                fill="none"
+              />
+              <path
+                d="M660 210 L820 260 M940 210 L780 260"
+                class="pylon-line"
+                stroke-width="1.8"
+                stroke-opacity="0.5"
+                fill="none"
+              />
+              <path
+                d="M720 320 L880 320 M700 400 L900 400"
+                class="pylon-line"
+                stroke-width="1.6"
+                stroke-opacity="0.4"
+                fill="none"
+              />
+              <circle cx="800" cy="120" r="6.5" class="pylon-node" />
+              <circle cx="660" cy="210" r="6" class="pylon-node" />
+              <circle cx="940" cy="210" r="6" class="pylon-node" />
+            </g>
+
+            <!-- دکل ۳ -->
+            <g>
+              <path
+                d="M1420 190 L1330 560 M1420 190 L1510 560"
+                class="pylon-line"
+                stroke-width="3.4"
+                stroke-linecap="round"
+                fill="none"
+              />
+              <path
+                d="M1360 240 L1480 240"
+                class="pylon-line"
+                stroke-width="3.4"
+                stroke-linecap="round"
+                fill="none"
+              />
+              <path
+                d="M1370 290 L1465 360 M1470 290 L1375 360"
+                class="pylon-line"
+                stroke-width="1.5"
+                stroke-opacity="0.5"
+                fill="none"
+              />
+              <circle cx="1420" cy="190" r="5.5" class="pylon-node" />
+              <circle cx="1360" cy="240" r="5.5" class="pylon-node" />
+              <circle cx="1480" cy="240" r="5.5" class="pylon-node" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="projects-hero-inner container">
+          <nav class="breadcrumb" aria-label="Breadcrumb" dir="ltr">
+            <a href="../index.html">Home</a>
+            <span class="breadcrumb-sep" aria-hidden="true">/</span>
+            <span class="breadcrumb-current" aria-current="page">Projects</span>
+          </nav>
+
+          <div class="projects-hero-header reveal">
+            <h1 class="projects-hero-title" dir="ltr">Completed Projects</h1>
+            <div class="projects-hero-rule" aria-hidden="true"></div>
+            <p class="projects-hero-text">
+              متن نمونه — این بخش برای نمایش نمونه‌کارها و پروژه‌های اجرا‌شدهٔ
+              مانیرو در نظر گرفته شده و در مرحلهٔ بعد با محتوای نهایی جایگزین
+              می‌شود.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Projects / Gallery ============ -->
+      <!-- Static, front-end only — 8 fixed placeholder cards, not wired to any backend. -->
+      <section class="projects-gallery" id="projects-gallery">
+        <div class="projects-gallery-inner container">
+          <div class="projects-gallery-header reveal">
+            <span class="projects-gallery-eyebrow">نمونه‌کارها</span>
+            <h2 class="projects-gallery-title">پروژه‌های اجراشده</h2>
+            <p class="projects-gallery-text">
+              متن نمونه — نمایش نمونه‌ای از پروژه‌های اجراشدهٔ مانیرو. محتوای
+              زیر Placeholder است و بعداً با اطلاعات نهایی جایگزین می‌شود.
+            </p>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Project card 1 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۱"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۱</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card 2 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۲"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۲</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card 3 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۳"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۳</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card 4 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۴"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۴</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card 5 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۵"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۵</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card 6 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۶"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۶</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card 7 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۷"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۷</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project card 8 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۸"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۸</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+            <!-- Project card 9 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۹"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۹</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+            <!-- Project card 10 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۱۰"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۱۰</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+            <!-- Project card 11 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۱۱"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۱۱</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+            <!-- Project card 12 -->
+            <article
+              class="project-card reveal"
+              data-title="عنوان پروژه — نمونه ۱۲"
+              data-location="محل اجرا — نمونه"
+              data-year="سال اجرا: ----"
+              data-type="نوع پروژه — نمونه"
+              data-description="متن نمونه — توضیحات این پروژه Placeholder است و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود."
+            >
+              <div class="project-card-media">
+                <div class="project-card-img" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 6 L18 54 M32 6 L46 54"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 30 L42 30 M24 42 L40 42"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-opacity="0.55"
+                    />
+                    <line
+                      x1="12"
+                      y1="18"
+                      x2="52"
+                      y2="18"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="project-card-overlay">
+                  <button type="button" class="project-view-btn">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    مشاهده پروژه
+                  </button>
+                </div>
+              </div>
+              <div class="project-card-body">
+                <h3 class="project-card-title">عنوان پروژه — نمونه ۱۲</h3>
+                <div class="project-card-meta">
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                      />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    محل اجرا — نمونه
+                  </span>
+                  <span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 10h18" />
+                    </svg>
+                    ----
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Showcase Modal — shared by all cards, filled from data-* attributes via js/projects-gallery.js -->
+      <div
+        class="project-modal"
+        id="project-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        aria-labelledby="project-modal-title"
+      >
+        <div class="project-modal-backdrop" data-modal-dismiss></div>
+
+        <div class="project-modal-dialog">
+          <button type="button" class="project-modal-close" aria-label="بستن">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+          </button>
+
+          <span
+            class="project-modal-counter"
+            data-field="counter"
+            aria-hidden="true"
+          ></span>
+
+          <div class="project-modal-scroll">
+            <button
+              type="button"
+              class="project-modal-media"
+              data-field="media-btn"
+              aria-label="نمایش تمام‌صفحهٔ تصویر پروژه"
+            >
+              <span class="project-modal-media-inner" data-field="media-inner">
+                <svg
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M32 6 L18 54 L26 54 L22 54 M32 6 L46 54 L38 54 L42 54"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M32 6 L18 54 M32 6 L46 54"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M22 30 L42 30 M24 42 L40 42"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-opacity="0.55"
+                  />
+                  <line
+                    x1="12"
+                    y1="18"
+                    x2="52"
+                    y2="18"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              <span class="project-modal-media-hint">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                </svg>
+                مشاهده تمام‌صفحه
+              </span>
+            </button>
+
+            <div class="project-modal-body" data-field="body">
+              <div class="project-modal-meta">
+                <span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"
+                    />
+                    <circle cx="12" cy="9" r="2.5" />
+                  </svg>
+                  <span data-field="location"></span>
+                </span>
+                <span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="5" width="18" height="16" rx="2" />
+                    <path d="M16 3v4M8 3v4M3 10h18" />
+                  </svg>
+                  <span data-field="year"></span>
+                </span>
+                <span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3.24L4 3a1 1 0 0 0-1 1l.24 5.59a2 2 0 0 0 .59 1.41l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"
+                    />
+                    <circle cx="7.5" cy="7.5" r="1.2" />
+                  </svg>
+                  <span data-field="type"></span>
+                </span>
+              </div>
+              <h3
+                class="project-modal-title"
+                id="project-modal-title"
+                data-field="title"
+              ></h3>
+              <p class="project-modal-text" data-field="description"></p>
+            </div>
+          </div>
+
+          <div class="project-modal-nav">
+            <button type="button" class="project-modal-nav-btn" data-nav="prev">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+              قبلی
+            </button>
+            <button type="button" class="project-modal-nav-btn" data-nav="next">
+              بعدی
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fullscreen image viewer — opens on top of the modal when the media is clicked -->
+      <div
+        class="project-fullscreen"
+        id="project-fullscreen"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        aria-label="نمایش تمام‌صفحهٔ تصویر پروژه"
+      >
+        <div class="project-fullscreen-backdrop" data-fullscreen-dismiss></div>
+        <button
+          type="button"
+          class="project-fullscreen-close"
+          data-fullscreen-dismiss
+          aria-label="بستن نمای تمام‌صفحه"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <div
+          class="project-fullscreen-media"
+          data-field="fullscreen-media"
+        ></div>
+      </div>
+    </main>
+
+    <!-- ============ فوتر ============ -->
+    <footer class="site-footer">
+      <div class="footer-inner container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="../index.html"
+              class="brand footer-logo"
+              aria-label="مانیرو — صفحه اصلی"
+            >
+              <img
+                src="../assets/images/logo/logo.png"
+                alt="مانیرو پاسارگاد"
+                class="brand-logo"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="brand-name">مانیرو</span>
+            </a>
+            <p class="footer-text">
+              متن نمونه — مانیرو در طراحی، تولید و اجرای دکل‌های انتقال برق و
+              تجهیزات صنعتی فعالیت می‌کند.
+            </p>
+
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="تلگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 4 2.5 11.5 9 13.5m12-9.5L16 20l-7-6.5m12-9.5L9 13.5m0 0v6.5"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="اینستاگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="لینکدین">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v1.3A5.98 5.98 0 0 1 16 8Z"
+                  />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="واتساپ">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.6L4 20Z" />
+                  <path d="M9 10c0 2.5 2.5 5 5 5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h3 class="footer-heading">لینک‌های سریع</h3>
+            <nav class="footer-nav" aria-label="لینک‌های سریع">
+              <a href="../index.html" class="footer-link">خانه</a>
+              <a href="about.html" class="footer-link">درباره ما</a>
+              <a href="services.html" class="footer-link">خدمات</a>
+              <a href="catalog.html" class="footer-link">کاتالوگ</a>
+              <a href="contact.html" class="footer-link">تماس با ما</a>
+            </nav>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-heading">تماس با ما</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Map/Marker%231.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span
+                  >تهران، خیابان اسدآبادی، خیابان سیزدهم، پلاک ۲۷، واحد ۴۴</span
+                >
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Home/Mailbox.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span>کدپستی: ۱۴۳۳۶۷۴۳۴۴</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Communication/Call.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">021-88108120-23</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Devices/Printer.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">021-88108056 :فکس</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Communication/Mail.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">info@manirou.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © ۲۰۲۶ مانیرو انجینیرینگ | تمامی حقوق این وب‌سایت محفوظ است
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/base/menu.js"></script>
+    <script src="../js/base/scroll-reveal.js"></script>
+    <script src="../js/pages/gallery/projects-gallery.js"></script>
+  </body>
+</html>

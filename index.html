@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>صفحه اصلی | مانیرو</title>
+    <meta
+      name="description"
+      content="مانیرو — طراحی و ساخت دکل‌های برق و تجهیزات برق صنعتی."
+    />
+    <link rel="stylesheet" href="./css/base/font.css" />
+    <link rel="stylesheet" href="css/base/style.css" />
+    <link rel="stylesheet" href="css/layout/header.css" />
+    <link rel="stylesheet" href="css/base/responsive.css" />
+    <link rel="stylesheet" href="css/pages/home/about.css" />
+    <link rel="stylesheet" href="css/pages/home/services.css" />
+    <link rel="stylesheet" href="css/pages/home/stats.css" />
+    <link rel="stylesheet" href="css/layout/footer.css" />
+
+    <!-- جلوگیری از فلش تم: قبل از رندر اولیه اعمال می‌شود -->
+    <script>
+      (function () {
+        var saved = localStorage.getItem("maniro-theme");
+        var prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = saved ? saved : prefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
+
+    <!-- ============ هدر: نوار ناوبری ============ -->
+    <header class="site-header" id="site-header">
+      <div class="navbar container">
+        <a href="index.html" class="brand" aria-label="مانیرو — صفحه اصلی">
+          <img
+            src="assets/images/logo/logo.png"
+            alt="مانیرو پاسارگاد"
+            class="brand-logo"
+            decoding="async"
+          />
+          <span class="brand-name">مانیرو</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links" aria-label="ناوبری اصلی">
+          <a href="index.html" class="nav-link is-active">خانه</a>
+          <a href="pages/about.html" class="nav-link">درباره ما</a>
+          <a href="pages/services.html" class="nav-link">خدمات</a>
+          <a href="pages/gallery.html" class="nav-link">پروژه‌ها</a>
+          <a href="pages/catalog.html" class="nav-link">کاتالوگ</a>
+          <a href="pages/contact.html" class="nav-link">تماس با ما</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="تغییر حالت تیره/روشن"
+            aria-pressed="false"
+          >
+            <svg
+              class="icon icon-sun"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg
+              class="icon icon-moon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+            </svg>
+          </button>
+
+          <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- ============ هیرو ============ -->
+      <section class="hero" id="hero">
+        <div class="hero-inner container">
+          <div class="hero-content">
+            <p class="hero-eyebrow">زیرساخت برق صنعتی</p>
+            <h1 class="hero-title">نصب دکل برق<br /></h1>
+            <p class="hero-text">
+              متن نمونه — طراحی، ساخت و اجرای دکل‌های انتقال برق و تجهیزات صنعتی
+              برای قابلیت اطمینان بلندمدت.
+            </p>
+            <div class="hero-actions">
+              <a href="pages/catalog.html" class="btn btn-primary"
+                >مشاهده کاتالوگ</a
+              >
+              <a href="pages/about.html" class="btn btn-secondary"
+                >درباره شرکت</a
+              >
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-visual-glow"></div>
+            <svg
+              class="tower-illustration"
+              viewBox="0 0 480 560"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- تصویر نمونه: دکل انتقال برق -->
+              <line
+                x1="60"
+                y1="540"
+                x2="420"
+                y2="540"
+                stroke="currentColor"
+                stroke-opacity="0.15"
+                stroke-width="2"
+              />
+              <path
+                d="M240 40 L150 200 L190 200 L120 380 L175 380 L110 540
+                   M240 40 L330 200 L290 200 L360 380 L305 380 L370 540
+                   M150 200 L330 200 M120 380 L360 380
+                   M190 200 L175 380 M290 200 L305 380
+                   M240 40 L240 90 M180 90 L300 90"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="130"
+                y1="120"
+                x2="350"
+                y2="120"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <circle cx="130" cy="120" r="6" class="tower-node" />
+              <circle cx="350" cy="120" r="6" class="tower-node" />
+              <circle cx="240" cy="40" r="6" class="tower-node" />
+              <path
+                d="M60 150 Q 145 190 130 120"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-opacity="0.5"
+              />
+              <path
+                d="M420 150 Q 335 190 350 120"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-opacity="0.5"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ درباره مانیرو ============ -->
+      <section class="about" id="about">
+        <div class="about-inner container">
+          <div class="about-content reveal">
+            <p class="about-eyebrow">درباره شرکت</p>
+            <h2 class="about-title">درباره مانیرو</h2>
+            <p class="about-text">
+              متن نمونه — مانیرو در طراحی، تولید و اجرای دکل‌های انتقال برق و
+              تجهیزات صنعتی فعالیت می‌کند و راهکارهایی پایدار برای پروژه‌های
+              زیرساختی ارائه می‌دهد.
+            </p>
+
+            <div class="about-features">
+              <div class="feature-card reveal" style="--reveal-delay: 0s">
+                <span class="feature-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/General/Thunder.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="feature-title">دکل‌های برق</h3>
+                <p class="feature-text">
+                  متن نمونه درباره طراحی و ساخت دکل‌های انتقال برق.
+                </p>
+              </div>
+
+              <div class="feature-card reveal" style="--reveal-delay: 0.08s">
+                <span class="feature-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/Tools/Screwdriver.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="feature-title">نصب و راه‌اندازی</h3>
+                <p class="feature-text">
+                  متن نمونه درباره خدمات نصب و راه‌اندازی تجهیزات.
+                </p>
+              </div>
+
+              <div class="feature-card reveal" style="--reveal-delay: 0.16s">
+                <span class="feature-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/Tools/Hummer.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="feature-title">نگهداری و تعمیرات</h3>
+                <p class="feature-text">
+                  متن نمونه درباره خدمات نگهداری دوره‌ای و تعمیرات.
+                </p>
+              </div>
+
+              <div class="feature-card reveal" style="--reveal-delay: 0.24s">
+                <span class="feature-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/Home/Box.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="feature-title">تجهیزات صنعتی</h3>
+                <p class="feature-text">
+                  متن نمونه درباره تأمین تجهیزات برق صنعتی.
+                </p>
+              </div>
+            </div>
+
+            <a href="pages/about.html" class="btn btn-secondary about-cta"
+              >بیشتر بدانید</a
+            >
+          </div>
+
+          <div class="about-visual reveal" style="--reveal-delay: 0.1s">
+            <div
+              class="about-image-placeholder"
+              role="img"
+              aria-label="تصویر نمونه از دکل برق و پروژه‌های صنعتی"
+            >
+              <svg
+                viewBox="0 0 400 480"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="0"
+                  y="0"
+                  width="400"
+                  height="480"
+                  rx="20"
+                  fill="var(--color-bg-subtle)"
+                />
+                <path
+                  d="M200 60 L120 220 L155 220 L100 400 L150 400 L95 460
+                       M200 60 L280 220 L245 220 L300 400 L250 400 L305 460
+                       M120 220 L280 220 M100 400 L300 400
+                       M155 220 L150 400 M245 220 L250 400
+                       M200 60 L200 100 M150 100 L250 100"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.85"
+                />
+                <circle cx="200" cy="60" r="6" class="tower-node" />
+                <circle cx="120" cy="150" r="6" class="tower-node" />
+                <circle cx="280" cy="150" r="6" class="tower-node" />
+                <line
+                  x1="120"
+                  y1="150"
+                  x2="280"
+                  y2="150"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  opacity="0.85"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ خدمات ما ============ -->
+      <section class="services" id="services">
+        <div class="services-inner container">
+          <div class="services-header reveal">
+            <p class="services-eyebrow">خدمات ما</p>
+            <h2 class="services-title">خدمات ما</h2>
+            <p class="services-subtitle">
+              متن نمونه — مجموعه‌ای از خدمات مهندسی و اجرایی برای پروژه‌های برق
+              صنعتی و دکل‌های انتقال برق.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card reveal" style="--reveal-delay: 0s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/Design/Pen%26ruller.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="service-title">طراحی و مهندسی</h3>
+              <p class="service-text">
+                متن نمونه درباره خدمات طراحی و مهندسی دکل‌های انتقال برق.
+              </p>
+              <a href="pages/services.html" class="service-link">
+                بیشتر بدانید
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 5 21 12 14 19M21 12H3" />
+                </svg>
+              </a>
+            </article>
+
+            <article class="service-card reveal" style="--reveal-delay: 0.06s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/Tools/Screwdriver.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="service-title">نصب و راه‌اندازی</h3>
+              <p class="service-text">
+                متن نمونه درباره خدمات نصب و راه‌اندازی تجهیزات صنعتی.
+              </p>
+              <a href="pages/services.html" class="service-link">
+                بیشتر بدانید
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 5 21 12 14 19M21 12H3" />
+                </svg>
+              </a>
+            </article>
+
+            <article class="service-card reveal" style="--reveal-delay: 0.12s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/Tools/Hummer.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="service-title">نگهداری و تعمیرات</h3>
+              <p class="service-text">
+                متن نمونه درباره خدمات نگهداری دوره‌ای و تعمیرات تجهیزات.
+              </p>
+              <a href="pages/services.html" class="service-link">
+                بیشتر بدانید
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 5 21 12 14 19M21 12H3" />
+                </svg>
+              </a>
+            </article>
+
+            <article class="service-card reveal" style="--reveal-delay: 0.18s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/Home/Box.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="service-title">تأمین تجهیزات</h3>
+              <p class="service-text">
+                متن نمونه درباره تأمین و عرضه تجهیزات برق صنعتی.
+              </p>
+              <a href="pages/services.html" class="service-link">
+                بیشتر بدانید
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 5 21 12 14 19M21 12H3" />
+                </svg>
+              </a>
+            </article>
+
+            <article class="service-card reveal" style="--reveal-delay: 0.24s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/Communication/Clipboard-check.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="service-title">بازرسی فنی</h3>
+              <p class="service-text">
+                متن نمونه درباره بازرسی فنی و کنترل کیفیت پروژه‌ها.
+              </p>
+              <a href="pages/services.html" class="service-link">
+                بیشتر بدانید
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 5 21 12 14 19M21 12H3" />
+                </svg>
+              </a>
+            </article>
+
+            <article class="service-card reveal" style="--reveal-delay: 0.3s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/Code/Question-circle.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="service-title">مشاوره فنی</h3>
+              <p class="service-text">
+                متن نمونه درباره مشاوره فنی و برنامه‌ریزی پروژه‌های صنعتی.
+              </p>
+              <a href="pages/services.html" class="service-link">
+                بیشتر بدانید
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 5 21 12 14 19M21 12H3" />
+                </svg>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ آمار و ارقام ============ -->
+      <section class="stats" id="stats">
+        <div class="stats-inner container">
+          <h2 class="stats-title">اعداد ما</h2>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/Home/Building.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <span class="stat-number">60+</span>
+              <span class="stat-label">پروژه تکمیل‌شده</span>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/Shopping/Chart-bar%231.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <span class="stat-number">15+</span>
+              <span class="stat-label">سال سابقه فعالیت</span>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/General/Shield-check.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <span class="stat-number">5</span>
+              <span class="stat-label">گواهینامه ها</span>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-icon" aria-hidden="true">
+                <img
+                  src="assets/icons/stockholm/48x48/General/Like.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <span class="stat-number">99%</span>
+              <span class="stat-label">رضایت مشتریان</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ فوتر ============ -->
+    <footer class="site-footer">
+      <div class="footer-inner container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="index.html"
+              class="brand footer-logo"
+              aria-label="مانیرو — صفحه اصلی"
+            >
+              <img
+                src="assets/images/logo/logo.png"
+                alt="مانیرو پاسارگاد"
+                class="brand-logo"
+                decoding="async"
+              />
+              <span class="brand-name">مانیرو</span>
+            </a>
+            <p class="footer-text">
+              متن نمونه — مانیرو در طراحی، تولید و اجرای دکل‌های انتقال برق و
+              تجهیزات صنعتی فعالیت می‌کند.
+            </p>
+
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="تلگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 4 2.5 11.5 9 13.5m12-9.5L16 20l-7-6.5m12-9.5L9 13.5m0 0v6.5"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="اینستاگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="لینکدین">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v1.3A5.98 5.98 0 0 1 16 8Z"
+                  />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="واتساپ">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.6L4 20Z" />
+                  <path d="M9 10c0 2.5 2.5 5 5 5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h3 class="footer-heading">لینک‌های سریع</h3>
+            <nav class="footer-nav" aria-label="لینک‌های سریع">
+              <a href="index.html" class="footer-link">خانه</a>
+              <a href="pages/about.html" class="footer-link">درباره ما</a>
+              <a href="pages/services.html" class="footer-link">خدمات</a>
+              <a href="pages/catalog.html" class="footer-link">کاتالوگ</a>
+              <a href="pages/contact.html" class="footer-link">تماس با ما</a>
+            </nav>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-heading">تماس با ما</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <img
+                  src="assets/icons/stockholm/48x48/Map/Marker%231.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span
+                  >تهران، خیابان اسدآبادی، خیابان سیزدهم، پلاک ۲۷، واحد ۴۴</span
+                >
+              </li>
+              <li>
+                <img
+                  src="assets/icons/stockholm/48x48/Home/Mailbox.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span>کدپستی: ۱۴۳۳۶۷۴۳۴۴</span>
+              </li>
+              <li>
+                <img
+                  src="assets/icons/stockholm/48x48/Communication/Call.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">021-88108120-23</span>
+              </li>
+              <li>
+                <img
+                  src="assets/icons/stockholm/48x48/Devices/Printer.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">021-88108056 :فکس</span>
+              </li>
+              <li>
+                <img
+                  src="assets/icons/stockholm/48x48/Communication/Mail.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">info@manirou.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © ۲۰۲۶ مانیرو انجینیرینگ | تمامی حقوق این وب‌سایت محفوظ است
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/base/menu.js"></script>
+    <script src="js/base/scroll-reveal.js"></script>
+  </body>
+</html>

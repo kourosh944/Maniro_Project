@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Maniro — Statistics Section (pure HTML + CSS, no JS)
+   ========================================================================== */
+
+.stats {
+  padding-block: 90px;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.stats-title {
+  margin: 0 0 48px;
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 36px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.stat-card:hover {
+  border-color: var(--color-sky);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 18px;
+  border-radius: var(--radius-full);
+  background: var(--color-sky-tint);
+  color: var(--color-sky-dark);
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+[data-theme="dark"] .stat-icon {
+  color: var(--color-sky);
+}
+
+.stat-card:hover .stat-icon {
+  background: var(--color-sky);
+  color: #ffffff;
+}
+
+.stat-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: filter 0.25s var(--ease);
+}
+
+/* Uploaded icon set ships as solid-black glyphs on transparent PNG —
+   recolor via filter instead of currentColor */
+[data-theme="dark"] .stat-icon img {
+  filter: invert(1);
+}
+
+.stat-card:hover .stat-icon img {
+  filter: brightness(0) invert(1);
+}
+
+.stat-number {
+  font-size: clamp(30px, 3.4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  line-height: 1.15;
+}
+
+.stat-label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+/* --- Responsive --- */
+@media (max-width: 860px) {
+  .stats {
+    padding-block: 64px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 460px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

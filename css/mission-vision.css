@@ -1,0 +1,130 @@
+/* ==========================================================================
+   Maniro — About Page / Mission & Vision
+   Two large cards side by side, each with icon, title, placeholder text.
+   ========================================================================== */
+
+.mv {
+  padding-block: 96px;
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
+}
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+/* ---------- Card ---------- */
+.mv-card {
+  position: relative;
+  padding: 44px 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+/* Signature: a quiet sky-blue wash that sweeps in from the corner on hover */
+.mv-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 120% at 100% 0%,
+    var(--color-sky-tint) 0%,
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+  pointer-events: none;
+}
+
+[dir="rtl"] .mv-card::before {
+  background: radial-gradient(
+    120% 120% at 0% 0%,
+    var(--color-sky-tint) 0%,
+    transparent 55%
+  );
+}
+
+.mv-card:hover,
+.mv-card:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--color-sky);
+  box-shadow: var(--shadow-md);
+}
+
+.mv-card:hover::before,
+.mv-card:focus-within::before {
+  opacity: 1;
+}
+
+.mv-card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Icon ---------- */
+.mv-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 26px;
+  border-radius: var(--radius-sm);
+  background: var(--color-sky-tint);
+  color: var(--color-sky-dark);
+  transition: transform 0.35s var(--ease), background-color 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+
+[data-theme="dark"] .mv-icon {
+  color: var(--color-sky);
+}
+
+.mv-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.mv-card:hover .mv-icon {
+  transform: scale(1.08) rotate(-4deg);
+  background: var(--color-sky);
+  color: #ffffff;
+}
+
+/* ---------- Text ---------- */
+.mv-title {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.mv-text {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .mv {
+    padding-block: 64px;
+  }
+
+  .mv-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .mv-card {
+    padding: 36px 28px;
+  }
+}

@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Maniro — About Page / Certificates
+   Grid of certificate cards: image, title, description, download action.
+   ========================================================================== */
+
+.certificates {
+  padding-block: 96px;
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
+}
+
+.certificates-head {
+  max-width: 620px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.certificates-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .certificates-eyebrow {
+  color: var(--color-sky);
+}
+
+.certificates-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-sky);
+}
+
+.certificates-title {
+  margin: 0 0 16px;
+  font-size: clamp(28px, 3.2vw, 38px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.certificates-subtitle {
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+/* --- Grid --- */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ---------- Card ---------- */
+.certificate-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-sky);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- Image ---------- */
+.certificate-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-subtle);
+}
+
+.certificate-image svg {
+  width: 42%;
+  height: 42%;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.certificate-image .certificate-seal {
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .certificate-image .certificate-seal {
+  color: var(--color-sky);
+}
+
+.certificate-card:hover .certificate-image svg {
+  opacity: 1;
+}
+
+/* ---------- Body ---------- */
+.certificate-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 24px 26px 26px;
+}
+
+.certificate-title {
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.certificate-text {
+  margin: 0 0 22px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  flex-grow: 1;
+}
+
+/* ---------- Download action ---------- */
+.certificate-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding-inline: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-text);
+  background: transparent;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.certificate-download img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+
+/* Uploaded icon set ships as solid-black glyphs on transparent PNG —
+   recolor via filter instead of currentColor */
+[data-theme="dark"] .certificate-download img {
+  filter: invert(1);
+}
+
+.certificate-download:hover {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.certificate-download:hover img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .certificate-download:hover {
+  background: var(--color-sky);
+  border-color: var(--color-sky);
+  color: var(--color-bg);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .certificates-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .certificates {
+    padding-block: 64px;
+  }
+
+  .certificates-head {
+    margin-bottom: 40px;
+  }
+
+  .certificates-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

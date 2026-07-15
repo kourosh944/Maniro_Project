@@ -1,0 +1,190 @@
+/* ==========================================================================
+   Maniro — Services Page / Services Grid
+   5 cards, premium + industrial: blueprint corner marks, SVG icons,
+   animated "Learn More" link. Placeholder content only.
+   ========================================================================== */
+
+.services-grid-section {
+  padding-block: 96px;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* 5th card in a 3-column grid: keep it from stretching oddly on wide rows */
+.services-grid .service-card:nth-child(4) {
+  grid-column: 1 / 2;
+}
+
+/* ---------- Card ---------- */
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 34px 28px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+/* Schematic / blueprint corner marks — matches the site's industrial signature */
+.service-card::before,
+.service-card::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--color-border);
+  transition: border-color 0.35s var(--ease), width 0.35s var(--ease),
+    height 0.35s var(--ease);
+  pointer-events: none;
+}
+
+.service-card::before {
+  top: -1px;
+  inset-inline-start: -1px;
+  border-inline-end: none;
+  border-bottom: none;
+}
+
+.service-card::after {
+  bottom: -1px;
+  inset-inline-end: -1px;
+  border-inline-start: none;
+  border-top: none;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-card:hover::before,
+.service-card:hover::after {
+  width: 26px;
+  height: 26px;
+  border-color: var(--color-sky);
+}
+
+/* ---------- Icon ---------- */
+.service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-sky-dark);
+  background: var(--color-bg-subtle);
+  transition: border-color 0.35s var(--ease), background-color 0.35s var(--ease),
+    color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+[data-theme="dark"] .service-icon {
+  color: var(--color-sky);
+}
+
+.service-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+}
+
+.service-card:hover .service-icon {
+  border-color: var(--color-sky);
+  background: var(--color-sky-dark);
+  color: #ffffff;
+  transform: scale(1.06);
+}
+
+[data-theme="dark"] .service-card:hover .service-icon {
+  background: var(--color-sky);
+  color: var(--color-bg);
+}
+
+/* ---------- Text ---------- */
+.service-title {
+  margin: 0 0 12px;
+  font-size: 18.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.service-text {
+  margin: 0 0 26px;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  flex-grow: 1;
+}
+
+/* ---------- Learn More link ---------- */
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid var(--color-border);
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease), gap 0.25s var(--ease);
+}
+
+.service-link svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  transition: transform 0.25s var(--ease);
+}
+
+/* RTL: arrow points to the start (right in RTL), flip so hover motion reads correctly */
+.service-link svg {
+  transform: scaleX(-1);
+}
+
+.service-card:hover .service-link {
+  color: var(--color-sky-dark);
+  border-color: var(--color-sky);
+  gap: 12px;
+}
+
+[data-theme="dark"] .service-card:hover .service-link {
+  color: var(--color-sky);
+}
+
+.service-card:hover .service-link svg {
+  transform: scaleX(-1) translateX(-4px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-grid .service-card:nth-child(4) {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid-section {
+    padding-block: 64px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

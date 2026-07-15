@@ -1,0 +1,748 @@
+/* ==========================================================================
+   Maniro — Projects Page / Gallery
+   Static 8-card grid (no backend). Hover = zoom + overlay + "view" button.
+   Click = large Project Showcase Modal (prev/next nav + fullscreen image).
+   ========================================================================== */
+
+.projects-gallery {
+  padding-block: 72px 96px;
+  background: var(--color-bg);
+}
+
+.projects-gallery-header {
+  max-width: 620px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.projects-gallery-eyebrow {
+  display: inline-block;
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .projects-gallery-eyebrow {
+  color: var(--color-sky);
+}
+
+.projects-gallery-title {
+  margin: 0 0 12px;
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.projects-gallery-text {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Grid ---------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+
+/* ---------- Card ---------- */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--color-sky);
+  transform: translateY(-3px);
+  border-color: var(--color-sky);
+}
+
+/* ---------- Media (image placeholder + hover zoom/overlay) ---------- */
+.project-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background: var(--color-bg-subtle);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 300ms var(--ease);
+}
+
+.project-card-media:hover,
+.project-card-media:focus-within {
+  box-shadow: 0 22px 40px -14px rgba(0, 0, 0, 0.45),
+    0 8px 18px -6px rgba(0, 0, 0, 0.3);
+}
+
+.project-card-img {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    155deg,
+    var(--color-bg-subtle) 0%,
+    var(--color-sky-tint) 100%
+  );
+  transition: transform 300ms var(--ease);
+  will-change: transform;
+}
+
+.project-card-img svg {
+  width: 46%;
+  height: 46%;
+  color: var(--color-sky-dark);
+  opacity: 0.55;
+}
+
+[data-theme="dark"] .project-card-img svg {
+  color: var(--color-sky);
+  opacity: 0.6;
+}
+
+.project-card-media:hover .project-card-img,
+.project-card-media:focus-within .project-card-img {
+  transform: scale(1.08);
+}
+
+/* Semi-transparent black overlay, revealed on hover */
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 300ms var(--ease);
+}
+
+.project-card-media:hover .project-card-overlay,
+.project-card-media:focus-within .project-card-overlay {
+  opacity: 1;
+}
+
+.project-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding-inline: 22px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  color: #10161f;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow: 0 8px 20px rgba(8, 11, 15, 0.35);
+  transform: translateY(14px);
+  opacity: 0;
+  transition: transform 300ms var(--ease), opacity 300ms var(--ease),
+    background-color 300ms var(--ease);
+}
+
+.project-card-media:hover .project-view-btn,
+.project-card-media:focus-within .project-view-btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.project-view-btn:hover {
+  background: var(--color-sky);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(8, 11, 15, 0.4);
+}
+
+.project-view-btn:active {
+  transform: translateY(0);
+}
+
+.project-view-btn svg {
+  width: 17px;
+  height: 17px;
+  transition: transform 250ms var(--ease);
+}
+
+.project-view-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* ---------- Card body: title / location / year ---------- */
+.project-card-body {
+  padding: 18px 20px 20px;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.project-card-title {
+  margin: 0 0 10px;
+  font-size: 16.5px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.project-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.project-card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-card-meta svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   Project Showcase Modal — large image, full meta, prev/next navigation,
+   fade + scale entrance, slide transition between projects, fullscreen viewer
+   ========================================================================== */
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.project-modal.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.project-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 11, 15, 0.62);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity 320ms var(--ease);
+}
+
+.project-modal.is-open .project-modal-backdrop {
+  opacity: 1;
+}
+
+/* Fallback for browsers without backdrop-filter support: fall back to a
+   darker solid overlay so the dialog still stands out clearly. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .project-modal-backdrop {
+    background: rgba(8, 11, 15, 0.86);
+  }
+}
+
+.project-modal-dialog {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 920px;
+  max-height: 90vh;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: scale(0.92) translateY(16px);
+  transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
+  touch-action: pan-y;
+}
+
+.project-modal.is-open .project-modal-dialog {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.project-modal-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 14px;
+  inset-inline-end: 14px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: rgba(8, 11, 15, 0.55);
+  color: #ffffff;
+  transition: background-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.project-modal-close:hover {
+  background: var(--color-sky-dark);
+  transform: rotate(90deg);
+}
+
+.project-modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.project-modal-counter {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding-inline: 14px;
+  border-radius: var(--radius-full);
+  background: rgba(8, 11, 15, 0.55);
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  direction: ltr;
+}
+
+/* ---------- Media (big image, click-to-fullscreen) ---------- */
+.project-modal-media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 50vh;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  cursor: zoom-in;
+  background: linear-gradient(
+    155deg,
+    var(--color-bg-subtle) 0%,
+    var(--color-sky-tint) 100%
+  );
+}
+
+.project-modal-media-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.28s var(--ease), transform 0.28s var(--ease);
+}
+
+.project-modal-media-inner svg {
+  width: 34%;
+  height: 34%;
+  color: var(--color-sky-dark);
+  opacity: 0.55;
+  transition: transform 0.35s var(--ease);
+}
+
+[data-theme="dark"] .project-modal-media-inner svg {
+  color: var(--color-sky);
+  opacity: 0.6;
+}
+
+.project-modal-media:hover .project-modal-media-inner svg,
+.project-modal-media:focus-visible .project-modal-media-inner svg {
+  transform: scale(1.06);
+}
+
+.project-modal-media-hint {
+  position: absolute;
+  bottom: 14px;
+  inset-inline-end: 14px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding-inline: 14px;
+  border-radius: var(--radius-full);
+  background: rgba(8, 11, 15, 0.55);
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.project-modal-media-hint svg {
+  width: 14px;
+  height: 14px;
+}
+
+.project-modal-media:hover .project-modal-media-hint,
+.project-modal-media:focus-visible .project-modal-media-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Body: meta / title / description ---------- */
+.project-modal-body {
+  padding: 28px 28px 22px;
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+}
+
+.project-modal-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.project-modal-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-modal-meta svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.75;
+}
+
+.project-modal-title {
+  margin: 0 0 14px;
+  max-width: 46ch;
+  font-size: clamp(20px, 2.6vw, 27px);
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.project-modal-text {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--color-text-muted);
+}
+
+/* Slide transition when moving between projects with prev/next */
+.project-modal-body.is-sliding-out-next {
+  opacity: 0;
+  transform: translateX(-18px);
+}
+
+.project-modal-body.is-sliding-out-prev {
+  opacity: 0;
+  transform: translateX(18px);
+}
+
+.project-modal-media-inner.is-sliding-out-next {
+  opacity: 0;
+  transform: translateX(-14px);
+}
+
+.project-modal-media-inner.is-sliding-out-prev {
+  opacity: 0;
+  transform: translateX(14px);
+}
+
+/* ---------- Prev / Next navigation bar ---------- */
+.project-modal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  gap: 12px;
+  padding: 18px 28px;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-modal-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding-inline: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.project-modal-nav-btn:hover {
+  background: var(--color-sky);
+  border-color: var(--color-sky);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px -6px rgba(14, 165, 233, 0.45);
+}
+
+.project-modal-nav-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.project-modal-nav-btn svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  transition: transform 200ms var(--ease);
+}
+
+.project-modal-nav-btn[data-nav="prev"]:hover svg {
+  transform: translateX(-3px);
+}
+
+.project-modal-nav-btn[data-nav="next"]:hover svg {
+  transform: translateX(3px);
+}
+
+/* Lock page scroll while the modal is open */
+body.gallery-modal-open {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Fullscreen image viewer — opens above the modal on image click
+   ========================================================================== */
+
+.project-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.project-fullscreen.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.project-fullscreen-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 6, 9, 0.86);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  transition: opacity 300ms var(--ease);
+}
+
+.project-fullscreen.is-open .project-fullscreen-backdrop {
+  opacity: 1;
+}
+
+.project-fullscreen-close {
+  position: absolute;
+  top: 22px;
+  inset-inline-end: 22px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.25s var(--ease) 0.05s, transform 0.25s var(--ease) 0.05s,
+    background-color 0.2s var(--ease);
+}
+
+.project-fullscreen.is-open .project-fullscreen-close {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-fullscreen-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.project-fullscreen-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.project-fullscreen-media {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(84vw, 760px);
+  height: min(84vh, 620px);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    155deg,
+    #1a2230 0%,
+    #101720 100%
+  );
+  box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
+}
+
+.project-fullscreen.is-open .project-fullscreen-media {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.project-fullscreen-media svg {
+  width: 32%;
+  height: 32%;
+  color: var(--color-sky);
+  opacity: 0.65;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+}
+
+@media (max-width: 760px) {
+  .projects-gallery {
+    padding-block: 56px 72px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .project-modal-dialog {
+    max-height: 94vh;
+  }
+
+  .project-modal-media {
+    max-height: 42vh;
+  }
+
+  .project-modal-body {
+    padding: 20px 20px 16px;
+  }
+
+  .project-modal-nav {
+    padding: 14px 20px;
+  }
+
+  .project-fullscreen-media {
+    width: min(92vw, 620px);
+    height: min(70vh, 480px);
+  }
+}
+
+@media (max-width: 520px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-view-btn {
+    height: 40px;
+    padding-inline: 18px;
+    font-size: 13.5px;
+  }
+
+  .project-modal {
+    padding: 0;
+  }
+
+  .project-modal-dialog {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  .project-modal-nav-btn {
+    flex: 1 1 0;
+    justify-content: center;
+    padding-inline: 14px;
+    font-size: 13.5px;
+  }
+
+  .project-modal-media-hint span,
+  .project-modal-media-hint {
+    font-size: 11.5px;
+  }
+
+  .project-fullscreen {
+    padding: 16px;
+  }
+
+  .project-fullscreen-media {
+    width: 100%;
+    height: min(74vh, 520px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card-img,
+  .project-card-overlay,
+  .project-view-btn,
+  .project-modal-dialog,
+  .project-modal-backdrop,
+  .project-modal-body,
+  .project-modal-media-inner,
+  .project-modal-nav-btn,
+  .project-fullscreen-media,
+  .project-fullscreen-backdrop,
+  .project-fullscreen-close {
+    transition: none !important;
+  }
+}

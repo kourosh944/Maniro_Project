@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Maniro — Projects Page / Hero
+   Full-bleed industrial banner: breadcrumb, big bilingual title, short
+   placeholder text, and a low-opacity transmission-line / pylon backdrop.
+   ========================================================================== */
+
+.projects-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 62vh;
+  display: flex;
+  align-items: flex-end;
+  padding-block: 152px 76px;
+  background: linear-gradient(180deg, #0a0e13 0%, #0d141c 58%, #0b0f14 100%);
+  color: #f4f7fa;
+}
+
+/* ---------- Background placeholder: pylons / grid / vignette ---------- */
+.projects-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.projects-hero-bg svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.projects-hero-bg .grid-dot {
+  fill: #ffffff;
+  opacity: 0.06;
+}
+
+.projects-hero-bg .horizon-line {
+  stroke: #ffffff;
+  stroke-opacity: 0.08;
+}
+
+.projects-hero-bg .pylon-line {
+  stroke: #cbd8e3;
+  stroke-opacity: 0.32;
+}
+
+.projects-hero-bg .pylon-cable {
+  stroke: var(--color-sky);
+  stroke-opacity: 0.4;
+}
+
+.projects-hero-bg .pylon-node {
+  fill: var(--color-sky);
+  opacity: 0.75;
+}
+
+.projects-hero-bg .glow {
+  opacity: 0.5;
+}
+
+/* Vignette + gradient overlay for text legibility over the placeholder art */
+.projects-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+      180deg,
+      rgba(8, 11, 15, 0.72) 0%,
+      rgba(8, 11, 15, 0.35) 38%,
+      rgba(8, 11, 15, 0.55) 72%,
+      rgba(8, 11, 15, 0.92) 100%
+    ),
+    radial-gradient(
+      65% 55% at 50% 100%,
+      rgba(8, 11, 15, 0.65) 0%,
+      transparent 100%
+    );
+  pointer-events: none;
+}
+
+.projects-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* ---------- Breadcrumb (kept LTR: "Home / Projects") ---------- */
+.projects-hero .breadcrumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 28px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.projects-hero .breadcrumb a {
+  color: rgba(244, 247, 250, 0.6);
+  transition: color 0.2s var(--ease);
+}
+
+.projects-hero .breadcrumb a:hover {
+  color: var(--color-sky);
+}
+
+.projects-hero .breadcrumb-sep {
+  color: rgba(244, 247, 250, 0.3);
+}
+
+.projects-hero .breadcrumb-current {
+  color: #f4f7fa;
+}
+
+/* ---------- Header text ---------- */
+.projects-hero-header {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.projects-hero-title {
+  margin: 0 0 22px;
+  font-family: var(--font-sans);
+  font-size: clamp(40px, 7vw, 88px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.projects-hero-rule {
+  width: 64px;
+  height: 3px;
+  margin: 0 auto 24px;
+  border-radius: var(--radius-full);
+  background: var(--color-sky);
+}
+
+.projects-hero-text {
+  max-width: 520px;
+  margin-inline: auto;
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: rgba(244, 247, 250, 0.72);
+}
+
+/* Placeholder paragraph that follows the hero on this page uses less
+   top padding now that the hero itself provides the vertical rhythm. */
+.projects-hero + .page-placeholder {
+  padding-block: 64px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .projects-hero {
+    min-height: 52vh;
+    padding-block: 128px 60px;
+  }
+
+  .projects-hero-text {
+    font-size: 15.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-hero {
+    padding-block: 112px 48px;
+  }
+
+  .projects-hero .breadcrumb {
+    font-size: 11.5px;
+    margin-bottom: 20px;
+  }
+
+  .projects-hero-title {
+    letter-spacing: 0;
+  }
+
+  .projects-hero-text {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-hero-bg svg * {
+    animation: none !important;
+  }
+}

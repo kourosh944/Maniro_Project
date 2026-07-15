@@ -1,0 +1,330 @@
+/* ==========================================================================
+   Maniro — Contact Page / Contact Form
+   Premium floating-label form, front-end validation states, industrial
+   accents (blueprint corners), professional focus effect. Placeholder only.
+   ========================================================================== */
+
+.contact-form-section {
+  --field-error-color: #c9362f;
+  --field-success-color: #1f8c6c;
+  padding-block: 0 112px;
+  background: var(--color-bg);
+}
+
+[data-theme="dark"] .contact-form-section {
+  --field-error-color: #ff7a72;
+  --field-success-color: #34d399;
+}
+
+.contact-form-card {
+  position: relative;
+  max-width: 860px;
+  margin-inline: auto;
+  padding: 48px 44px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+/* Blueprint corner marks — same industrial signature as the card grids */
+.contact-form-card::before,
+.contact-form-card::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--color-sky-dark);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .contact-form-card::before,
+[data-theme="dark"] .contact-form-card::after {
+  border-color: var(--color-sky);
+}
+
+.contact-form-card::before {
+  top: -1px;
+  inset-inline-start: -1px;
+  border-inline-end: none;
+  border-bottom: none;
+}
+
+.contact-form-card::after {
+  bottom: -1px;
+  inset-inline-end: -1px;
+  border-inline-start: none;
+  border-top: none;
+}
+
+.contact-form-head {
+  max-width: 520px;
+  margin: 0 0 36px;
+}
+
+.contact-form-title {
+  margin: 0 0 10px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.contact-form-subtitle {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Grid layout ---------- */
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 20px;
+}
+
+.form-field {
+  position: relative;
+  grid-column: span 1;
+}
+
+.form-field--full {
+  grid-column: 1 / -1;
+}
+
+/* Small "required" mark next to the label — visual only; the required
+   attribute already exposes this state to assistive technology. */
+.form-field label::after {
+  content: "*";
+  margin-inline-start: 3px;
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .form-field label::after {
+  color: var(--color-sky);
+}
+
+/* ---------- Floating-label inputs ---------- */
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 18px 16px 8px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease),
+    background-color 0.25s var(--ease);
+}
+
+.form-field textarea {
+  min-height: 140px;
+  padding-top: 22px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.form-field label {
+  position: absolute;
+  top: 17px;
+  inset-inline-start: 16px;
+  font-size: 15px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transform-origin: top right;
+  transition: top 0.2s var(--ease), font-size 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+/* Float the label up when the field is focused or has a value. The
+   `placeholder=" "` + `:not(:placeholder-shown)` pairing is what lets a
+   plain input/textarea detect "has content" without any JS. */
+.form-field input:focus ~ label,
+.form-field input:not(:placeholder-shown) ~ label,
+.form-field textarea:focus ~ label,
+.form-field textarea:not(:placeholder-shown) ~ label {
+  top: 7px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .form-field input:focus ~ label,
+[data-theme="dark"] .form-field input:not(:placeholder-shown) ~ label,
+[data-theme="dark"] .form-field textarea:focus ~ label,
+[data-theme="dark"] .form-field textarea:not(:placeholder-shown) ~ label {
+  color: var(--color-sky);
+}
+
+/* Placeholder text hidden visually but kept for :placeholder-shown detection */
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: transparent;
+}
+
+/* ---------- Professional focus effect ---------- */
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-sky);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 4px var(--color-sky-tint), var(--shadow-sm);
+}
+
+/* Fallback outline for forced-colors / high-contrast modes, where custom
+   box-shadow rings can be suppressed. */
+@media (forced-colors: active) {
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: 2px solid CanvasText;
+    outline-offset: 2px;
+  }
+}
+
+/* ---------- Validation states ---------- */
+.form-field.is-invalid input,
+.form-field.is-invalid textarea {
+  border-color: var(--field-error-color);
+  background: var(--color-surface);
+}
+
+.form-field.is-invalid input:focus,
+.form-field.is-invalid textarea:focus {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--field-error-color) 18%, transparent);
+}
+
+.form-field.is-valid input,
+.form-field.is-valid textarea {
+  border-color: var(--field-success-color);
+}
+
+.field-error {
+  display: block;
+  min-height: 18px;
+  margin-top: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--field-error-color);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.form-field.is-invalid .field-error {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-field.is-invalid input,
+.form-field.is-invalid textarea {
+  animation: field-shake 0.32s var(--ease);
+}
+
+@keyframes field-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+/* ---------- Submit ---------- */
+.contact-form-submit {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.contact-form-submit .btn {
+  min-width: 168px;
+}
+
+.contact-form-submit .btn svg {
+  width: 16px;
+  height: 16px;
+  margin-inline-start: 8px;
+  stroke: currentColor;
+  transition: transform 0.25s var(--ease);
+}
+
+.contact-form-submit .btn:hover svg {
+  transform: translateX(-3px);
+}
+
+.form-status {
+  font-size: 13.5px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.form-status.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-status.is-success {
+  color: var(--field-success-color);
+}
+
+.form-status.is-error {
+  color: var(--field-error-color);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .contact-form-card {
+    padding: 36px 26px;
+  }
+
+  .contact-form-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-form-submit {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .contact-form-submit .btn {
+    width: 100%;
+  }
+
+  .form-status {
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .contact-form-card {
+    padding: 28px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-field.is-invalid input,
+  .form-field.is-invalid textarea {
+    animation: none;
+  }
+}

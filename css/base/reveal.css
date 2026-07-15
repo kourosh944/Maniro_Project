@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Maniro — Scroll reveal utility
+   Adds a fade-up transition to any element with the .reveal class as it
+   enters the viewport (paired with js/scroll-reveal.js).
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.values-grid .value-card.reveal,
+.certificates-grid .certificate-card.reveal {
+  transition-delay: var(--reveal-delay, 0s);
+}

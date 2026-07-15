@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Maniro — About Page / Company Story
+   Two-column layout: image placeholder (left) + story content (right).
+   ========================================================================== */
+
+.story {
+  padding-block: 96px;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Force physical left/right regardless of page RTL flow */
+.story-inner {
+  direction: ltr;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  align-items: center;
+  gap: 72px;
+}
+
+/* ---------- Visual (left) ---------- */
+.story-visual {
+  display: flex;
+}
+
+.story-image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-subtle);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-image-placeholder svg {
+  width: 44%;
+  height: 44%;
+  color: var(--color-text);
+}
+
+.story-image-placeholder .story-node {
+  fill: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .story-image-placeholder .story-node {
+  fill: var(--color-sky);
+}
+
+/* ---------- Content (right) ---------- */
+.story-content {
+  direction: rtl;
+  text-align: right;
+}
+
+.story-title {
+  margin: 0 0 24px;
+  font-size: clamp(30px, 3.6vw, 42px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.story-text {
+  margin: 0 0 18px;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--color-text-muted);
+}
+
+.story-text:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ---------- Quote box ---------- */
+.story-quote {
+  position: relative;
+  margin: 32px 0;
+  padding: 26px 30px;
+  border-inline-start: 3px solid var(--color-sky);
+  border-radius: var(--radius-md);
+  background: var(--color-sky-tint);
+  overflow: hidden;
+}
+
+.story-quote::before {
+  content: "\201C";
+  position: absolute;
+  top: -18px;
+  inset-inline-start: 14px;
+  font-size: 96px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-sky-dark);
+  opacity: 0.14;
+}
+
+.story-quote p {
+  position: relative;
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: var(--color-text);
+}
+
+/* ---------- CTA ---------- */
+.story-cta {
+  margin-top: 8px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .story {
+    padding-block: 64px;
+  }
+
+  .story-inner {
+    direction: rtl;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .story-image-placeholder {
+    max-width: 420px;
+    margin-inline: auto;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 560px) {
+  .story-title {
+    margin-bottom: 18px;
+  }
+
+  .story-quote {
+    padding: 22px 22px;
+  }
+
+  .story-quote::before {
+    font-size: 76px;
+  }
+}

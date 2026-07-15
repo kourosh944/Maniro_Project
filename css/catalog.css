@@ -1,0 +1,483 @@
+/* ==========================================================================
+   Maniro — Catalog Page
+   Page header, filter/sort toolbar, product grid, pagination, empty state.
+   Structured so the grid section can later be driven entirely by Django
+   ({% for %} / {{ }}) with zero changes to this stylesheet.
+   ========================================================================== */
+
+/* ---------- Page header ---------- */
+.catalog-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: 48px 56px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.catalog-hero-inner {
+  text-align: center;
+}
+
+.catalog-hero .breadcrumb {
+  display: block;
+  text-align: center;
+  margin: 0 0 22px;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+.catalog-hero .breadcrumb a {
+  color: var(--color-text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.catalog-hero .breadcrumb a:hover {
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .catalog-hero .breadcrumb a:hover {
+  color: var(--color-sky);
+}
+
+.catalog-hero .breadcrumb-sep {
+  margin-inline: 8px;
+  color: var(--color-border);
+}
+
+.catalog-hero .breadcrumb-current {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.catalog-hero-title {
+  margin: 0 0 14px;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.catalog-hero-text {
+  max-width: 560px;
+  margin-inline: auto;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Toolbar: search + filters + sort ---------- */
+.catalog-toolbar {
+  padding-block: 28px;
+  background: var(--color-bg-subtle);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.catalog-toolbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.catalog-search {
+  position: relative;
+  flex: 1 1 260px;
+  min-width: 220px;
+}
+
+.catalog-search-icon {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 16px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.catalog-search-input {
+  width: 100%;
+  height: 46px;
+  padding-inline: 44px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 14.5px;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.catalog-search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.catalog-search-input:hover {
+  border-color: var(--color-sky);
+}
+
+.catalog-search-input:focus-visible,
+.catalog-search-input:focus {
+  outline: none;
+  border-color: var(--color-sky);
+  box-shadow: 0 0 0 3px var(--color-sky-tint);
+}
+
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.catalog-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding-inline: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.catalog-filter-chip:hover {
+  border-color: var(--color-sky);
+  color: var(--color-text);
+}
+
+.catalog-filter-chip.is-active {
+  border-color: var(--color-sky);
+  background: var(--color-sky);
+  color: #ffffff;
+}
+
+.catalog-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-inline-start: auto;
+}
+
+.catalog-sort label {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.catalog-sort-select {
+  height: 42px;
+  padding-inline: 14px 36px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease);
+  /* Custom chevron, mirrored for RTL */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%235b6b7c' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 14px center;
+  appearance: none;
+}
+
+.catalog-sort-select:hover,
+.catalog-sort-select:focus-visible {
+  border-color: var(--color-sky);
+  outline: none;
+}
+
+.catalog-results-count {
+  width: 100%;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Product grid ---------- */
+.catalog-section {
+  padding-block: 56px 96px;
+  background: var(--color-bg);
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.catalog-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.catalog-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-sky);
+  box-shadow: var(--shadow-md);
+}
+
+.catalog-card-media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg-subtle);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.catalog-card-media img.catalog-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-card-media .catalog-placeholder-icon {
+  width: 34%;
+  height: 34%;
+  color: var(--color-text-muted);
+  opacity: 0.55;
+}
+
+.catalog-card-tag {
+  position: absolute;
+  top: 12px;
+  inset-inline-start: 12px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  backdrop-filter: blur(6px);
+  color: var(--color-sky-dark);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .catalog-card-tag {
+  color: var(--color-sky);
+}
+
+.catalog-card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px 22px 22px;
+}
+
+.catalog-card-title {
+  margin: 0 0 8px;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.catalog-card-text {
+  margin: 0 0 18px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.catalog-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.catalog-card-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.catalog-card-price small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.catalog-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-sky-dark);
+  transition: gap 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+[data-theme="dark"] .catalog-card-link {
+  color: var(--color-sky);
+}
+
+.catalog-card-link svg {
+  transform: scaleX(-1);
+  transition: transform 0.2s var(--ease);
+}
+
+.catalog-card-link:hover {
+  gap: 10px;
+}
+
+.catalog-card-link:hover svg {
+  transform: translateX(-3px) scaleX(-1);
+}
+
+/* ---------- Empty state (shown when a filter/search yields no items;
+   in Django this maps to the {% empty %} branch of the {% for %} loop) ---------- */
+.catalog-empty {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: 72px;
+  color: var(--color-text-muted);
+}
+
+.catalog-empty.is-visible {
+  display: flex;
+}
+
+.catalog-empty-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  opacity: 0.5;
+}
+
+.catalog-empty-title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.catalog-empty-text {
+  margin: 0;
+  font-size: 14px;
+  max-width: 360px;
+}
+
+/* ---------- Pagination ---------- */
+.catalog-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 56px;
+}
+
+.catalog-page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding-inline: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.catalog-page-link:hover {
+  border-color: var(--color-sky);
+  color: var(--color-text);
+}
+
+.catalog-page-link.is-active {
+  border-color: var(--color-sky);
+  background: var(--color-sky);
+  color: #ffffff;
+}
+
+.catalog-page-link[aria-disabled="true"] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.catalog-page-link svg {
+  transition: transform 0.2s var(--ease);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .catalog-hero {
+    padding-block: 36px 44px;
+  }
+
+  .catalog-section {
+    padding-block: 40px 64px;
+  }
+
+  .catalog-toolbar-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .catalog-sort {
+    margin-inline-start: 0;
+    justify-content: space-between;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-filters {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .catalog-filter-chip {
+    flex-shrink: 0;
+  }
+}
+
+/* Dark-mode select chevron recolor (inline SVG data-URI uses a fixed
+   light-mode gray, swap for a lighter tone on dark backgrounds) */
+[data-theme="dark"] .catalog-sort-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2393a1b0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}

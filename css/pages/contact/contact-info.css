@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Maniro — Contact Page / Contact Info
+   4 cards (Phone, Email, Address, Working Hours), premium + industrial:
+   blueprint corner marks, SVG icons, professional hover, elevated shadow.
+   The grid overlaps the hero above it (see contact-hero.css) for a
+   layered, premium composition. Placeholder content only.
+   ========================================================================== */
+
+.contact-info-section {
+  position: relative;
+  z-index: 3;
+  padding-block: 0 88px;
+  /* Pulls the cards up into the hero's reserved bottom padding. */
+  margin-top: -104px;
+  background: var(--color-bg);
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ---------- Card ---------- */
+.contact-info-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 34px 26px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+/* Schematic / blueprint corner marks — matches the site's industrial signature */
+.contact-info-card::before,
+.contact-info-card::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--color-border);
+  transition: border-color 0.35s var(--ease), width 0.35s var(--ease),
+    height 0.35s var(--ease);
+  pointer-events: none;
+}
+
+.contact-info-card::before {
+  top: -1px;
+  inset-inline-start: -1px;
+  border-inline-end: none;
+  border-bottom: none;
+}
+
+.contact-info-card::after {
+  bottom: -1px;
+  inset-inline-end: -1px;
+  border-inline-start: none;
+  border-top: none;
+}
+
+.contact-info-card:hover,
+.contact-info-card:focus-within {
+  transform: translateY(-8px);
+  border-color: var(--color-sky-dark);
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .contact-info-card:hover,
+[data-theme="dark"] .contact-info-card:focus-within {
+  border-color: var(--color-sky);
+}
+
+.contact-info-card:hover::before,
+.contact-info-card:hover::after,
+.contact-info-card:focus-within::before,
+.contact-info-card:focus-within::after {
+  width: 26px;
+  height: 26px;
+  border-color: var(--color-sky);
+}
+
+/* ---------- Icon ---------- */
+.contact-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-sky-dark);
+  background: var(--color-bg-subtle);
+  transition: border-color 0.35s var(--ease), background-color 0.35s var(--ease),
+    color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+[data-theme="dark"] .contact-info-icon {
+  color: var(--color-sky);
+}
+
+.contact-info-icon svg {
+  width: 26px;
+  height: 26px;
+  stroke: currentColor;
+}
+
+.contact-info-card:hover .contact-info-icon,
+.contact-info-card:focus-within .contact-info-icon {
+  border-color: var(--color-sky);
+  background: var(--color-sky-dark);
+  color: #ffffff;
+  transform: scale(1.08) rotate(-4deg);
+}
+
+[data-theme="dark"] .contact-info-card:hover .contact-info-icon,
+[data-theme="dark"] .contact-info-card:focus-within .contact-info-icon {
+  background: var(--color-sky);
+  color: var(--color-bg);
+}
+
+/* ---------- Text ---------- */
+.contact-info-title {
+  margin: 0 0 10px;
+  font-size: 17.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.contact-info-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--color-text-muted);
+}
+
+/* Phone / Email values are real tel: / mailto: links — style them so they
+   read as plain text until interacted with, matching the card's premium
+   restraint, but stay clearly focusable and clickable. */
+.contact-info-link {
+  color: inherit;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.contact-info-link:hover,
+.contact-info-link:focus-visible {
+  color: var(--color-sky-dark);
+  border-color: currentColor;
+}
+
+[data-theme="dark"] .contact-info-link:hover,
+[data-theme="dark"] .contact-info-link:focus-visible {
+  color: var(--color-sky);
+}
+
+.contact-info-link:focus-visible {
+  outline: 2px solid var(--color-sky);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1020px) {
+  .contact-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .contact-info-section {
+    margin-top: -72px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-info-section {
+    padding-block: 0 64px;
+    margin-top: -48px;
+  }
+
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-info-card {
+    padding: 28px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-info-card,
+  .contact-info-icon {
+    transition: none;
+  }
+}

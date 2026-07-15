@@ -1,0 +1,162 @@
+/* ==========================================================================
+   Maniro — Services Page / Work Process
+   5-step timeline: numbered nodes connected by directional arrows.
+   Horizontal on desktop, vertical on mobile. Placeholder content only.
+   ========================================================================== */
+
+.process {
+  padding-block: 96px;
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
+}
+
+.process-inner {
+  position: relative;
+}
+
+/* ---------- Track ---------- */
+.process-track {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: start;
+  gap: 8px;
+}
+
+/* ---------- Step ---------- */
+.process-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-inline: 8px;
+}
+
+.process-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  margin-bottom: 22px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.35s var(--ease), transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease), background-color 0.35s var(--ease);
+}
+
+.process-number {
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-sky-dark);
+  transition: color 0.35s var(--ease);
+}
+
+[data-theme="dark"] .process-number {
+  color: var(--color-sky);
+}
+
+.process-step:hover .process-node {
+  border-color: var(--color-sky);
+  background: var(--color-sky-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+[data-theme="dark"] .process-step:hover .process-node {
+  background: var(--color-sky);
+}
+
+.process-step:hover .process-number {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .process-step:hover .process-number {
+  color: var(--color-bg);
+}
+
+.process-title {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+/* ---------- Connector arrow (desktop: horizontal) ---------- */
+.process-arrow {
+  position: absolute;
+  top: 38px;
+  inset-inline-end: -8%;
+  width: 16%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-border);
+  pointer-events: none;
+}
+
+.process-arrow svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  transform: scaleX(-1); /* point toward the next step in RTL flow */
+}
+
+.process-step:last-child .process-arrow {
+  display: none;
+}
+
+/* ---------- Responsive: vertical stack ---------- */
+@media (max-width: 900px) {
+  .process-track {
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  .process-step {
+    padding-block: 8px 40px;
+  }
+
+  .process-arrow {
+    position: absolute;
+    top: auto;
+    bottom: 4px;
+    inset-inline-end: auto;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 26px;
+  }
+
+  .process-arrow svg {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .process {
+    padding-block: 64px;
+  }
+
+  .process-node {
+    width: 66px;
+    height: 66px;
+    margin-bottom: 18px;
+  }
+
+  .process-number {
+    font-size: 21px;
+  }
+
+  .process-title {
+    font-size: 15.5px;
+  }
+}

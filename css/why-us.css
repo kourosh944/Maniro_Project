@@ -1,0 +1,146 @@
+/* ==========================================================================
+   Maniro — Services Page / Why Choose Our Services
+   4 cards, premium + industrial: blueprint corner marks, SVG icons.
+   Placeholder content only.
+   ========================================================================== */
+
+.why-us {
+  padding-block: 96px;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.why-us-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ---------- Card ---------- */
+.why-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 36px 24px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+/* Schematic / blueprint corner marks — matches the site's industrial signature */
+.why-card::before,
+.why-card::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--color-border);
+  transition: border-color 0.35s var(--ease), width 0.35s var(--ease),
+    height 0.35s var(--ease);
+  pointer-events: none;
+}
+
+.why-card::before {
+  top: -1px;
+  inset-inline-start: -1px;
+  border-inline-end: none;
+  border-bottom: none;
+}
+
+.why-card::after {
+  bottom: -1px;
+  inset-inline-end: -1px;
+  border-inline-start: none;
+  border-top: none;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.why-card:hover::before,
+.why-card:hover::after {
+  width: 26px;
+  height: 26px;
+  border-color: var(--color-sky);
+}
+
+/* ---------- Icon ---------- */
+.why-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-sky-dark);
+  background: var(--color-bg-subtle);
+  transition: border-color 0.35s var(--ease), background-color 0.35s var(--ease),
+    color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+[data-theme="dark"] .why-icon {
+  color: var(--color-sky);
+}
+
+.why-icon svg {
+  width: 30px;
+  height: 30px;
+  stroke: currentColor;
+}
+
+.why-card:hover .why-icon {
+  border-color: var(--color-sky);
+  background: var(--color-sky-dark);
+  color: #ffffff;
+  transform: scale(1.08) rotate(-4deg);
+}
+
+[data-theme="dark"] .why-card:hover .why-icon {
+  background: var(--color-sky);
+  color: var(--color-bg);
+}
+
+/* ---------- Text ---------- */
+.why-title {
+  margin: 0 0 10px;
+  font-size: 17.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.why-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .why-us-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .why-us {
+    padding-block: 64px;
+  }
+
+  .why-us-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .why-card {
+    padding: 30px 22px;
+  }
+}

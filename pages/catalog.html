@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>کاتالوگ | مانیرو</title>
+    <meta
+      name="description"
+      content="مانیرو — طراحی و ساخت دکل‌های برق و تجهیزات برق صنعتی."
+    />
+    <link rel="stylesheet" href="../css/base/font.css" />
+    <link rel="stylesheet" href="../css/base/style.css" />
+    <link rel="stylesheet" href="../css/layout/header.css" />
+    <link rel="stylesheet" href="../css/pages/catalog/catalog.css" />
+    <link rel="stylesheet" href="../css/base/reveal.css" />
+    <link rel="stylesheet" href="../css/base/responsive.css" />
+    <link rel="stylesheet" href="../css/layout/footer.css" />
+
+    <script>
+      (function () {
+        var saved = localStorage.getItem("maniro-theme");
+        var prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = saved ? saved : prefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
+
+    <header class="site-header" id="site-header">
+      <div class="navbar container">
+        <a href="../index.html" class="brand" aria-label="مانیرو — صفحه اصلی">
+          <img
+            src="../assets/images/logo/logo.png"
+            alt="مانیرو پاسارگاد"
+            class="brand-logo"
+            decoding="async"
+          />
+          <span class="brand-name">مانیرو</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links" aria-label="ناوبری اصلی">
+          <a href="../index.html" class="nav-link">خانه</a>
+          <a href="about.html" class="nav-link">درباره ما</a>
+          <a href="services.html" class="nav-link">خدمات</a>
+          <a href="gallery.html" class="nav-link">پروژه‌ها</a>
+          <a href="catalog.html" class="nav-link is-active">کاتالوگ</a>
+          <a href="contact.html" class="nav-link">تماس با ما</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="تغییر حالت تیره/روشن"
+            aria-pressed="false"
+          >
+            <svg
+              class="icon icon-sun"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg
+              class="icon icon-moon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+            </svg>
+          </button>
+
+          <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- ============ سربرگ صفحه کاتالوگ ============ -->
+      <section class="catalog-hero">
+        <div class="catalog-hero-inner container">
+          <nav class="breadcrumb" aria-label="مسیر صفحه">
+            <a href="../index.html">خانه</a>
+            <span class="breadcrumb-sep" aria-hidden="true">/</span>
+            <span class="breadcrumb-current" aria-current="page">کاتالوگ</span>
+          </nav>
+
+          <h1 class="catalog-hero-title">کاتالوگ محصولات</h1>
+          <p class="catalog-hero-text">
+            متن نمونه — فهرست کامل دکل‌ها و تجهیزات صنعتی مانیرو. این بخش پس از
+            اتصال به بک‌اند از طریق Django به‌صورت پویا از پایگاه‌داده پر خواهد
+            شد.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ نوار جستجو / فیلتر / مرتب‌سازی ============
+         در نسخه Django: این فرم می‌تواند به‌صورت GET به View کاتالوگ ارسال
+         شود تا جستجو، دسته‌بندی و مرتب‌سازی در سمت سرور اعمال شوند
+         (پارامترهای پیشنهادی: q, category, sort). -->
+      <section class="catalog-toolbar">
+        <div class="catalog-toolbar-inner container">
+          <div class="catalog-search">
+            <svg
+              class="catalog-search-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+            <label for="catalog-search-input" class="visually-hidden"
+              >جستجو در کاتالوگ</label
+            >
+            <input
+              type="search"
+              id="catalog-search-input"
+              class="catalog-search-input"
+              placeholder="جستجو در کاتالوگ… (مثلاً نام محصول)"
+              autocomplete="off"
+            />
+          </div>
+
+          <!-- دسته‌بندی‌ها: Placeholder — در Django از مدل Category حلقه زده می‌شود -->
+          <div
+            class="catalog-filters"
+            role="group"
+            aria-label="فیلتر بر اساس دسته‌بندی"
+          >
+            <button
+              type="button"
+              class="catalog-filter-chip is-active"
+              data-category-filter="all"
+              aria-pressed="true"
+            >
+              همه
+            </button>
+            <button
+              type="button"
+              class="catalog-filter-chip"
+              data-category-filter="towers"
+              aria-pressed="false"
+            >
+              دکل‌های برق
+            </button>
+            <button
+              type="button"
+              class="catalog-filter-chip"
+              data-category-filter="equipment"
+              aria-pressed="false"
+            >
+              تجهیزات صنعتی
+            </button>
+            <button
+              type="button"
+              class="catalog-filter-chip"
+              data-category-filter="accessories"
+              aria-pressed="false"
+            >
+              متعلقات و لوازم جانبی
+            </button>
+          </div>
+
+          <div class="catalog-sort">
+            <label for="catalog-sort-select">مرتب‌سازی:</label>
+            <select id="catalog-sort-select" class="catalog-sort-select">
+              <option value="newest">جدیدترین</option>
+              <option value="name-asc">نام (الف تا ی)</option>
+              <option value="name-desc">نام (ی تا الف)</option>
+            </select>
+          </div>
+
+          <p
+            class="catalog-results-count"
+            id="catalog-results-count"
+            aria-live="polite"
+          ></p>
+        </div>
+      </section>
+
+      <!-- ============ شبکه محصولات ============
+         DJANGO HAND-OFF:
+         این بخش (کارت‌های .catalog-card) دقیقاً معادل فایل
+         catalog/item-template.html است. برای اتصال به بک‌اند:
+           1) کل بلوک زیر بین دو کامنت CATALOG GRID START/END را
+              با یک حلقه {% for item in catalog_items %} جایگزین کنید.
+           2) هر کارت نمونه را با محتوای catalog/item-template.html
+              (که همان کارت را با متغیرهای {{ item.* }} دارد) عوض کنید.
+           3) در نبود آیتم از {% empty %} برای نمایش catalog-empty
+              استفاده کنید. -->
+      <section class="catalog-section">
+        <div class="container">
+          <div class="catalog-grid" id="catalog-grid">
+            <!-- CATALOG GRID START -->
+
+            <article
+              class="catalog-card reveal"
+              data-name="دکل مشبک فولادی نمونه ۱"
+              data-category="towers"
+            >
+              <div class="catalog-card-media">
+                <span class="catalog-card-tag">دکل‌های برق</span>
+                <svg
+                  class="catalog-placeholder-icon"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M32 8 L18 52 L26 52 L20 52 M32 8 L46 52 L38 52 L44 52"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M32 8 L18 52 M32 8 L46 52"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M22 30 L42 30 M24 42 L40 42"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-opacity="0.55"
+                  />
+                  <line
+                    x1="20"
+                    y1="20"
+                    x2="44"
+                    y2="20"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <!-- در Django: <img class="catalog-product-image" src="{{ item.image.url }}" alt="{{ item.name }}" loading="lazy" decoding="async" /> -->
+              </div>
+              <div class="catalog-card-body">
+                <h3 class="catalog-card-title">دکل مشبک فولادی — نمونه ۱</h3>
+                <p class="catalog-card-text">
+                  متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
+                  مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
+                </p>
+                <div class="catalog-card-footer">
+                  <span class="catalog-card-price"
+                    >تماس بگیرید<small>کد: SKU-001</small></span
+                  >
+                  <a href="#" class="catalog-card-link">
+                    مشاهده
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M14 5 21 12 14 19M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="catalog-card reveal"
+              data-name="دکل بادبزنی نمونه ۲"
+              data-category="towers"
+            >
+              <div class="catalog-card-media">
+                <span class="catalog-card-tag">دکل‌های برق</span>
+                <svg
+                  class="catalog-placeholder-icon"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M32 8 L18 52 L26 52 L20 52 M32 8 L46 52 L38 52 L44 52"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M32 8 L18 52 M32 8 L46 52"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M22 30 L42 30 M24 42 L40 42"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-opacity="0.55"
+                  />
+                  <line
+                    x1="20"
+                    y1="20"
+                    x2="44"
+                    y2="20"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <div class="catalog-card-body">
+                <h3 class="catalog-card-title">دکل بادبزنی — نمونه ۲</h3>
+                <p class="catalog-card-text">
+                  متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
+                  مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
+                </p>
+                <div class="catalog-card-footer">
+                  <span class="catalog-card-price"
+                    >تماس بگیرید<small>کد: SKU-002</small></span
+                  >
+                  <a href="#" class="catalog-card-link">
+                    مشاهده
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M14 5 21 12 14 19M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="catalog-card reveal"
+              data-name="مقره سرامیکی نمونه ۳"
+              data-category="accessories"
+            >
+              <div class="catalog-card-media">
+                <span class="catalog-card-tag">متعلقات و لوازم جانبی</span>
+                <svg
+                  class="catalog-placeholder-icon"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 14h20M20 20h24M22 26h20M24 32h16M26 38h12M28 44h8"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M32 44v10"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <div class="catalog-card-body">
+                <h3 class="catalog-card-title">مقره سرامیکی — نمونه ۳</h3>
+                <p class="catalog-card-text">
+                  متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
+                  مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
+                </p>
+                <div class="catalog-card-footer">
+                  <span class="catalog-card-price"
+                    >تماس بگیرید<small>کد: SKU-003</small></span
+                  >
+                  <a href="#" class="catalog-card-link">
+                    مشاهده
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M14 5 21 12 14 19M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="catalog-card reveal"
+              data-name="کراس‌آرم فولادی نمونه ۴"
+              data-category="equipment"
+            >
+              <div class="catalog-card-media">
+                <span class="catalog-card-tag">تجهیزات صنعتی</span>
+                <svg
+                  class="catalog-placeholder-icon"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="12"
+                    y="28"
+                    width="40"
+                    height="8"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                  />
+                  <path
+                    d="M20 36v10M32 36v10M44 36v10"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="20" cy="32" r="1.6" fill="currentColor" />
+                  <circle cx="32" cy="32" r="1.6" fill="currentColor" />
+                  <circle cx="44" cy="32" r="1.6" fill="currentColor" />
+                </svg>
+              </div>
+              <div class="catalog-card-body">
+                <h3 class="catalog-card-title">کراس‌آرم فولادی — نمونه ۴</h3>
+                <p class="catalog-card-text">
+                  متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
+                  مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
+                </p>
+                <div class="catalog-card-footer">
+                  <span class="catalog-card-price"
+                    >تماس بگیرید<small>کد: SKU-004</small></span
+                  >
+                  <a href="#" class="catalog-card-link">
+                    مشاهده
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M14 5 21 12 14 19M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="catalog-card reveal"
+              data-name="کلمپ و اتصالات نمونه ۵"
+              data-category="accessories"
+            >
+              <div class="catalog-card-media">
+                <span class="catalog-card-tag">متعلقات و لوازم جانبی</span>
+                <svg
+                  class="catalog-placeholder-icon"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="32"
+                    cy="32"
+                    r="18"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                  />
+                  <circle
+                    cx="32"
+                    cy="32"
+                    r="7"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                  />
+                  <path
+                    d="M32 14v6M32 44v6M14 32h6M44 32h6"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <div class="catalog-card-body">
+                <h3 class="catalog-card-title">کلمپ و اتصالات — نمونه ۵</h3>
+                <p class="catalog-card-text">
+                  متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
+                  مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
+                </p>
+                <div class="catalog-card-footer">
+                  <span class="catalog-card-price"
+                    >تماس بگیرید<small>کد: SKU-005</small></span
+                  >
+                  <a href="#" class="catalog-card-link">
+                    مشاهده
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M14 5 21 12 14 19M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="catalog-card reveal"
+              data-name="پایه بتنی نمونه ۶"
+              data-category="equipment"
+            >
+              <div class="catalog-card-media">
+                <span class="catalog-card-tag">تجهیزات صنعتی</span>
+                <svg
+                  class="catalog-placeholder-icon"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 48h32l-6-28H22z"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M22 20h20"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <div class="catalog-card-body">
+                <h3 class="catalog-card-title">پایه بتنی — نمونه ۶</h3>
+                <p class="catalog-card-text">
+                  متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
+                  مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
+                </p>
+                <div class="catalog-card-footer">
+                  <span class="catalog-card-price"
+                    >تماس بگیرید<small>کد: SKU-006</small></span
+                  >
+                  <a href="#" class="catalog-card-link">
+                    مشاهده
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M14 5 21 12 14 19M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="catalog-card reveal"
+              data-name="سیم و کابل هادی نمونه ۷"
+              data-category="equipment"
+            >
+              <div class="catalog-card-media">
+                <span class="catalog-card-tag">تجهیزات صنعتی</span>
+                <svg
+                  class="catalog-placeholder-icon"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 44 Q22 20 32 32 T54 20"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="10" cy="44" r="2.4" fill="currentColor" />
+                  <circle cx="54" cy="20" r="2.4" fill="currentColor" />
+                </svg>
+              </div>
+              <div class="catalog-card-body">
+                <h3 class="catalog-card-title">سیم و کابل هادی — نمونه ۷</h3>
+                <p class="catalog-card-text">
+                  متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
+                  مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
+                </p>
+                <div class="catalog-card-footer">
+                  <span class="catalog-card-price"
+                    >تماس بگیرید<small>کد: SKU-007</small></span
+                  >
+                  <a href="#" class="catalog-card-link">
+                    مشاهده
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M14 5 21 12 14 19M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="catalog-card reveal"
+              data-name="جعبه اتصال نمونه ۸"
+              data-category="accessories"
+            >
+              <div class="catalog-card-media">
+                <span class="catalog-card-tag">متعلقات و لوازم جانبی</span>
+                <svg
+                  class="catalog-placeholder-icon"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="16"
+                    y="16"
+                    width="32"
+                    height="32"
+                    rx="3"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                  />
+                  <path
+                    d="M16 26h32M26 16v32"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-opacity="0.5"
+                  />
+                </svg>
+              </div>
+              <div class="catalog-card-body">
+                <h3 class="catalog-card-title">جعبه اتصال — نمونه ۸</h3>
+                <p class="catalog-card-text">
+                  متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
+                  مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
+                </p>
+                <div class="catalog-card-footer">
+                  <span class="catalog-card-price"
+                    >تماس بگیرید<small>کد: SKU-008</small></span
+                  >
+                  <a href="#" class="catalog-card-link">
+                    مشاهده
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M14 5 21 12 14 19M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CATALOG GRID END -->
+          </div>
+
+          <!-- حالت «نتیجه‌ای یافت نشد» — معادل شاخهٔ {% empty %} در Django -->
+          <div class="catalog-empty" id="catalog-empty">
+            <svg
+              class="catalog-empty-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+            <p class="catalog-empty-title">موردی یافت نشد</p>
+            <p class="catalog-empty-text">
+              هیچ محصولی با این جستجو یا فیلتر مطابقت ندارد. عبارت جستجو یا
+              دسته‌بندی انتخابی را تغییر دهید.
+            </p>
+          </div>
+
+          <!-- صفحه‌بندی — Placeholder برای Django Paginator -->
+          <nav class="catalog-pagination" aria-label="صفحه‌بندی کاتالوگ">
+            <a
+              href="#"
+              class="catalog-page-link"
+              aria-disabled="true"
+              aria-label="صفحه قبل"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a href="#" class="catalog-page-link is-active" aria-current="page"
+              >۱</a
+            >
+            <a href="#" class="catalog-page-link">۲</a>
+            <a href="#" class="catalog-page-link">۳</a>
+            <a href="#" class="catalog-page-link" aria-label="صفحه بعد">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M15 6l-6 6 6 6" />
+              </svg>
+            </a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ فوتر ============ -->
+    <footer class="site-footer">
+      <div class="footer-inner container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="../index.html"
+              class="brand footer-logo"
+              aria-label="مانیرو — صفحه اصلی"
+            >
+              <img
+                src="../assets/images/logo/logo.png"
+                alt="مانیرو پاسارگاد"
+                class="brand-logo"
+                decoding="async"
+              />
+              <span class="brand-name">مانیرو</span>
+            </a>
+            <p class="footer-text">
+              متن نمونه — مانیرو در طراحی، تولید و اجرای دکل‌های انتقال برق و
+              تجهیزات صنعتی فعالیت می‌کند.
+            </p>
+
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="تلگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 4 2.5 11.5 9 13.5m12-9.5L16 20l-7-6.5m12-9.5L9 13.5m0 0v6.5"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="اینستاگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="لینکدین">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v1.3A5.98 5.98 0 0 1 16 8Z"
+                  />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="واتساپ">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.6L4 20Z" />
+                  <path d="M9 10c0 2.5 2.5 5 5 5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h3 class="footer-heading">لینک‌های سریع</h3>
+            <nav class="footer-nav" aria-label="لینک‌های سریع">
+              <a href="../index.html" class="footer-link">خانه</a>
+              <a href="about.html" class="footer-link">درباره ما</a>
+              <a href="services.html" class="footer-link">خدمات</a>
+              <a href="catalog.html" class="footer-link">کاتالوگ</a>
+              <a href="contact.html" class="footer-link">تماس با ما</a>
+            </nav>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-heading">تماس با ما</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Map/Marker%231.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span
+                  >تهران، خیابان اسدآبادی، خیابان سیزدهم، پلاک ۲۷، واحد ۴۴</span
+                >
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Home/Mailbox.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span>کدپستی: ۱۴۳۳۶۷۴۳۴۴</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Communication/Call.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span dir="ltr">021-88108120-23</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Devices/Printer.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span dir="ltr">021-88108056 :فکس</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Communication/Mail.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span dir="ltr">info@manirou.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © ۲۰۲۶ مانیرو انجینیرینگ | تمامی حقوق این وب‌سایت محفوظ است
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/base/menu.js"></script>
+    <script src="../js/base/scroll-reveal.js"></script>
+    <script src="../js/pages/catalog/catalog.js"></script>
+  </body>
+</html>

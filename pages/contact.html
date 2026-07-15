@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تماس با ما | مانیرو</title>
+    <meta
+      name="description"
+      content="مانیرو — طراحی و ساخت دکل‌های برق و تجهیزات برق صنعتی."
+    />
+    <link rel="stylesheet" href="../css/base/font.css" />
+    <link rel="stylesheet" href="../css/base/style.css" />
+    <link rel="stylesheet" href="../css/layout/header.css" />
+    <link rel="stylesheet" href="../css/pages/contact/contact-hero.css" />
+    <link rel="stylesheet" href="../css/pages/contact/contact-info.css" />
+    <link rel="stylesheet" href="../css/pages/contact/contact-form.css" />
+    <link rel="stylesheet" href="../css/base/reveal.css" />
+    <link rel="stylesheet" href="../css/base/responsive.css" />
+    <link rel="stylesheet" href="../css/layout/footer.css" />
+
+    <script>
+      (function () {
+        var saved = localStorage.getItem("maniro-theme");
+        var prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = saved ? saved : prefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
+
+    <header class="site-header" id="site-header">
+      <div class="navbar container">
+        <a href="../index.html" class="brand" aria-label="مانیرو — صفحه اصلی">
+          <img
+            src="../assets/images/logo/logo.png"
+            alt="مانیرو پاسارگاد"
+            class="brand-logo"
+            decoding="async"
+          />
+          <span class="brand-name">مانیرو</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links" aria-label="ناوبری اصلی">
+          <a href="../index.html" class="nav-link">خانه</a>
+          <a href="about.html" class="nav-link">درباره ما</a>
+          <a href="services.html" class="nav-link">خدمات</a>
+          <a href="gallery.html" class="nav-link">پروژه‌ها</a>
+          <a href="catalog.html" class="nav-link">کاتالوگ</a>
+          <a href="contact.html" class="nav-link is-active">تماس با ما</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="تغییر حالت تیره/روشن"
+            aria-pressed="false"
+          >
+            <svg
+              class="icon icon-sun"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg
+              class="icon icon-moon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+            </svg>
+          </button>
+
+          <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- ============ Contact / Hero ============ -->
+      <section class="contact-hero" id="contact-hero">
+        <svg
+          class="contact-hero-bg"
+          preserveAspectRatio="xMidYMid slice"
+          viewBox="0 0 1440 620"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <defs>
+            <pattern
+              id="contactPylonGrid"
+              width="30"
+              height="30"
+              patternUnits="userSpaceOnUse"
+            >
+              <circle cx="1.4" cy="1.4" r="1.4" class="pylon-grid" />
+            </pattern>
+            <radialGradient id="contactGlowA" cx="50%" cy="35%" r="60%">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="contactGlowB" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.22" />
+              <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+
+          <!-- بک‌گراند بلوپرینت -->
+          <rect x="0" y="0" width="1440" height="620" fill="#0b1622" />
+          <rect
+            x="0"
+            y="0"
+            width="1440"
+            height="620"
+            fill="url(#contactPylonGrid)"
+          />
+
+          <!-- درخشش نرم پشت دکل‌ها -->
+          <rect x="220" y="0" width="620" height="620" class="pylon-glow-a" />
+          <rect x="900" y="60" width="500" height="500" class="pylon-glow-b" />
+
+          <!-- خط زمین -->
+          <line
+            x1="0"
+            y1="560"
+            x2="1440"
+            y2="560"
+            class="pylon-line"
+            stroke-width="1.5"
+            stroke-opacity="0.18"
+          />
+
+          <!-- کابل‌های آویزان بین دکل‌ها -->
+          <path
+            d="M60 330 Q210 275 360 190"
+            class="pylon-cable"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M470 190 Q610 235 745 250"
+            class="pylon-cable"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M870 220 Q1010 270 1150 260"
+            class="pylon-cable"
+            stroke-width="2"
+            fill="none"
+          />
+          <path
+            d="M1260 260 Q1340 300 1400 340"
+            class="pylon-cable"
+            stroke-width="2"
+            fill="none"
+          />
+
+          <!-- دکل ۱ - سمت راست تصویر -->
+          <g>
+            <path
+              d="M60 260 L10 560 M60 260 L110 560"
+              class="pylon-line"
+              stroke-width="3"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path
+              d="M22 320 L98 320"
+              class="pylon-line"
+              stroke-width="3"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path
+              d="M40 370 L80 440 M80 370 L40 440 M40 370 L80 370 M40 440 L80 440"
+              class="pylon-line"
+              stroke-width="1.4"
+              stroke-opacity="0.55"
+              fill="none"
+            />
+            <circle cx="60" cy="260" r="4.5" class="pylon-node" />
+            <circle cx="22" cy="320" r="4.5" class="pylon-node" />
+            <circle cx="98" cy="320" r="4.5" class="pylon-node" />
+          </g>
+
+          <!-- دکل ۲ بزرگ - نزدیک به وسط -->
+          <g>
+            <path
+              d="M410 90 L280 560 M410 90 L540 560"
+              class="pylon-line"
+              stroke-width="4"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path
+              d="M345 190 L475 190"
+              class="pylon-line"
+              stroke-width="4"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path
+              d="M345 190 L430 245 M475 190 L390 245"
+              class="pylon-line"
+              stroke-width="1.7"
+              stroke-opacity="0.55"
+              fill="none"
+            />
+            <path
+              d="M390 245 L460 245 M390 245 L440 340 M460 245 L410 340 M410 340 L440 340"
+              class="pylon-line"
+              stroke-width="1.7"
+              stroke-opacity="0.55"
+              fill="none"
+            />
+            <circle cx="410" cy="90" r="5.5" class="pylon-node" />
+            <circle cx="345" cy="190" r="5.5" class="pylon-node" />
+            <circle cx="475" cy="190" r="5.5" class="pylon-node" />
+          </g>
+
+          <!-- دکل ۳ متوسط -->
+          <g>
+            <path
+              d="M810 150 L690 560 M810 150 L930 560"
+              class="pylon-line"
+              stroke-width="3.6"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path
+              d="M745 250 L875 250"
+              class="pylon-line"
+              stroke-width="3.6"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path
+              d="M745 250 L810 300 M875 250 L810 300 M780 300 L840 300 M780 300 L810 360 M840 300 L810 360"
+              class="pylon-line"
+              stroke-width="1.5"
+              stroke-opacity="0.55"
+              fill="none"
+            />
+            <circle cx="810" cy="150" r="5" class="pylon-node" />
+            <circle cx="745" cy="250" r="5" class="pylon-node" />
+            <circle cx="875" cy="250" r="5" class="pylon-node" />
+          </g>
+
+          <!-- دکل ۴ بزرگ - سمت چپ تصویر -->
+          <g>
+            <path
+              d="M1210 120 L1070 560 M1210 120 L1350 560"
+              class="pylon-line"
+              stroke-width="4"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path
+              d="M1150 220 L1270 220"
+              class="pylon-line"
+              stroke-width="4"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path
+              d="M1150 220 L1210 275 M1270 220 L1210 275"
+              class="pylon-line"
+              stroke-width="1.7"
+              stroke-opacity="0.55"
+              fill="none"
+            />
+            <path
+              d="M1180 275 L1240 275 M1180 275 L1200 360 M1240 275 L1220 360 M1200 360 L1220 360"
+              class="pylon-line"
+              stroke-width="1.7"
+              stroke-opacity="0.55"
+              fill="none"
+            />
+            <circle cx="1210" cy="120" r="5.5" class="pylon-node" />
+            <circle cx="1150" cy="220" r="5.5" class="pylon-node" />
+            <circle cx="1270" cy="220" r="5.5" class="pylon-node" />
+          </g>
+        </svg>
+
+        <div class="contact-hero-inner container">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="breadcrumb-sep" aria-hidden="true">/</span>
+            <span class="breadcrumb-current" aria-current="page">Contact</span>
+          </nav>
+
+          <div class="contact-hero-header reveal">
+            <span class="contact-hero-eyebrow">Get in Touch</span>
+            <h1 class="contact-hero-title">Contact Us</h1>
+            <p class="contact-hero-text">
+              متن نمونه — این بخش برای معرفی خلاصهٔ راه‌های ارتباطی با مانیرو در
+              نظر گرفته شده و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Contact / Info Cards ============ -->
+      <section class="contact-info-section" id="contact-info">
+        <div class="container">
+          <h2 class="visually-hidden">اطلاعات تماس</h2>
+          <div class="contact-info-grid">
+            <!-- 1. Phone -->
+            <article
+              class="contact-info-card reveal"
+              style="--reveal-delay: 0s"
+            >
+              <span class="contact-info-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Communication/Call.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="contact-info-title">Phone</h3>
+              <p class="contact-info-text" dir="ltr">
+                <a class="contact-info-link" href="tel:+982188108120"
+                  >021-88108120-23</a
+                >
+              </p>
+            </article>
+
+            <!-- 2. Email -->
+            <article
+              class="contact-info-card reveal"
+              style="--reveal-delay: 0.08s"
+            >
+              <span class="contact-info-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Home/Mailbox.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="contact-info-title">Email</h3>
+              <p class="contact-info-text" dir="ltr">
+                <a class="contact-info-link" href="mailto:info@manirou.com"
+                  >info@manirou.com</a
+                >
+              </p>
+            </article>
+
+            <!-- 3. Address -->
+            <article
+              class="contact-info-card reveal"
+              style="--reveal-delay: 0.16s"
+            >
+              <span class="contact-info-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Map/Marker%231.png"
+                  alt=""
+                />
+              </span>
+              <h3 class="contact-info-title">Address</h3>
+              <p class="contact-info-text">
+                تهران، خیابان اسدآبادی، خیابان سیزدهم، پلاک ۲۷، واحد ۴۴
+              </p>
+            </article>
+
+            <!-- 4. Working Hours -->
+            <article
+              class="contact-info-card reveal"
+              style="--reveal-delay: 0.24s"
+            >
+              <span class="contact-info-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Home/Clock.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="contact-info-title">Working Hours</h3>
+              <p class="contact-info-text">
+                شنبه تا چهارشنبه، ساعت ۸:۳۰ الی ۱۶:۳۰
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Contact / Form ============ -->
+      <section class="contact-form-section" id="contact-form-section">
+        <div class="container">
+          <div class="contact-form-card reveal">
+            <div class="contact-form-head">
+              <h2 class="contact-form-title">Send us a message</h2>
+              <p class="contact-form-subtitle">
+                متن نمونه — فرم زیر برای ارسال درخواست‌ها و پیام‌ها در نظر گرفته
+                شده و در مرحلهٔ بعد به بک‌اند متصل می‌شود.
+              </p>
+            </div>
+
+            <form class="contact-form" id="contact-form" novalidate>
+              <!-- Name -->
+              <div class="form-field">
+                <input
+                  type="text"
+                  id="cf-name"
+                  name="name"
+                  placeholder=" "
+                  required
+                  minlength="2"
+                  autocomplete="name"
+                  aria-describedby="cf-name-error"
+                />
+                <label for="cf-name">Name</label>
+                <span
+                  class="field-error"
+                  id="cf-name-error"
+                  role="alert"
+                ></span>
+              </div>
+
+              <!-- Phone -->
+              <div class="form-field">
+                <input
+                  type="tel"
+                  id="cf-phone"
+                  name="phone"
+                  placeholder=" "
+                  required
+                  dir="ltr"
+                  autocomplete="tel"
+                  aria-describedby="cf-phone-error"
+                />
+                <label for="cf-phone">Phone</label>
+                <span
+                  class="field-error"
+                  id="cf-phone-error"
+                  role="alert"
+                ></span>
+              </div>
+
+              <!-- Email -->
+              <div class="form-field">
+                <input
+                  type="email"
+                  id="cf-email"
+                  name="email"
+                  placeholder=" "
+                  required
+                  dir="ltr"
+                  autocomplete="email"
+                  aria-describedby="cf-email-error"
+                />
+                <label for="cf-email">Email</label>
+                <span
+                  class="field-error"
+                  id="cf-email-error"
+                  role="alert"
+                ></span>
+              </div>
+
+              <!-- Subject -->
+              <div class="form-field">
+                <input
+                  type="text"
+                  id="cf-subject"
+                  name="subject"
+                  placeholder=" "
+                  required
+                  minlength="3"
+                  autocomplete="off"
+                  aria-describedby="cf-subject-error"
+                />
+                <label for="cf-subject">Subject</label>
+                <span
+                  class="field-error"
+                  id="cf-subject-error"
+                  role="alert"
+                ></span>
+              </div>
+
+              <!-- Message -->
+              <div class="form-field form-field--full">
+                <textarea
+                  id="cf-message"
+                  name="message"
+                  placeholder=" "
+                  required
+                  minlength="10"
+                  autocomplete="off"
+                  aria-describedby="cf-message-error"
+                ></textarea>
+                <label for="cf-message">Message</label>
+                <span
+                  class="field-error"
+                  id="cf-message-error"
+                  role="alert"
+                ></span>
+              </div>
+
+              <!-- Submit -->
+              <div class="contact-form-submit">
+                <span
+                  class="form-status"
+                  id="contact-form-status"
+                  role="status"
+                  aria-live="polite"
+                ></span>
+                <button type="submit" class="btn btn-primary">
+                  Submit
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ فوتر ============ -->
+    <footer class="site-footer">
+      <div class="footer-inner container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="../index.html"
+              class="brand footer-logo"
+              aria-label="مانیرو — صفحه اصلی"
+            >
+              <img
+                src="../assets/images/logo/logo.png"
+                alt="مانیرو پاسارگاد"
+                class="brand-logo"
+                decoding="async"
+              />
+              <span class="brand-name">مانیرو</span>
+            </a>
+            <p class="footer-text">
+              متن نمونه — مانیرو در طراحی، تولید و اجرای دکل‌های انتقال برق و
+              تجهیزات صنعتی فعالیت می‌کند.
+            </p>
+
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="تلگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 4 2.5 11.5 9 13.5m12-9.5L16 20l-7-6.5m12-9.5L9 13.5m0 0v6.5"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="اینستاگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="لینکدین">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v1.3A5.98 5.98 0 0 1 16 8Z"
+                  />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="واتساپ">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.6L4 20Z" />
+                  <path d="M9 10c0 2.5 2.5 5 5 5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h3 class="footer-heading">لینک‌های سریع</h3>
+            <nav class="footer-nav" aria-label="لینک‌های سریع">
+              <a href="../index.html" class="footer-link">خانه</a>
+              <a href="about.html" class="footer-link">درباره ما</a>
+              <a href="services.html" class="footer-link">خدمات</a>
+              <a href="catalog.html" class="footer-link">کاتالوگ</a>
+              <a href="contact.html" class="footer-link">تماس با ما</a>
+            </nav>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-heading">تماس با ما</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Map/Marker%231.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span
+                  >تهران، خیابان اسدآبادی، خیابان سیزدهم، پلاک ۲۷، واحد ۴۴</span
+                >
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Home/Mailbox.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span>کدپستی: ۱۴۳۳۶۷۴۳۴۴</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Communication/Call.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">021-88108120-23</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Devices/Printer.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">021-88108056 :فکس</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Communication/Mail.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">info@manirou.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © ۲۰۲۶ مانیرو انجینیرینگ | تمامی حقوق این وب‌سایت محفوظ است
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/base/menu.js"></script>
+    <script src="../js/base/scroll-reveal.js"></script>
+    <script src="../js/pages/contact/contact-form.js"></script>
+  </body>
+</html>

@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خدمات | مانیرو</title>
+    <meta
+      name="description"
+      content="مانیرو — طراحی و ساخت دکل‌های برق و تجهیزات برق صنعتی."
+    />
+
+    <link rel="stylesheet" href="../css/base/style.css" />
+    <link rel="stylesheet" href="../css/layout/header.css" />
+    <link rel="stylesheet" href="../css/pages/services/services-hero.css" />
+    <link rel="stylesheet" href="../css/pages/services/services-grid.css" />
+    <link rel="stylesheet" href="../css/pages/services/work-process.css" />
+    <link rel="stylesheet" href="../css/pages/services/why-us.css" />
+    <link rel="stylesheet" href="../css/base/reveal.css" />
+    <link rel="stylesheet" href="../css/base/responsive.css" />
+    <link rel="stylesheet" href="../css/layout/footer.css" />
+
+    <script>
+      (function () {
+        var saved = localStorage.getItem("maniro-theme");
+        var prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = saved ? saved : prefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
+
+    <header class="site-header" id="site-header">
+      <div class="navbar container">
+        <a href="../index.html" class="brand" aria-label="مانیرو — صفحه اصلی">
+          <img
+            src="../assets/images/logo/logo.png"
+            alt="مانیرو پاسارگاد"
+            class="brand-logo"
+            decoding="async"
+          />
+          <span class="brand-name">مانیرو</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links" aria-label="ناوبری اصلی">
+          <a href="../index.html" class="nav-link">خانه</a>
+          <a href="about.html" class="nav-link">درباره ما</a>
+          <a href="services.html" class="nav-link is-active">خدمات</a>
+          <a href="gallery.html" class="nav-link">پروژه‌ها</a>
+          <a href="catalog.html" class="nav-link">کاتالوگ</a>
+          <a href="contact.html" class="nav-link">تماس با ما</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="تغییر حالت تیره/روشن"
+            aria-pressed="false"
+          >
+            <svg
+              class="icon icon-sun"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg
+              class="icon icon-moon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+            </svg>
+          </button>
+
+          <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- ============ Services / Hero ============ -->
+      <section class="services-hero" id="services-hero">
+        <div class="services-hero-inner container">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">خانه</a>
+            <span class="breadcrumb-sep" aria-hidden="true">/</span>
+            <span class="breadcrumb-current" aria-current="page">خدمات</span>
+          </nav>
+
+          <div class="services-hero-header reveal">
+            <h1 class="services-hero-title">Our Services</h1>
+            <p class="services-hero-text">
+              متن نمونه — این بخش برای معرفی خلاصهٔ خدمات مانیرو در نظر گرفته
+              شده و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+            </p>
+          </div>
+
+          <div
+            class="services-hero-visual reveal"
+            style="--reveal-delay: 0.1s"
+            aria-hidden="true"
+          >
+            <svg
+              class="services-hero-illustration"
+              viewBox="0 0 1200 500"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <pattern
+                  id="servicesPylonGrid"
+                  width="28"
+                  height="28"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <circle cx="1.4" cy="1.4" r="1.4" class="pylon-grid" />
+                </pattern>
+                <radialGradient
+                  id="servicesPylonGlow"
+                  cx="50%"
+                  cy="45%"
+                  r="55%"
+                >
+                  <stop
+                    offset="0%"
+                    stop-color="var(--color-sky)"
+                    stop-opacity="0.28"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="var(--color-sky)"
+                    stop-opacity="0"
+                  />
+                </radialGradient>
+              </defs>
+
+              <!-- بک‌گراند بلوپرینت -->
+              <rect
+                x="0"
+                y="0"
+                width="1200"
+                height="500"
+                fill="url(#servicesPylonGrid)"
+              />
+
+              <!-- درخشش نرم پشت دکل مرکزی -->
+              <circle
+                cx="600"
+                cy="230"
+                r="260"
+                fill="url(#servicesPylonGlow)"
+              />
+
+              <!-- خط زمین -->
+              <line
+                x1="30"
+                y1="460"
+                x2="1170"
+                y2="460"
+                class="pylon-line"
+                stroke-width="1.5"
+                stroke-opacity="0.15"
+              />
+
+              <!-- کابل‌های آویزان بین دکل‌ها -->
+              <path
+                d="M200 310 Q335 270 470 150"
+                class="pylon-cable"
+                stroke-width="2"
+                fill="none"
+              />
+              <path
+                d="M730 150 Q832 217 935 225"
+                class="pylon-cable"
+                stroke-width="2"
+                fill="none"
+              />
+
+              <!-- دکل کوچک - سمت راست تصویر (چپ در RTL) -->
+              <g>
+                <path
+                  d="M160 280 L110 460 M160 280 L210 460"
+                  class="pylon-line"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M120 310 L200 310"
+                  class="pylon-line"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M141 350 L196 410 M179 350 L124 410 M141 350 L179 350 M124 410 L196 410"
+                  class="pylon-line"
+                  stroke-width="1.5"
+                  stroke-opacity="0.6"
+                  fill="none"
+                />
+                <circle cx="160" cy="280" r="5" class="pylon-node" />
+                <circle cx="120" cy="310" r="5" class="pylon-node" />
+                <circle cx="200" cy="310" r="5" class="pylon-node" />
+              </g>
+
+              <!-- دکل بزرگ - وسط -->
+              <g>
+                <path
+                  d="M600 90 L430 460 M600 90 L770 460"
+                  class="pylon-line"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M470 150 L730 150"
+                  class="pylon-line"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M470 150 L650 200 M730 150 L550 200"
+                  class="pylon-line"
+                  stroke-width="1.8"
+                  stroke-opacity="0.6"
+                  fill="none"
+                />
+                <path
+                  d="M550 200 L706 320 M650 200 L494 320 M550 200 L650 200 M494 320 L706 320"
+                  class="pylon-line"
+                  stroke-width="1.8"
+                  stroke-opacity="0.6"
+                  fill="none"
+                />
+                <circle cx="600" cy="90" r="6" class="pylon-node" />
+                <circle cx="470" cy="150" r="6" class="pylon-node" />
+                <circle cx="730" cy="150" r="6" class="pylon-node" />
+              </g>
+
+              <!-- دکل متوسط - سمت چپ تصویر (راست در RTL) -->
+              <g>
+                <path
+                  d="M1020 190 L910 460 M1020 190 L1130 460"
+                  class="pylon-line"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M935 225 L1105 225"
+                  class="pylon-line"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M935 225 L1081 340 M1105 225 L959 340 M959 340 L1081 340"
+                  class="pylon-line"
+                  stroke-width="1.6"
+                  stroke-opacity="0.6"
+                  fill="none"
+                />
+                <circle cx="1020" cy="190" r="5.5" class="pylon-node" />
+                <circle cx="935" cy="225" r="5.5" class="pylon-node" />
+                <circle cx="1105" cy="225" r="5.5" class="pylon-node" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Services / Grid ============ -->
+      <section class="services-grid-section" id="services-grid">
+        <div class="container">
+          <div class="services-grid">
+            <!-- 1. Power Tower Supply & Installation -->
+            <article class="service-card reveal" style="--reveal-delay: 0s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Electric/Highvoltage.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="service-title">
+                تأمین و نصب دکل‌های برق (Power Tower)
+              </h3>
+              <p class="service-text">
+                متن نمونه — توضیح کوتاه دربارهٔ این خدمت در این بخش قرار می‌گیرد
+                و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+              </p>
+            </article>
+
+            <!-- 2. Power Transmission Lines -->
+            <article class="service-card reveal" style="--reveal-delay: 0.06s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Electric/Outlet.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="service-title">خطوط انتقال نیرو</h3>
+              <p class="service-text">
+                متن نمونه — توضیح کوتاه دربارهٔ این خدمت در این بخش قرار می‌گیرد
+                و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+              </p>
+            </article>
+
+            <!-- 3. Electrical Distribution Networks -->
+            <article class="service-card reveal" style="--reveal-delay: 0.12s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Tools/Compass.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="service-title">شبکه‌های توزیع برق</h3>
+              <p class="service-text">
+                متن نمونه — توضیح کوتاه دربارهٔ این خدمت در این بخش قرار می‌گیرد
+                و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+              </p>
+            </article>
+
+            <!-- 4. Underground Cable & Line Equipment -->
+            <article class="service-card reveal" style="--reveal-delay: 0.18s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Tools/Hummer.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="service-title">تجهیزات کابل و خطوط زیرزمینی</h3>
+              <p class="service-text">
+                متن نمونه — توضیح کوتاه دربارهٔ این خدمت در این بخش قرار می‌گیرد
+                و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+              </p>
+            </article>
+
+            <!-- 5. EPC Projects -->
+            <article class="service-card reveal" style="--reveal-delay: 0.24s">
+              <span class="service-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Tools/Tools.png "
+                  alt="icon"
+                />
+              </span>
+              <h3 class="service-title">پروژه مهندسی، تأمین و ساخت</h3>
+              <p class="service-text">
+                متن نمونه — توضیح کوتاه دربارهٔ این خدمت در این بخش قرار می‌گیرد
+                و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Services / Work Process ============ -->
+      <section class="process" id="work-process">
+        <div class="container process-inner">
+          <div class="process-track">
+            <div class="process-step reveal" style="--reveal-delay: 0s">
+              <span class="process-node">
+                <span class="process-number">01</span>
+              </span>
+              <h3 class="process-title">برنامه‌ریزی</h3>
+              <span class="process-arrow" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
+
+            <div class="process-step reveal" style="--reveal-delay: 0.08s">
+              <span class="process-node">
+                <span class="process-number">02</span>
+              </span>
+              <h3 class="process-title">مهندسی</h3>
+              <span class="process-arrow" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
+
+            <div class="process-step reveal" style="--reveal-delay: 0.16s">
+              <span class="process-node">
+                <span class="process-number">03</span>
+              </span>
+              <h3 class="process-title">تدارکات</h3>
+              <span class="process-arrow" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
+
+            <div class="process-step reveal" style="--reveal-delay: 0.24s">
+              <span class="process-node">
+                <span class="process-number">04</span>
+              </span>
+              <h3 class="process-title">نصب</h3>
+              <span class="process-arrow" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
+
+            <div class="process-step reveal" style="--reveal-delay: 0.32s">
+              <span class="process-node">
+                <span class="process-number">05</span>
+              </span>
+              <h3 class="process-title">تکمیل</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Services / Why Choose Our Services ============ -->
+      <section class="why-us" id="why-us">
+        <div class="container">
+          <div class="why-us-grid">
+            <!-- 1. Experienced Team -->
+            <article class="why-card reveal" style="--reveal-delay: 0s">
+              <span class="why-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/General/User.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="why-title">تیم باتجربه</h3>
+              <p class="why-text">
+                متن نمونه — توضیح کوتاه دربارهٔ این مزیت در این بخش قرار می‌گیرد
+                و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+              </p>
+            </article>
+
+            <!-- 2. High Quality -->
+            <article class="why-card reveal" style="--reveal-delay: 0.08s">
+              <span class="why-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/General/Star.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="why-title">کیفیت بالا</h3>
+              <p class="why-text">
+                متن نمونه — توضیح کوتاه دربارهٔ این مزیت در این بخش قرار می‌گیرد
+                و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+              </p>
+            </article>
+
+            <!-- 3. International Standards -->
+            <article class="why-card reveal" style="--reveal-delay: 0.16s">
+              <span class="why-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/General/Shield-check.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="why-title">استانداردهای بین‌المللی</h3>
+              <p class="why-text">
+                متن نمونه — توضیح کوتاه دربارهٔ این مزیت در این بخش قرار می‌گیرد
+                و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+              </p>
+            </article>
+
+            <!-- 4. On-Time Delivery -->
+            <article class="why-card reveal" style="--reveal-delay: 0.24s">
+              <span class="why-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/General/Thunder-move.png"
+                  alt="icon"
+                />
+              </span>
+              <h3 class="why-title">تحویل به‌موقع</h3>
+              <p class="why-text">
+                متن نمونه — توضیح کوتاه دربارهٔ این مزیت در این بخش قرار می‌گیرد
+                و در مرحلهٔ بعد با محتوای نهایی جایگزین می‌شود.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ فوتر ============ -->
+    <footer class="site-footer">
+      <div class="footer-inner container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="../index.html"
+              class="brand footer-logo"
+              aria-label="مانیرو — صفحه اصلی"
+            >
+              <img
+                src="../assets/images/logo/logo.png"
+                alt="مانیرو پاسارگاد"
+                class="brand-logo"
+                decoding="async"
+              />
+              <span class="brand-name">مانیرو</span>
+            </a>
+            <p class="footer-text">
+              متن نمونه — مانیرو در طراحی، تولید و اجرای دکل‌های انتقال برق و
+              تجهیزات صنعتی فعالیت می‌کند.
+            </p>
+
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="تلگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 4 2.5 11.5 9 13.5m12-9.5L16 20l-7-6.5m12-9.5L9 13.5m0 0v6.5"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="اینستاگرام">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="لینکدین">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v1.3A5.98 5.98 0 0 1 16 8Z"
+                  />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="واتساپ">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.6L4 20Z" />
+                  <path d="M9 10c0 2.5 2.5 5 5 5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h3 class="footer-heading">لینک‌های سریع</h3>
+            <nav class="footer-nav" aria-label="لینک‌های سریع">
+              <a href="../index.html" class="footer-link">خانه</a>
+              <a href="about.html" class="footer-link">درباره ما</a>
+              <a href="services.html" class="footer-link">خدمات</a>
+              <a href="catalog.html" class="footer-link">کاتالوگ</a>
+              <a href="contact.html" class="footer-link">تماس با ما</a>
+            </nav>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-heading">تماس با ما</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Map/Marker%231.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span
+                  >تهران، خیابان اسدآبادی، خیابان سیزدهم، پلاک ۲۷، واحد ۴۴</span
+                >
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Home/Mailbox.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span>کدپستی: ۱۴۳۳۶۷۴۳۴۴</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Communication/Call.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">021-88108120-23</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Devices/Printer.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">021-88108056 :فکس</span>
+              </li>
+              <li>
+                <img
+                  src="../assets/icons/stockholm/48x48/Communication/Mail.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span dir="ltr">info@manirou.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © ۲۰۲۶ مانیرو انجینیرینگ | تمامی حقوق این وب‌سایت محفوظ است
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/base/menu.js"></script>
+    <script src="../js/base/scroll-reveal.js"></script>
+  </body>
+</html>

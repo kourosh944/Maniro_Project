@@ -1,0 +1,129 @@
+<!--
+  ==========================================================================
+  Maniro — Catalog Item Template (Django hand-off fragment)
+  ==========================================================================
+
+  این فایل یک صفحه مستقل نیست؛ یک قطعه (fragment) آماده برای Django است.
+  ساختار HTML آن دقیقاً همان کارت محصولی است که در نسخه دمو
+  (pages/catalog.html, بخش «CATALOG GRID») با داده‌ی نمونه نمایش داده شده،
+  با این تفاوت که این‌جا داده‌ها با متغیرهای Template جایگزین شده‌اند.
+
+  نحوه استفاده در بک‌اند:
+    1) کل بلوک بین «CATALOG LOOP START» و «CATALOG LOOP END» را داخل
+       backend/catalog/templates/catalog/catalog.html در جایگاه شبکه‌ی
+       محصولات (div.catalog-grid) قرار دهید.
+    2) مطمئن شوید View مربوطه یک queryset با نام catalog_items
+       (یا هر نام دیگری که در {% for %} استفاده می‌کنید) در context
+       ارسال می‌کند.
+    3) مدل پیشنهادی (backend/catalog/models.py) باید حداقل این فیلدها
+       را داشته باشد: name, slug, category (FK/choices), short_description,
+       price_label (یا price + get_price_label)، sku، image،
+       get_absolute_url().
+    4) کلاس‌های CSS (catalog-card, catalog-card-media, ...) از قبل در
+       css/catalog.css / backend/catalog/static/catalog/style.css تعریف
+       شده‌اند و نیازی به تغییر ندارند.
+
+  نکته دربارهٔ تصویر: تا زمانی که تصویر واقعی برای یک آیتم ثبت نشده،
+  از همان آیکون Placeholder (SVG) استفاده کنید تا چیدمان کارت خراب نشود؛
+  الگوی «if item.image / else» در پایین همین رفتار را پیاده کرده است.
+-->
+
+<!-- CATALOG LOOP START -->
+{% for item in catalog_items %}
+<article class="catalog-card" data-name="{{ item.name }}" data-category="{{ item.category.slug }}">
+  <div class="catalog-card-media">
+    <span class="catalog-card-tag">{{ item.category.name }}</span>
+
+    {% if item.image %}
+      <img
+        class="catalog-product-image"
+        src="{{ item.image.url }}"
+        alt="{{ item.name }}"
+        loading="lazy"
+        decoding="async"
+      />
+    {% else %}
+      <!-- بدون تصویر ثبت‌شده: نمایش آیکون جای‌نگه‌دار عمومی -->
+      <svg class="catalog-placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="14" y="14" width="36" height="36" rx="4" stroke="currentColor" stroke-width="2.2" />
+        <path d="M14 40l10-10 8 8 10-12 12 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="24" cy="24" r="3" stroke="currentColor" stroke-width="2.2" />
+      </svg>
+    {% endif %}
+  </div>
+
+  <div class="catalog-card-body">
+    <h3 class="catalog-card-title">{{ item.name }}</h3>
+    <p class="catalog-card-text">{{ item.short_description }}</p>
+
+    <div class="catalog-card-footer">
+      <span class="catalog-card-price">
+        {{ item.price_label|default:"تماس بگیرید" }}
+        <small>کد: {{ item.sku }}</small>
+      </span>
+
+      <a href="{{ item.get_absolute_url }}" class="catalog-card-link">
+        مشاهده
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5 21 12 14 19M21 12H3" /></svg>
+      </a>
+    </div>
+  </div>
+</article>
+{% empty %}
+<!--
+  حالت خالی — وقتی هیچ آیتمی با فیلتر/جستجوی فعلی مطابقت ندارد.
+  کلاس‌های .catalog-empty و .is-visible از قبل در catalog.css استایل شده‌اند؛
+  فقط کافیست به‌جای اسکریپت جاوااسکریپت سمت کلاینت، این بلوک به‌صورت
+  سمت سرور رندر شود.
+-->
+<div class="catalog-empty is-visible">
+  <svg class="catalog-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="11" cy="11" r="7" />
+    <path d="M21 21l-4.3-4.3" />
+  </svg>
+  <p class="catalog-empty-title">موردی یافت نشد</p>
+  <p class="catalog-empty-text">
+    هیچ محصولی با این جستجو یا فیلتر مطابقت ندارد. عبارت جستجو یا
+    دسته‌بندی انتخابی را تغییر دهید.
+  </p>
+</div>
+{% endfor %}
+<!-- CATALOG LOOP END -->
+
+<!--
+  ==========================================================================
+  صفحه‌بندی (Pagination) — نمونهٔ آماده برای django.core.paginator.Paginator
+  فرض: context شامل `page_obj` استاندارد Django است.
+  ==========================================================================
+-->
+<!--
+<nav class="catalog-pagination" aria-label="صفحه‌بندی کاتالوگ">
+  {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}" class="catalog-page-link" aria-label="صفحه قبل">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+    </a>
+  {% else %}
+    <span class="catalog-page-link" aria-disabled="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+    </span>
+  {% endif %}
+
+  {% for num in page_obj.paginator.page_range %}
+    {% if num == page_obj.number %}
+      <a href="?page={{ num }}" class="catalog-page-link is-active" aria-current="page">{{ num }}</a>
+    {% else %}
+      <a href="?page={{ num }}" class="catalog-page-link">{{ num }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}" class="catalog-page-link" aria-label="صفحه بعد">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6" /></svg>
+    </a>
+  {% else %}
+    <span class="catalog-page-link" aria-disabled="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6" /></svg>
+    </span>
+  {% endif %}
+</nav>
+-->

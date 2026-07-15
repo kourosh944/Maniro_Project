@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Maniro — About Company Section
+   ========================================================================== */
+
+.about {
+  padding-block: 100px;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 64px;
+}
+
+/* --- Text side --- */
+.about-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .about-eyebrow {
+  color: var(--color-sky);
+}
+
+.about-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-sky);
+}
+
+.about-title {
+  margin: 0 0 18px;
+  font-size: clamp(30px, 3.6vw, 42px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.about-text {
+  max-width: 480px;
+  margin: 0 0 40px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+/* --- Feature cards --- */
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.feature-card {
+  padding: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+
+.feature-card:hover {
+  border-color: var(--color-sky);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 14px;
+  border-radius: var(--radius-sm);
+  background: var(--color-sky-tint);
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .feature-icon {
+  color: var(--color-sky);
+}
+
+.feature-icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Uploaded icon set ships as solid-black glyphs on transparent PNG —
+   recolor via filter instead of currentColor */
+[data-theme="dark"] .feature-icon img {
+  filter: invert(1);
+}
+
+.feature-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.feature-text {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.about-cta {
+  margin-top: 8px;
+}
+
+/* --- Visual side --- */
+.about-visual {
+  display: flex;
+}
+
+.about-image-placeholder {
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-subtle);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image-placeholder svg {
+  width: 78%;
+  height: 78%;
+  color: var(--color-text);
+}
+
+.about-image-placeholder .tower-node {
+  fill: var(--color-sky);
+}
+
+/* --- Scroll reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-features .feature-card.reveal {
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+/* --- Responsive --- */
+@media (max-width: 960px) {
+  .about {
+    padding-block: 72px;
+  }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-visual {
+    order: -1;
+  }
+
+  .about-image-placeholder {
+    max-width: 420px;
+    margin-inline: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .about-text {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+}
