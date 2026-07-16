@@ -16,7 +16,6 @@
   transform: translateY(0);
 }
 
-.values-grid .value-card.reveal,
 .certificates-grid .certificate-card.reveal {
   transition-delay: var(--reveal-delay, 0s);
 }

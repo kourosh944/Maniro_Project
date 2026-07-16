@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/base/font.css" />
     <link rel="stylesheet" href="css/base/style.css" />
     <link rel="stylesheet" href="css/layout/header.css" />
+    <link rel="stylesheet" href="css/pages/section-slider/slider.css" />
     <link rel="stylesheet" href="css/base/responsive.css" />
     <link rel="stylesheet" href="css/pages/home/about.css" />
     <link rel="stylesheet" href="css/pages/home/services.css" />
@@ -335,186 +336,194 @@
             </p>
           </div>
 
-          <div class="services-grid">
-            <article class="service-card reveal" style="--reveal-delay: 0s">
-              <span class="service-icon" aria-hidden="true">
-                <img
-                  src="assets/icons/stockholm/48x48/Design/Pen%26ruller.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <h3 class="service-title">طراحی و مهندسی</h3>
-              <p class="service-text">
-                متن نمونه درباره خدمات طراحی و مهندسی دکل‌های انتقال برق.
-              </p>
-              <a href="pages/services.html" class="service-link">
-                بیشتر بدانید
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M14 5 21 12 14 19M21 12H3" />
-                </svg>
-              </a>
-            </article>
+          <div
+            class="services-slider"
+            id="servicesSlider"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="نوار خدمات مانیرو (پیمایش خودکار)"
+          >
+            <div class="services-track" id="servicesTrack">
+              <article class="service-card" dir="rtl">
+                <span class="service-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/Design/Pen%26ruller.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="service-title">طراحی و مهندسی</h3>
+                <p class="service-text">
+                  متن نمونه درباره خدمات طراحی و مهندسی دکل‌های انتقال برق.
+                </p>
+                <a href="pages/services.html" class="service-link">
+                  بیشتر بدانید
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M14 5 21 12 14 19M21 12H3" />
+                  </svg>
+                </a>
+              </article>
 
-            <article class="service-card reveal" style="--reveal-delay: 0.06s">
-              <span class="service-icon" aria-hidden="true">
-                <img
-                  src="assets/icons/stockholm/48x48/Tools/Screwdriver.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <h3 class="service-title">نصب و راه‌اندازی</h3>
-              <p class="service-text">
-                متن نمونه درباره خدمات نصب و راه‌اندازی تجهیزات صنعتی.
-              </p>
-              <a href="pages/services.html" class="service-link">
-                بیشتر بدانید
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M14 5 21 12 14 19M21 12H3" />
-                </svg>
-              </a>
-            </article>
+              <article class="service-card" dir="rtl">
+                <span class="service-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/Tools/Screwdriver.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="service-title">نصب و راه‌اندازی</h3>
+                <p class="service-text">
+                  متن نمونه درباره خدمات نصب و راه‌اندازی تجهیزات صنعتی.
+                </p>
+                <a href="pages/services.html" class="service-link">
+                  بیشتر بدانید
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M14 5 21 12 14 19M21 12H3" />
+                  </svg>
+                </a>
+              </article>
 
-            <article class="service-card reveal" style="--reveal-delay: 0.12s">
-              <span class="service-icon" aria-hidden="true">
-                <img
-                  src="assets/icons/stockholm/48x48/Tools/Hummer.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <h3 class="service-title">نگهداری و تعمیرات</h3>
-              <p class="service-text">
-                متن نمونه درباره خدمات نگهداری دوره‌ای و تعمیرات تجهیزات.
-              </p>
-              <a href="pages/services.html" class="service-link">
-                بیشتر بدانید
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M14 5 21 12 14 19M21 12H3" />
-                </svg>
-              </a>
-            </article>
+              <article class="service-card" dir="rtl">
+                <span class="service-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/Tools/Hummer.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="service-title">نگهداری و تعمیرات</h3>
+                <p class="service-text">
+                  متن نمونه درباره خدمات نگهداری دوره‌ای و تعمیرات تجهیزات.
+                </p>
+                <a href="pages/services.html" class="service-link">
+                  بیشتر بدانید
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M14 5 21 12 14 19M21 12H3" />
+                  </svg>
+                </a>
+              </article>
 
-            <article class="service-card reveal" style="--reveal-delay: 0.18s">
-              <span class="service-icon" aria-hidden="true">
-                <img
-                  src="assets/icons/stockholm/48x48/Home/Box.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <h3 class="service-title">تأمین تجهیزات</h3>
-              <p class="service-text">
-                متن نمونه درباره تأمین و عرضه تجهیزات برق صنعتی.
-              </p>
-              <a href="pages/services.html" class="service-link">
-                بیشتر بدانید
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M14 5 21 12 14 19M21 12H3" />
-                </svg>
-              </a>
-            </article>
+              <article class="service-card" dir="rtl">
+                <span class="service-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/Home/Box.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="service-title">تأمین تجهیزات</h3>
+                <p class="service-text">
+                  متن نمونه درباره تأمین و عرضه تجهیزات برق صنعتی.
+                </p>
+                <a href="pages/services.html" class="service-link">
+                  بیشتر بدانید
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M14 5 21 12 14 19M21 12H3" />
+                  </svg>
+                </a>
+              </article>
 
-            <article class="service-card reveal" style="--reveal-delay: 0.24s">
-              <span class="service-icon" aria-hidden="true">
-                <img
-                  src="assets/icons/stockholm/48x48/Communication/Clipboard-check.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <h3 class="service-title">بازرسی فنی</h3>
-              <p class="service-text">
-                متن نمونه درباره بازرسی فنی و کنترل کیفیت پروژه‌ها.
-              </p>
-              <a href="pages/services.html" class="service-link">
-                بیشتر بدانید
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M14 5 21 12 14 19M21 12H3" />
-                </svg>
-              </a>
-            </article>
+              <article class="service-card" dir="rtl">
+                <span class="service-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/Communication/Clipboard-check.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="service-title">بازرسی فنی</h3>
+                <p class="service-text">
+                  متن نمونه درباره بازرسی فنی و کنترل کیفیت پروژه‌ها.
+                </p>
+                <a href="pages/services.html" class="service-link">
+                  بیشتر بدانید
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M14 5 21 12 14 19M21 12H3" />
+                  </svg>
+                </a>
+              </article>
 
-            <article class="service-card reveal" style="--reveal-delay: 0.3s">
-              <span class="service-icon" aria-hidden="true">
-                <img
-                  src="assets/icons/stockholm/48x48/Code/Question-circle.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <h3 class="service-title">مشاوره فنی</h3>
-              <p class="service-text">
-                متن نمونه درباره مشاوره فنی و برنامه‌ریزی پروژه‌های صنعتی.
-              </p>
-              <a href="pages/services.html" class="service-link">
-                بیشتر بدانید
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M14 5 21 12 14 19M21 12H3" />
-                </svg>
-              </a>
-            </article>
+              <article class="service-card" dir="rtl">
+                <span class="service-icon" aria-hidden="true">
+                  <img
+                    src="assets/icons/stockholm/48x48/Code/Question-circle.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <h3 class="service-title">مشاوره فنی</h3>
+                <p class="service-text">
+                  متن نمونه درباره مشاوره فنی و برنامه‌ریزی پروژه‌های صنعتی.
+                </p>
+                <a href="pages/services.html" class="service-link">
+                  بیشتر بدانید
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M14 5 21 12 14 19M21 12H3" />
+                  </svg>
+                </a>
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -753,5 +762,6 @@
 
     <script src="js/base/menu.js"></script>
     <script src="js/base/scroll-reveal.js"></script>
+    <script src="js/base/infinity-slider.js"></script>
   </body>
 </html>
