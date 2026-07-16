@@ -1,8 +1,10 @@
 /* ==========================================================================
    Maniro — Contact Page / Contact Form validation
-   Pure front-end validation (no backend wired yet). Validates on blur and
-   on submit, shows inline error messages, keeps aria-invalid / the error
-   message in sync for assistive tech, and focuses the first invalid field.
+   Client-side validation for instant feedback (blur/input) and to block
+   obviously-invalid submissions before they leave the browser. The actual
+   save-to-database, admin email, and authoritative validation happen on
+   the Django backend (contact app) — this script never replaces that,
+   it only improves UX and always defers to the server's response.
    ========================================================================== */
 
 (function () {
@@ -101,8 +103,6 @@
   });
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
     var firstInvalid = null;
     var allValid = fields.reduce(function (acc, fieldEl) {
       var valid = validateField(fieldEl);
@@ -111,18 +111,16 @@
     }, true);
 
     if (!allValid) {
+      event.preventDefault();
       if (firstInvalid) firstInvalid.focus();
       showStatus("لطفاً خطاهای فرم را برطرف کنید.", "error");
       return;
     }
 
-    /* No backend connected yet — placeholder success feedback only. */
-    showStatus(
-      "پیام شما با موفقیت ثبت شد (نمونه — بدون اتصال به بک‌اند).",
-      "success"
-    );
-    form.reset();
-    fields.forEach(clearField);
-    if (fields[0]) fields[0].focus();
+    /* Client-side validation passed — let the form submit normally to the
+       backend (real POST + CSRF token). The server re-validates, saves to
+       the database, emails the site admin, and redirects back here with a
+       success/error message rendered by Django's messages framework. */
+    showStatus("در حال ارسال...", "success");
   });
 })();

@@ -1,0 +1,123 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+
+{% block title %}کاتالوگ محصولات | مانیرو{% endblock %}
+{% block nav_catalog %}is-active{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/pages/catalog/catalog.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <section class="catalog-hero">
+    <div class="catalog-hero-inner container">
+      <div class="catalog-hero-content">
+        <nav class="breadcrumb" aria-label="مسیر صفحه">
+          <a href="{% url 'catalog:home' %}">خانه</a>
+          <span class="breadcrumb-sep" aria-hidden="true">/</span>
+          <span class="breadcrumb-current" aria-current="page">کاتالوگ محصولات</span>
+        </nav>
+        <h1 class="catalog-hero-title">کاتالوگ محصولات و تجهیزات</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-filters">
+    <div class="container">
+      <form method="get" class="catalog-filter-form">
+        <div class="filter-field">
+          {{ form.q.label_tag }}
+          {{ form.q }}
+        </div>
+        <div class="filter-field">
+          {{ form.category.label_tag }}
+          {{ form.category }}
+        </div>
+        <div class="filter-field">
+        </div>
+        <button type="submit" class="filter-submit">اعمال فیلتر</button>
+        <a href="{% url 'catalog:product_list' %}" class="filter-reset">پاک کردن فیلترها</a>
+      </form>
+
+      <p class="catalog-results-count" aria-live="polite">
+        {{ page_obj.paginator.count }} محصول یافت شد
+      </p>
+    </div>
+  </section>
+
+  <section class="catalog-section">
+    <div class="container">
+      <div class="catalog-grid" id="catalog-grid">
+        {% for product in products %}
+          <article class="catalog-card" data-name="{{ product.title }}" data-category="{{ product.category.slug }}">
+            <div class="catalog-card-media">
+              <span class="catalog-card-tag">{{ product.category.name }}</span>
+
+              {% if product.image %}
+                <img
+                  class="catalog-card-image"
+                  src="{{ product.image.url }}"
+                  alt="{{ product.title }}"
+                  loading="lazy"
+                  decoding="async"
+                />
+              {% else %}
+                <svg class="catalog-placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="14" y="14" width="36" height="36" rx="4" stroke="currentColor" stroke-width="2.2" />
+                  <path d="M14 40l10-10 8 8 10-12 12 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="24" cy="24" r="3" stroke="currentColor" stroke-width="2.2" />
+                </svg>
+              {% endif %}
+            </div>
+
+            <div class="catalog-card-body">
+              <div class="catalog-card-heading">
+                <h3 class="catalog-card-title">{{ product.title }}</h3>
+                <span class="catalog-card-code">کد: {{ product.code }}</span>
+              </div>
+              <p class="catalog-card-text">{{ product.description|truncatewords:20 }}</p>
+              <div class="catalog-card-footer">
+                <a href="{{ product.get_absolute_url }}" class="catalog-card-btn">
+                  مشاهده مشخصات
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 5 21 12 14 19M21 12H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        {% empty %}
+          <div class="catalog-empty is-visible">
+            <p class="catalog-empty-title">موردی یافت نشد</p>
+            <p class="catalog-empty-text">
+              هیچ محصولی با این جستجو یا فیلتر مطابقت ندارد. عبارت جستجو یا
+              دسته‌بندی انتخابی را تغییر دهید.
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if page_obj.paginator.num_pages > 1 %}
+        <!-- {% templatetag openblock %} querystring {% templatetag closeblock %} (Django 5.1+) پارامترهای
+             جستجو/فیلتر فعلی (q, category, product_type) را هنگام تغییر صفحه حفظ می‌کند. -->
+        <nav class="catalog-pagination" aria-label="صفحه‌بندی کاتالوگ">
+          {% if page_obj.has_previous %}
+            <a href="{% querystring page=page_obj.previous_page_number %}" class="catalog-page-link" aria-label="صفحه قبل">‹</a>
+          {% endif %}
+
+          {% for num in page_obj.paginator.page_range %}
+            {% if num == page_obj.number %}
+              <a href="{% querystring page=num %}" class="catalog-page-link is-active" aria-current="page">{{ num }}</a>
+            {% else %}
+              <a href="{% querystring page=num %}" class="catalog-page-link">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <a href="{% querystring page=page_obj.next_page_number %}" class="catalog-page-link" aria-label="صفحه بعد">›</a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

@@ -17,8 +17,8 @@
        ارسال می‌کند.
     3) مدل پیشنهادی (backend/catalog/models.py) باید حداقل این فیلدها
        را داشته باشد: name, slug, category (FK/choices), short_description,
-       price_label (یا price + get_price_label)، sku، image،
-       get_absolute_url().
+       code (کد محصول)، image، get_absolute_url(). این کارت به‌عمد
+       هیچ فیلد قیمت/فروش (price, stock, cart و ...) ندارد.
     4) کلاس‌های CSS (catalog-card, catalog-card-media, ...) از قبل در
        css/catalog.css / backend/catalog/static/catalog/style.css تعریف
        شده‌اند و نیازی به تغییر ندارند.
@@ -26,6 +26,10 @@
   نکته دربارهٔ تصویر: تا زمانی که تصویر واقعی برای یک آیتم ثبت نشده،
   از همان آیکون Placeholder (SVG) استفاده کنید تا چیدمان کارت خراب نشود؛
   الگوی «if item.image / else» در پایین همین رفتار را پیاده کرده است.
+
+  این کارت هیچ قیمت / خرید / سبد خرید نمایش نمی‌دهد — فقط تصویر، نام،
+  کد محصول، دسته‌بندی، توضیح کوتاه و دکمهٔ «مشاهده مشخصات».
+  مدل پیشنهادی باید فیلد code (کد محصول، معادل sku) داشته باشد.
 -->
 
 <!-- CATALOG LOOP START -->
@@ -36,7 +40,7 @@
 
     {% if item.image %}
       <img
-        class="catalog-product-image"
+        class="catalog-card-image"
         src="{{ item.image.url }}"
         alt="{{ item.name }}"
         loading="lazy"
@@ -53,17 +57,15 @@
   </div>
 
   <div class="catalog-card-body">
-    <h3 class="catalog-card-title">{{ item.name }}</h3>
+    <div class="catalog-card-heading">
+      <h3 class="catalog-card-title">{{ item.name }}</h3>
+      <span class="catalog-card-code">کد: {{ item.code }}</span>
+    </div>
     <p class="catalog-card-text">{{ item.short_description }}</p>
 
     <div class="catalog-card-footer">
-      <span class="catalog-card-price">
-        {{ item.price_label|default:"تماس بگیرید" }}
-        <small>کد: {{ item.sku }}</small>
-      </span>
-
-      <a href="{{ item.get_absolute_url }}" class="catalog-card-link">
-        مشاهده
+      <a href="{{ item.get_absolute_url }}" class="catalog-card-btn">
+        مشاهده مشخصات
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5 21 12 14 19M21 12H3" /></svg>
       </a>
     </div>

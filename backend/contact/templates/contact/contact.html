@@ -1,0 +1,102 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+
+{% block title %}تماس با ما | مانیرو{% endblock %}
+{% block meta_description %}تماس با مانیرو — ارسال پیام، درخواست مشاوره یا استعلام قیمت.{% endblock %}
+{% block nav_contact %}is-active{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/pages/contact/contact-form.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <section class="contact-hero" id="contact-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسیر صفحه">
+        <a href="{% url 'catalog:home' %}">خانه</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="breadcrumb-current" aria-current="page">تماس با ما</span>
+      </nav>
+      <h1 class="catalog-hero-title">تماس با ما</h1>
+    </div>
+  </section>
+
+  <section class="contact-form-section" id="contact-form-section">
+    <div class="container">
+      <div class="contact-form-card reveal">
+        <div class="contact-form-head">
+          <h2 class="contact-form-title">ارسال پیام</h2>
+          <p class="contact-form-subtitle">
+            فرم زیر مستقیماً به دیتابیس و ایمیل مدیر سایت متصل است.
+          </p>
+        </div>
+
+        {% if messages %}
+          {% for message in messages %}
+            <p class="form-status is-visible {% if message.tags == 'error' %}is-error{% else %}is-success{% endif %}" role="status" aria-live="polite">
+              {{ message }}
+            </p>
+          {% endfor %}
+        {% endif %}
+
+        <form class="contact-form" id="contact-form" method="post" novalidate>
+          {% csrf_token %}
+
+          <div class="form-field {% if form.name.errors %}is-invalid{% endif %}">
+            {{ form.name }}
+            <label for="cf-name">Name</label>
+            <span class="field-error" id="cf-name-error" role="alert">
+              {{ form.name.errors|first }}
+            </span>
+          </div>
+
+          <div class="form-field {% if form.phone.errors %}is-invalid{% endif %}">
+            {{ form.phone }}
+            <label for="cf-phone">Phone</label>
+            <span class="field-error" id="cf-phone-error" role="alert">
+              {{ form.phone.errors|first }}
+            </span>
+          </div>
+
+          <div class="form-field {% if form.email.errors %}is-invalid{% endif %}">
+            {{ form.email }}
+            <label for="cf-email">Email</label>
+            <span class="field-error" id="cf-email-error" role="alert">
+              {{ form.email.errors|first }}
+            </span>
+          </div>
+
+          <div class="form-field {% if form.subject.errors %}is-invalid{% endif %}">
+            {{ form.subject }}
+            <label for="cf-subject">Subject</label>
+            <span class="field-error" id="cf-subject-error" role="alert">
+              {{ form.subject.errors|first }}
+            </span>
+          </div>
+
+          <div class="form-field form-field--full {% if form.message.errors %}is-invalid{% endif %}">
+            {{ form.message }}
+            <label for="cf-message">Message</label>
+            <span class="field-error" id="cf-message-error" role="alert">
+              {{ form.message.errors|first }}
+            </span>
+          </div>
+
+          <div class="contact-form-submit">
+            <span class="form-status" id="contact-form-status" role="status" aria-live="polite"></span>
+            <button type="submit" class="btn btn-primary">
+              Submit
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'js/pages/contact/contact-form.js' %}"></script>
+{% endblock %}

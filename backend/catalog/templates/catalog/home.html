@@ -1,0 +1,20 @@
+{% extends "catalog/base.html" %}
+
+{% block title %}مانیرو | صفحه اصلی{% endblock %}
+{% block nav_home %}is-active{% endblock %}
+
+{% block content %}
+  <section class="container" style="padding: 4rem 0;">
+    <h1>مانیرو — طراحی و ساخت دکل‌های برق و تجهیزات صنعتی</h1>
+    <p>
+      این صفحه فعلاً یک نمونهٔ حداقلی است. محتوای کامل صفحهٔ خانه (هیرو،
+      دربارهٔ ما، خدمات، آمار) در مرحلهٔ بعد و مطابق با همان چیدمانی که در
+      نسخهٔ استاتیک (index.html) طراحی شده، به این قالب منتقل می‌شود.
+    </p>
+    <p>
+      <a href="{% url 'catalog:product_list' %}" class="catalog-card-btn">
+        مشاهدهٔ کاتالوگ محصولات
+      </a>
+    </p>
+  </section>
+{% endblock %}

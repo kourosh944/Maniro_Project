@@ -1,0 +1,60 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+
+{% block title %}{{ product.title }} | مانیرو{% endblock %}
+{% block meta_description %}{{ product.description|truncatewords:25 }}{% endblock %}
+{% block nav_catalog %}is-active{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/pages/catalog/catalog.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <section class="catalog-section">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسیر صفحه">
+        <a href="{% url 'catalog:home' %}">خانه</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <a href="{% url 'catalog:product_list' %}">کاتالوگ محصولات</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="breadcrumb-current" aria-current="page">{{ product.title }}</span>
+      </nav>
+
+      <article class="product-detail">
+        <div class="product-detail-media">
+          {% if product.image %}
+            <img
+              class="product-detail-image"
+              src="{{ product.image.url }}"
+              alt="{{ product.title }}"
+              loading="lazy"
+              decoding="async"
+            />
+          {% else %}
+            <svg class="catalog-placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="14" y="14" width="36" height="36" rx="4" stroke="currentColor" stroke-width="2.2" />
+              <path d="M14 40l10-10 8 8 10-12 12 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="24" cy="24" r="3" stroke="currentColor" stroke-width="2.2" />
+            </svg>
+          {% endif %}
+        </div>
+
+        <div class="product-detail-body">
+          <span class="catalog-card-tag">{{ product.category.name }}</span>
+          <h1 class="product-detail-title">{{ product.title }}</h1>
+          <span class="catalog-card-code">کد: {{ product.code }}</span>
+
+          
+
+          {% if product.description %}
+            <div class="product-detail-description">{{ product.description|linebreaks }}</div>
+          {% endif %}
+
+          <a href="{% url 'catalog:product_list' %}" class="catalog-card-btn">
+            بازگشت به کاتالوگ
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+{% endblock %}

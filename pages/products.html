@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/base/style.css" />
     <link rel="stylesheet" href="../css/layout/header.css" />
     <link rel="stylesheet" href="../css/pages/catalog/catalog.css" />
+    <link rel="stylesheet" href="../css/pages/catalog/equipment-intro.css" />
     <link rel="stylesheet" href="../css/base/reveal.css" />
     <link rel="stylesheet" href="../css/base/responsive.css" />
     <link rel="stylesheet" href="../css/layout/footer.css" />
@@ -333,92 +334,267 @@
         </div>
       </section>
 
-      <!-- ============ نوار جستجو / فیلتر / مرتب‌سازی ============
-         در نسخه Django: این فرم می‌تواند به‌صورت GET به View کاتالوگ ارسال
-         شود تا جستجو، دسته‌بندی و مرتب‌سازی در سمت سرور اعمال شوند
-         (پارامترهای پیشنهادی: q, category, sort). -->
+      <!-- ============ معرفی تجهیزات فنی ============
+         بخش رسمی و شرکتی — توضیح می‌دهد که تجهیزات این کاتالوگ در
+         پروژه‌های انتقال نیرو و زیرساخت برق استفاده می‌شوند.
+         متن‌ها Placeholder هستند و آیکون‌ها از مجموعهٔ آیکون موجود پروژه
+         (assets/icons/stockholm) انتخاب شده‌اند. -->
+      <section class="equipment-intro" id="equipment-intro">
+        <div class="container">
+          <div class="equipment-intro-head reveal">
+            <p class="equipment-intro-eyebrow">دربارهٔ تجهیزات</p>
+            <h2 class="equipment-intro-title">Technical Equipment</h2>
+            <p class="equipment-intro-text">
+              متن نمونه — تجهیزات معرفی‌شده در این کاتالوگ در پروژه‌های
+              انتقال نیرو، خطوط فشار قوی و زیرساخت‌های برق کشور مورد
+              استفاده قرار می‌گیرند و مطابق با استانداردهای مهندسی صنعت
+              برق طراحی و تولید شده‌اند. این محتوا نمونه است و در مرحلهٔ
+              بعد با متن نهایی شرکت جایگزین خواهد شد.
+            </p>
+          </div>
+
+          <div class="equipment-intro-grid">
+            <div class="equipment-intro-item reveal" style="--reveal-delay: 0s">
+              <span class="equipment-intro-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Electric/Highvoltage.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="equipment-intro-item-title">
+                کاربرد در خطوط انتقال نیرو
+              </h3>
+              <p class="equipment-intro-item-text">
+                متن نمونه — توضیح مربوط به کاربرد تجهیزات در پروژه‌های
+                انتقال و توزیع برق در این بخش قرار می‌گیرد.
+              </p>
+            </div>
+
+            <div
+              class="equipment-intro-item reveal"
+              style="--reveal-delay: 0.08s"
+            >
+              <span class="equipment-intro-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/General/Shield-check.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="equipment-intro-item-title">
+                انطباق با استانداردهای مهندسی
+              </h3>
+              <p class="equipment-intro-item-text">
+                متن نمونه — توضیح مربوط به انطباق تجهیزات با استانداردهای
+                صنعت برق در این بخش قرار می‌گیرد.
+              </p>
+            </div>
+
+            <div
+              class="equipment-intro-item reveal"
+              style="--reveal-delay: 0.16s"
+            >
+              <span class="equipment-intro-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/Tools/Tools.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="equipment-intro-item-title">
+                تنوع تجهیزات صنعتی
+              </h3>
+              <p class="equipment-intro-item-text">
+                متن نمونه — توضیح مربوط به گسترهٔ تجهیزات و اقلام مهندسی
+                موجود در کاتالوگ در این بخش قرار می‌گیرد.
+              </p>
+            </div>
+
+            <div
+              class="equipment-intro-item reveal"
+              style="--reveal-delay: 0.24s"
+            >
+              <span class="equipment-intro-icon" aria-hidden="true">
+                <img
+                  src="../assets/icons/stockholm/48x48/General/Update.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <h3 class="equipment-intro-item-title">
+                پشتیبانی فنی و مهندسی
+              </h3>
+              <p class="equipment-intro-item-text">
+                متن نمونه — توضیح مربوط به خدمات پشتیبانی فنی و مهندسی
+                پس از تأمین تجهیزات در این بخش قرار می‌گیرد.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ نوار جستجو و فیلتر ============
+         DJANGO HAND-OFF (فعلاً فقط ظاهری — بدون هیچ منطق فیلتر/جستجوی
+         کلاینتی؛ این بخش بعداً به‌صورت فرم GET به View کاتالوگ متصل
+         می‌شود):
+           .catalog-filter-search-input -> name="q"
+           #catalog-filter-category     -> name="category"  (از مدل Category
+               پر می‌شود)
+           #catalog-filter-type         -> name="type"       (از مدل
+               ProductType یا فیلد نوع محصول پر می‌شود)
+           #catalog-filter-sort         -> name="sort"
+         دکمهٔ «پاک کردن فیلترها» صرفاً ظاهری است. -->
       <section class="catalog-toolbar">
         <div class="catalog-toolbar-inner container">
-          <div class="catalog-search">
-            <svg
-              class="catalog-search-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <circle cx="11" cy="11" r="7" />
-              <path d="M21 21l-4.3-4.3" />
-            </svg>
-            <label for="catalog-search-input" class="visually-hidden"
-              >جستجو در کاتالوگ</label
-            >
-            <input
-              type="search"
-              id="catalog-search-input"
-              class="catalog-search-input"
-              placeholder="جستجو در کاتالوگ… (مثلاً نام محصول)"
-              autocomplete="off"
-            />
-          </div>
+          <div class="filter-panel">
+            <div class="filter-panel-row filter-panel-row--search">
+              <div class="filter-search">
+                <svg
+                  class="filter-search-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M21 21l-4.3-4.3" />
+                </svg>
+                <label
+                  for="catalog-filter-search-input"
+                  class="visually-hidden"
+                  >جستجو در کاتالوگ</label
+                >
+                <input
+                  type="search"
+                  id="catalog-filter-search-input"
+                  class="filter-search-input"
+                  placeholder="جستجو بر اساس نام یا کد محصول…"
+                  autocomplete="off"
+                />
+              </div>
 
-          <!-- دسته‌بندی‌ها: Placeholder — در Django از مدل Category حلقه زده می‌شود -->
-          <div
-            class="catalog-filters"
-            role="group"
-            aria-label="فیلتر بر اساس دسته‌بندی"
-          >
-            <button
-              type="button"
-              class="catalog-filter-chip is-active"
-              data-category-filter="all"
-              aria-pressed="true"
-            >
-              همه
-            </button>
-            <button
-              type="button"
-              class="catalog-filter-chip"
-              data-category-filter="towers"
-              aria-pressed="false"
-            >
-              دکل‌های برق
-            </button>
-            <button
-              type="button"
-              class="catalog-filter-chip"
-              data-category-filter="equipment"
-              aria-pressed="false"
-            >
-              تجهیزات صنعتی
-            </button>
-            <button
-              type="button"
-              class="catalog-filter-chip"
-              data-category-filter="accessories"
-              aria-pressed="false"
-            >
-              متعلقات و لوازم جانبی
-            </button>
-          </div>
+              <button type="button" class="filter-search-submit">
+                جستجو
+              </button>
+            </div>
 
-          <div class="catalog-sort">
-            <label for="catalog-sort-select">مرتب‌سازی:</label>
-            <select id="catalog-sort-select" class="catalog-sort-select">
-              <option value="newest">جدیدترین</option>
-              <option value="name-asc">نام (الف تا ی)</option>
-              <option value="name-desc">نام (ی تا الف)</option>
-            </select>
+            <div class="filter-panel-row filter-panel-row--fields">
+              <div class="filter-field">
+                <label class="filter-label" for="catalog-filter-category">
+                  <svg
+                    class="filter-label-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20.6 12.6 12 4H4v8l8.6 8.6a2 2 0 0 0 2.8 0l5.2-5.2a2 2 0 0 0 0-2.8Z"
+                    />
+                    <circle cx="8.5" cy="8.5" r="1.2" />
+                  </svg>
+                  دسته‌بندی
+                </label>
+                <div class="filter-select-shell">
+                  <select id="catalog-filter-category" class="filter-select">
+                    <option value="all">همه دسته‌ها</option>
+                    <option value="towers">دکل‌های برق</option>
+                    <option value="equipment">تجهیزات صنعتی</option>
+                    <option value="accessories">متعلقات و لوازم جانبی</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="filter-field">
+                <label class="filter-label" for="catalog-filter-type">
+                  <svg
+                    class="filter-label-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3.5" y="7" width="17" height="13" rx="2" />
+                    <path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7" />
+                  </svg>
+                  نوع محصول
+                </label>
+                <div class="filter-select-shell">
+                  <select id="catalog-filter-type" class="filter-select">
+                    <option value="all">همه انواع</option>
+                    <option value="standard">کاتالوگ استاندارد</option>
+                    <option value="custom">سفارشی / پروژه‌محور</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="filter-field">
+                <label class="filter-label" for="catalog-filter-sort">
+                  <svg
+                    class="filter-label-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 5v14M6 19l-3-3M6 19l3-3" />
+                    <path d="M18 19V5M18 5l3 3M18 5l-3 3" />
+                  </svg>
+                  مرتب‌سازی
+                </label>
+                <div class="filter-select-shell">
+                  <select id="catalog-filter-sort" class="filter-select">
+                    <option value="newest">جدیدترین</option>
+                    <option value="name-asc">نام (الف تا ی)</option>
+                    <option value="name-desc">نام (ی تا الف)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="button" class="filter-reset">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 12a9 9 0 1 0 3-6.7" />
+                  <path d="M3 4v5h5" />
+                </svg>
+                پاک کردن فیلترها
+              </button>
+            </div>
           </div>
 
           <p
             class="catalog-results-count"
             id="catalog-results-count"
             aria-live="polite"
-          ></p>
+          >
+            نمایش کلیهٔ محصولات کاتالوگ
+          </p>
         </div>
       </section>
 
@@ -437,6 +613,24 @@
           <div class="catalog-grid" id="catalog-grid">
             <!-- CATALOG GRID START -->
 
+            <!-- ============================================================
+                 PRODUCT CARD (component)
+                 هر کارت فقط این فیلدها را نمایش می‌دهد: تصویر، نام، کد،
+                 دسته‌بندی و توضیح کوتاه + دکمه «مشاهده مشخصات».
+                 هیچ قیمت / خرید / سبد خرید نمایش داده نمی‌شود.
+
+                 DJANGO HAND-OFF (معادل دقیق catalog/item-template.html):
+                   data-name        -> {{ item.name }}
+                   data-category    -> {{ item.category.slug }}
+                   .catalog-card-tag   -> {{ item.category.name }}
+                   .catalog-card-image -> {{ item.image.url }} (در نبود
+                       تصویر، همان آیکون Placeholder SVG جایگزین شود)
+                   .catalog-card-title -> {{ item.name }}
+                   .catalog-card-code  -> {{ item.code }}
+                   .catalog-card-text  -> {{ item.short_description }}
+                   .catalog-card-btn[href] -> {{ item.get_absolute_url }}
+                 ============================================================ -->
+
             <article
               class="catalog-card reveal"
               data-name="دکل مشبک فولادی نمونه ۱"
@@ -444,6 +638,7 @@
             >
               <div class="catalog-card-media">
                 <span class="catalog-card-tag">دکل‌های برق</span>
+                <!-- در Django: <img class="catalog-card-image" src="{{ item.image.url }}" alt="{{ item.name }}" loading="lazy" decoding="async" /> -->
                 <svg
                   class="catalog-placeholder-icon"
                   viewBox="0 0 64 64"
@@ -481,20 +676,19 @@
                     stroke-linecap="round"
                   />
                 </svg>
-                <!-- در Django: <img class="catalog-product-image" src="{{ item.image.url }}" alt="{{ item.name }}" loading="lazy" decoding="async" /> -->
               </div>
               <div class="catalog-card-body">
-                <h3 class="catalog-card-title">دکل مشبک فولادی — نمونه ۱</h3>
+                <div class="catalog-card-heading">
+                  <h3 class="catalog-card-title">دکل مشبک فولادی — نمونه ۱</h3>
+                  <span class="catalog-card-code">کد: SKU-001</span>
+                </div>
                 <p class="catalog-card-text">
                   متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
                   مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
                 </p>
                 <div class="catalog-card-footer">
-                  <span class="catalog-card-price"
-                    >تماس بگیرید<small>کد: SKU-001</small></span
-                  >
-                  <a href="#" class="catalog-card-link">
-                    مشاهده
+                  <a href="#" class="catalog-card-btn">
+                    مشاهده مشخصات
                     <svg
                       width="14"
                       height="14"
@@ -558,17 +752,17 @@
                 </svg>
               </div>
               <div class="catalog-card-body">
-                <h3 class="catalog-card-title">دکل بادبزنی — نمونه ۲</h3>
+                <div class="catalog-card-heading">
+                  <h3 class="catalog-card-title">دکل بادبزنی — نمونه ۲</h3>
+                  <span class="catalog-card-code">کد: SKU-002</span>
+                </div>
                 <p class="catalog-card-text">
                   متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
                   مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
                 </p>
                 <div class="catalog-card-footer">
-                  <span class="catalog-card-price"
-                    >تماس بگیرید<small>کد: SKU-002</small></span
-                  >
-                  <a href="#" class="catalog-card-link">
-                    مشاهده
+                  <a href="#" class="catalog-card-btn">
+                    مشاهده مشخصات
                     <svg
                       width="14"
                       height="14"
@@ -615,17 +809,17 @@
                 </svg>
               </div>
               <div class="catalog-card-body">
-                <h3 class="catalog-card-title">مقره سرامیکی — نمونه ۳</h3>
+                <div class="catalog-card-heading">
+                  <h3 class="catalog-card-title">مقره سرامیکی — نمونه ۳</h3>
+                  <span class="catalog-card-code">کد: SKU-003</span>
+                </div>
                 <p class="catalog-card-text">
                   متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
                   مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
                 </p>
                 <div class="catalog-card-footer">
-                  <span class="catalog-card-price"
-                    >تماس بگیرید<small>کد: SKU-003</small></span
-                  >
-                  <a href="#" class="catalog-card-link">
-                    مشاهده
+                  <a href="#" class="catalog-card-btn">
+                    مشاهده مشخصات
                     <svg
                       width="14"
                       height="14"
@@ -678,17 +872,17 @@
                 </svg>
               </div>
               <div class="catalog-card-body">
-                <h3 class="catalog-card-title">کراس‌آرم فولادی — نمونه ۴</h3>
+                <div class="catalog-card-heading">
+                  <h3 class="catalog-card-title">کراس‌آرم فولادی — نمونه ۴</h3>
+                  <span class="catalog-card-code">کد: SKU-004</span>
+                </div>
                 <p class="catalog-card-text">
                   متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
                   مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
                 </p>
                 <div class="catalog-card-footer">
-                  <span class="catalog-card-price"
-                    >تماس بگیرید<small>کد: SKU-004</small></span
-                  >
-                  <a href="#" class="catalog-card-link">
-                    مشاهده
+                  <a href="#" class="catalog-card-btn">
+                    مشاهده مشخصات
                     <svg
                       width="14"
                       height="14"
@@ -743,17 +937,17 @@
                 </svg>
               </div>
               <div class="catalog-card-body">
-                <h3 class="catalog-card-title">کلمپ و اتصالات — نمونه ۵</h3>
+                <div class="catalog-card-heading">
+                  <h3 class="catalog-card-title">کلمپ و اتصالات — نمونه ۵</h3>
+                  <span class="catalog-card-code">کد: SKU-005</span>
+                </div>
                 <p class="catalog-card-text">
                   متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
                   مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
                 </p>
                 <div class="catalog-card-footer">
-                  <span class="catalog-card-price"
-                    >تماس بگیرید<small>کد: SKU-005</small></span
-                  >
-                  <a href="#" class="catalog-card-link">
-                    مشاهده
+                  <a href="#" class="catalog-card-btn">
+                    مشاهده مشخصات
                     <svg
                       width="14"
                       height="14"
@@ -800,17 +994,17 @@
                 </svg>
               </div>
               <div class="catalog-card-body">
-                <h3 class="catalog-card-title">پایه بتنی — نمونه ۶</h3>
+                <div class="catalog-card-heading">
+                  <h3 class="catalog-card-title">پایه بتنی — نمونه ۶</h3>
+                  <span class="catalog-card-code">کد: SKU-006</span>
+                </div>
                 <p class="catalog-card-text">
                   متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
                   مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
                 </p>
                 <div class="catalog-card-footer">
-                  <span class="catalog-card-price"
-                    >تماس بگیرید<small>کد: SKU-006</small></span
-                  >
-                  <a href="#" class="catalog-card-link">
-                    مشاهده
+                  <a href="#" class="catalog-card-btn">
+                    مشاهده مشخصات
                     <svg
                       width="14"
                       height="14"
@@ -854,17 +1048,17 @@
                 </svg>
               </div>
               <div class="catalog-card-body">
-                <h3 class="catalog-card-title">سیم و کابل هادی — نمونه ۷</h3>
+                <div class="catalog-card-heading">
+                  <h3 class="catalog-card-title">سیم و کابل هادی — نمونه ۷</h3>
+                  <span class="catalog-card-code">کد: SKU-007</span>
+                </div>
                 <p class="catalog-card-text">
                   متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
                   مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
                 </p>
                 <div class="catalog-card-footer">
-                  <span class="catalog-card-price"
-                    >تماس بگیرید<small>کد: SKU-007</small></span
-                  >
-                  <a href="#" class="catalog-card-link">
-                    مشاهده
+                  <a href="#" class="catalog-card-btn">
+                    مشاهده مشخصات
                     <svg
                       width="14"
                       height="14"
@@ -914,17 +1108,17 @@
                 </svg>
               </div>
               <div class="catalog-card-body">
-                <h3 class="catalog-card-title">جعبه اتصال — نمونه ۸</h3>
+                <div class="catalog-card-heading">
+                  <h3 class="catalog-card-title">جعبه اتصال — نمونه ۸</h3>
+                  <span class="catalog-card-code">کد: SKU-008</span>
+                </div>
                 <p class="catalog-card-text">
                   متن نمونه — توضیح کوتاه محصول در این بخش قرار می‌گیرد و در
                   مرحلهٔ بعد از طریق Django با محتوای واقعی جایگزین می‌شود.
                 </p>
                 <div class="catalog-card-footer">
-                  <span class="catalog-card-price"
-                    >تماس بگیرید<small>کد: SKU-008</small></span
-                  >
-                  <a href="#" class="catalog-card-link">
-                    مشاهده
+                  <a href="#" class="catalog-card-btn">
+                    مشاهده مشخصات
                     <svg
                       width="14"
                       height="14"

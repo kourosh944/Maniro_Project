@@ -1,0 +1,151 @@
+{% load static %}
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}مانیرو{% endblock %}</title>
+    <meta
+      name="description"
+      content="{% block meta_description %}مانیرو — طراحی و ساخت دکل‌های برق و تجهیزات برق صنعتی.{% endblock %}"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/base/font.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/layout/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base/reveal.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base/responsive.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/layout/footer.css' %}" />
+    {% block extra_css %}{% endblock %}
+
+    <style>
+      * {
+        font-family: Vazirmatn, sans-serif;
+      }
+    </style>
+
+    <script>
+      (function () {
+        var saved = localStorage.getItem("maniro-theme");
+        var prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = saved ? saved : prefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
+
+    <header class="site-header" id="site-header">
+      <div class="navbar container">
+        <a href="{% url 'catalog:home' %}" class="brand" aria-label="مانیرو — صفحه اصلی">
+          <img
+            src="{% static 'assets/images/logo/logo.png' %}"
+            alt="مانیرو پاسارگاد"
+            class="brand-logo"
+            decoding="async"
+          />
+          <span class="brand-name">مانیرو</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links" aria-label="ناوبری اصلی">
+          <a href="{% url 'catalog:home' %}" class="nav-link {% block nav_home %}{% endblock %}">خانه</a>
+          <a href="#" class="nav-link">درباره ما</a>
+          <a href="#" class="nav-link">خدمات</a>
+          <a href="#" class="nav-link">پروژه‌ها</a>
+          <a href="{% url 'catalog:product_list' %}" class="nav-link {% block nav_catalog %}{% endblock %}">کاتالوگ</a>
+          <a href="{% url 'contact:contact' %}" class="nav-link {% block nav_contact %}{% endblock %}">تماس با ما</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="تغییر حالت تیره/روشن"
+            aria-pressed="false"
+          >
+            <svg class="icon icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+            </svg>
+            <svg class="icon icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+            </svg>
+          </button>
+
+          <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="{% url 'catalog:home' %}" class="brand footer-logo" aria-label="مانیرو — صفحه اصلی">
+              <img
+                src="{% static 'assets/images/logo/logo.png' %}"
+                alt="مانیرو پاسارگاد"
+                class="brand-logo"
+                decoding="async"
+              />
+              <span class="brand-name">مانیرو</span>
+            </a>
+            <p class="footer-text">
+              متن نمونه — مانیرو در طراحی، تولید و اجرای دکل‌های انتقال برق و
+              تجهیزات صنعتی فعالیت می‌کند.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <h3 class="footer-heading">لینک‌های سریع</h3>
+            <nav class="footer-nav" aria-label="لینک‌های سریع">
+              <a href="{% url 'catalog:home' %}" class="footer-link">خانه</a>
+              <a href="#" class="footer-link">درباره ما</a>
+              <a href="#" class="footer-link">خدمات</a>
+              <a href="{% url 'catalog:product_list' %}" class="footer-link">کاتالوگ</a>
+              <a href="{% url 'contact:contact' %}" class="footer-link">تماس با ما</a>
+            </nav>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-heading">تماس با ما</h3>
+            <ul class="footer-contact-list">
+              <li><span>تهران، خیابان اسدآبادی، خیابان سیزدهم، پلاک ۲۷، واحد ۴۴</span></li>
+              <li><span dir="ltr">021-88108120-23</span></li>
+              <li><span dir="ltr">info@manirou.com</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            © ۲۰۲۶ مانیرو انجینیرینگ | تمامی حقوق این وب‌سایت محفوظ است
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/base/menu.js' %}"></script>
+    <script src="{% static 'js/base/scroll-reveal.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>
