@@ -70,6 +70,11 @@
   padding: 34px 26px 6px;
   text-align: center;
   border-inline-start: 1px solid var(--color-border);
+  transition: transform 0.25s var(--ease);
+}
+
+.equipment-intro-item:hover {
+  transform: translateY(-4px);
 }
 
 .equipment-intro-item:first-child {
@@ -86,6 +91,20 @@
   border-radius: 50%;
   background: var(--color-sky-tint);
   color: var(--color-sky-dark);
+  transition: background-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.equipment-intro-item:hover .equipment-intro-icon {
+  background: var(--color-sky-dark);
+  transform: scale(1.08);
+}
+
+[data-theme="dark"] .equipment-intro-item:hover .equipment-intro-icon {
+  background: var(--color-sky);
+}
+
+.equipment-intro-item:hover .equipment-intro-icon img {
+  filter: brightness(0) invert(1);
 }
 
 [data-theme="dark"] .equipment-intro-icon {

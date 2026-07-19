@@ -148,13 +148,14 @@
   color: var(--color-text);
   background: transparent;
   transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease),
-    color 0.2s var(--ease);
+    color 0.2s var(--ease), transform 0.2s var(--ease);
 }
 
 .certificate-download img {
   width: 17px;
   height: 17px;
   object-fit: contain;
+  transition: transform 0.2s var(--ease);
 }
 
 /* Uploaded icon set ships as solid-black glyphs on transparent PNG —
@@ -167,10 +168,12 @@
   background: var(--color-text);
   border-color: var(--color-text);
   color: var(--color-bg);
+  transform: translateY(-2px);
 }
 
 .certificate-download:hover img {
   filter: brightness(0) invert(1);
+  transform: translateY(-1px);
 }
 
 [data-theme="dark"] .certificate-download:hover {

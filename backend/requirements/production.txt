@@ -1,0 +1,5 @@
+# وابستگی‌های اضافی فقط برای محیط production
+-r base.txt
+
+gunicorn>=22.0,<23         # WSGI application server
+psycopg[binary]>=3.2,<4    # درایور PostgreSQL (در صورت DJANGO_DB_ENGINE=postgresql)

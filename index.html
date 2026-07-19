@@ -3,15 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>صفحه اصلی | مانیرو</title>
+    <title>
+      مانیرو پاسارگاد | طراحی و ساخت دکل‌های انتقال برق و تجهیزات صنعتی
+    </title>
     <meta
       name="description"
-      content="مانیرو — طراحی و ساخت دکل‌های برق و تجهیزات برق صنعتی."
+      content="مانیرو پاسارگاد در طراحی، تولید و اجرای دکل‌های انتقال برق و تجهیزات صنعتی فعالیت می‌کند و راهکارهایی پایدار برای پروژه‌های زیرساختی ارائه می‌دهد."
     />
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon/favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!-- Canonical — replace https://your-domain.com with the real domain before launch -->
+    <link rel="canonical" href="https://your-domain.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fa_IR" />
+    <meta property="og:site_name" content="مانیرو پاسارگاد" />
+    <meta
+      property="og:title"
+      content="مانیرو پاسارگاد | طراحی و ساخت دکل‌های انتقال برق و تجهیزات صنعتی"
+    />
+    <meta
+      property="og:description"
+      content="مانیرو پاسارگاد در طراحی، تولید و اجرای دکل‌های انتقال برق و تجهیزات صنعتی فعالیت می‌کند و راهکارهایی پایدار برای پروژه‌های زیرساختی ارائه می‌دهد."
+    />
+    <meta
+      property="og:image"
+      content="https://your-domain.com/assets/images/logo/logo.png"
+    />
+    <meta property="og:url" content="https://your-domain.com/" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="مانیرو پاسارگاد | طراحی و ساخت دکل‌های انتقال برق و تجهیزات صنعتی"
+    />
+    <meta
+      name="twitter:description"
+      content="مانیرو پاسارگاد در طراحی، تولید و اجرای دکل‌های انتقال برق و تجهیزات صنعتی فعالیت می‌کند و راهکارهایی پایدار برای پروژه‌های زیرساختی ارائه می‌دهد."
+    />
+    <meta
+      name="twitter:image"
+      content="https://your-domain.com/assets/images/logo/logo.png"
+    />
+
     <link rel="stylesheet" href="./css/base/font.css" />
+    <link rel="stylesheet" href="./css/pages/home/services.css" />
     <link rel="stylesheet" href="css/base/style.css" />
     <link rel="stylesheet" href="css/layout/header.css" />
-    <link rel="stylesheet" href="css/pages/section-slider/slider.css" />
     <link rel="stylesheet" href="css/base/responsive.css" />
     <link rel="stylesheet" href="css/pages/home/about.css" />
     <link rel="stylesheet" href="css/pages/home/services.css" />
@@ -209,6 +270,7 @@
 
             <div class="about-features">
               <div class="feature-card reveal" style="--reveal-delay: 0s">
+                <span class="feature-card-glow" aria-hidden="true"></span>
                 <span class="feature-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/General/Thunder.png"
@@ -224,6 +286,7 @@
               </div>
 
               <div class="feature-card reveal" style="--reveal-delay: 0.08s">
+                <span class="feature-card-glow" aria-hidden="true"></span>
                 <span class="feature-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/Tools/Screwdriver.png"
@@ -239,6 +302,7 @@
               </div>
 
               <div class="feature-card reveal" style="--reveal-delay: 0.16s">
+                <span class="feature-card-glow" aria-hidden="true"></span>
                 <span class="feature-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/Tools/Hummer.png"
@@ -254,6 +318,7 @@
               </div>
 
               <div class="feature-card reveal" style="--reveal-delay: 0.24s">
+                <span class="feature-card-glow" aria-hidden="true"></span>
                 <span class="feature-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/Home/Box.png"
@@ -336,15 +401,9 @@
             </p>
           </div>
 
-          <div
-            class="services-slider"
-            id="servicesSlider"
-            role="region"
-            aria-roledescription="carousel"
-            aria-label="نوار خدمات مانیرو (پیمایش خودکار)"
-          >
+          <div class="services-slider" id="servicesSlider">
             <div class="services-track" id="servicesTrack">
-              <article class="service-card" dir="rtl">
+              <article class="service-card reveal" style="--reveal-delay: 0s">
                 <span class="service-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/Design/Pen%26ruller.png"
@@ -374,7 +433,10 @@
                 </a>
               </article>
 
-              <article class="service-card" dir="rtl">
+              <article
+                class="service-card reveal"
+                style="--reveal-delay: 0.06s"
+              >
                 <span class="service-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/Tools/Screwdriver.png"
@@ -404,7 +466,10 @@
                 </a>
               </article>
 
-              <article class="service-card" dir="rtl">
+              <article
+                class="service-card reveal"
+                style="--reveal-delay: 0.12s"
+              >
                 <span class="service-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/Tools/Hummer.png"
@@ -434,7 +499,10 @@
                 </a>
               </article>
 
-              <article class="service-card" dir="rtl">
+              <article
+                class="service-card reveal"
+                style="--reveal-delay: 0.18s"
+              >
                 <span class="service-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/Home/Box.png"
@@ -464,7 +532,10 @@
                 </a>
               </article>
 
-              <article class="service-card" dir="rtl">
+              <article
+                class="service-card reveal"
+                style="--reveal-delay: 0.24s"
+              >
                 <span class="service-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/Communication/Clipboard-check.png"
@@ -494,7 +565,7 @@
                 </a>
               </article>
 
-              <article class="service-card" dir="rtl">
+              <article class="service-card reveal" style="--reveal-delay: 0.3s">
                 <span class="service-icon" aria-hidden="true">
                   <img
                     src="assets/icons/stockholm/48x48/Code/Question-circle.png"
@@ -550,14 +621,14 @@
             <div class="stat-card">
               <span class="stat-icon" aria-hidden="true">
                 <img
-                  src="assets/icons/stockholm/48x48/Shopping/Chart-bar%231.png"
+                  src="assets/icons/stockholm/48x48/Code/Loading.png"
                   alt=""
                   loading="lazy"
                   decoding="async"
                 />
               </span>
-              <span class="stat-number">15+</span>
-              <span class="stat-label">سال سابقه فعالیت</span>
+              <span class="stat-number">6+</span>
+              <span class="stat-label">پروژه‌های فعال</span>
             </div>
 
             <div class="stat-card">
@@ -569,21 +640,21 @@
                   decoding="async"
                 />
               </span>
-              <span class="stat-number">5</span>
+              <span class="stat-number">5+</span>
               <span class="stat-label">گواهینامه ها</span>
             </div>
 
             <div class="stat-card">
               <span class="stat-icon" aria-hidden="true">
                 <img
-                  src="assets/icons/stockholm/48x48/General/Like.png"
+                  src="assets/icons/stockholm/48x48/Shopping/Chart-bar%231.png"
                   alt=""
                   loading="lazy"
                   decoding="async"
                 />
               </span>
-              <span class="stat-number">99%</span>
-              <span class="stat-label">رضایت مشتریان</span>
+              <span class="stat-number">10+</span>
+              <span class="stat-label">سال سابقه فعالیت</span>
             </div>
           </div>
         </div>
@@ -705,7 +776,7 @@
                   decoding="async"
                 />
                 <span
-                  >تهران، خیابان اسدآبادی، خیابان سیزدهم، پلاک ۲۷، واحد ۴۴</span
+                  >تهران، خیابان اسدآبادی، خیابان سیزدهم، پلاک 37، واحد ۴۴</span
                 >
               </li>
               <li>
@@ -761,7 +832,7 @@
     </footer>
 
     <script src="js/base/menu.js"></script>
-    <script src="js/base/scroll-reveal.js"></script>
     <script src="js/base/infinity-slider.js"></script>
+    <script src="js/base/scroll-reveal.js"></script>
   </body>
 </html>

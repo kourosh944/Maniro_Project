@@ -53,26 +53,30 @@
   color: var(--color-text-muted);
 }
 
-/* --- Infinite horizontal slider --- */
+/* --- Infinity slider --- */
 .services-slider {
   --services-gap: 24px;
   position: relative;
   overflow: hidden;
-  width: 100%;
-  /* Soft edge fade so cards don't feel like they're cut off mid-slide */
+  /* Slack so card hover-lift/shadow isn't clipped by overflow: hidden;
+     the negative margin cancels the extra padding out of normal flow. */
+  padding-block: 12px;
+  margin-block: -12px;
+  /* Soft fade at both edges so cards entering/leaving the viewport don't
+     look like they're being cut off by a hard edge. */
   -webkit-mask-image: linear-gradient(
     to right,
-    transparent 0,
+    transparent,
     #000 48px,
     #000 calc(100% - 48px),
-    transparent 100%
+    transparent
   );
   mask-image: linear-gradient(
     to right,
-    transparent 0,
+    transparent,
     #000 48px,
     #000 calc(100% - 48px),
-    transparent 100%
+    transparent
   );
 }
 
@@ -81,41 +85,32 @@
   align-items: stretch;
   gap: var(--services-gap);
   width: max-content;
-  direction: ltr; /* predictable left-to-right layout for the loop math,
-                     independent of the page's RTL direction */
   will-change: transform;
 }
 
-/* Fallback sizing before JS measures the viewport; JS overrides these
-   with precise pixel widths so exactly N cards are always in view. */
-.services-track .service-card {
-  flex: 0 0 320px;
-  width: 320px;
-}
-
-/* Reduced-motion / no-JS fallback: lay the cards out as a static,
-   wrapping grid instead of an animated strip. */
+/* Fallback for prefers-reduced-motion (JS bails out before duplicating
+   cards and adds this class instead of animating). Wraps back into a
+   static grid-like layout — no transform, no infinite loop. */
 .services-track.is-static {
   flex-wrap: wrap;
   width: 100%;
   transform: none !important;
-  direction: inherit;
 }
 
-.services-track.is-static .service-card {
-  flex: 1 1 300px;
-  width: auto;
-}
-
-.services-slider:hover .services-track,
-.services-slider:focus-within .services-track {
-  animation-play-state: paused;
+@media (prefers-reduced-motion: reduce) {
+  .services-track {
+    flex-wrap: wrap;
+    width: 100%;
+    transform: none !important;
+  }
 }
 
 .service-card {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 0 0
+    calc((100% - (var(--services-gap) * 2)) / 3);
+  height: auto;
   padding: 32px 28px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -218,52 +213,24 @@
 }
 
 /* --- Responsive ---
-   JS reads --services-gap via getComputedStyle to size cards, so these
-   breakpoints drive both the visual spacing and the 3 / 2 / 1
-   cards-per-view behaviour of the slider. */
+   Breakpoints mirror perViewByWidth() in infinity-slider.js (960 / 640)
+   so the pre-JS / is-static layout always matches what JS measures. */
 @media (max-width: 960px) {
   .services {
     padding-block: 72px;
   }
 
-  .services-slider {
-    --services-gap: 18px;
+  .service-card {
+    flex-basis: calc((100% - var(--services-gap)) / 2);
   }
 }
 
 @media (max-width: 640px) {
-  .services-slider {
-    --services-gap: 14px;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 24px,
-      #000 calc(100% - 24px),
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 24px,
-      #000 calc(100% - 24px),
-      transparent 100%
-    );
+  .service-card {
+    flex-basis: 100%;
   }
 
   .services-header {
     margin-bottom: 40px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .services-track {
-    flex-wrap: wrap;
-    width: 100%;
-    transform: none !important;
-  }
-
-  .services-track .service-card {
-    flex: 1 1 280px;
-    width: auto;
   }
 }

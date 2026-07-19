@@ -65,21 +65,105 @@
 }
 
 .feature-card {
+  position: relative;
+  overflow: hidden;
   padding: 22px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
-  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease),
-    box-shadow 0.2s var(--ease);
+  transition: border-color 0.35s var(--ease), transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease), background-color 0.35s var(--ease);
+}
+
+/* Schematic / blueprint corner marks — matches the site's industrial signature */
+.feature-card::before,
+.feature-card::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid transparent;
+  transition: border-color 0.35s var(--ease), width 0.35s var(--ease),
+    height 0.35s var(--ease);
+  pointer-events: none;
+}
+
+.feature-card::before {
+  top: 8px;
+  inset-inline-start: 8px;
+  border-inline-end: none;
+  border-bottom: none;
+}
+
+.feature-card::after {
+  bottom: 8px;
+  inset-inline-end: 8px;
+  border-inline-start: none;
+  border-top: none;
+}
+
+/* Soft directional glow that sweeps in behind the icon/text on hover */
+.feature-card-glow {
+  position: absolute;
+  top: -40%;
+  inset-inline-end: -30%;
+  width: 65%;
+  height: 140%;
+  background: radial-gradient(closest-side, var(--color-sky-tint), transparent);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.35s var(--ease), transform 0.45s var(--ease);
+  pointer-events: none;
 }
 
 .feature-card:hover {
   border-color: var(--color-sky);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-sm);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-card:hover::before,
+.feature-card:hover::after {
+  width: 18px;
+  height: 18px;
+  border-color: var(--color-sky);
+}
+
+.feature-card:hover .feature-card-glow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.feature-card:hover .feature-icon {
+  background: var(--color-sky);
+  color: #ffffff;
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 0 0 6px var(--color-sky-tint);
+}
+
+.feature-card:hover .feature-icon img {
+  filter: brightness(0) invert(1);
+}
+
+.feature-card:hover .feature-title {
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .feature-card:hover .feature-title {
+  color: var(--color-sky);
+}
+
+.feature-card:hover .feature-title::after {
+  width: 28px;
+}
+
+.feature-card:hover .feature-text {
+  color: var(--color-text);
 }
 
 .feature-icon {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -89,6 +173,8 @@
   border-radius: var(--radius-sm);
   background: var(--color-sky-tint);
   color: var(--color-sky-dark);
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease),
+    transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
 [data-theme="dark"] .feature-icon {
@@ -99,6 +185,7 @@
   width: 20px;
   height: 20px;
   object-fit: contain;
+  transition: filter 0.2s var(--ease);
 }
 
 /* Uploaded icon set ships as solid-black glyphs on transparent PNG —
@@ -108,17 +195,36 @@
 }
 
 .feature-title {
+  position: relative;
+  z-index: 1;
   margin: 0 0 6px;
+  padding-bottom: 8px;
   font-size: 15px;
   font-weight: 600;
   color: var(--color-text);
+  transition: color 0.25s var(--ease);
+}
+
+.feature-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  inset-inline-start: 0;
+  width: 0;
+  height: 2px;
+  border-radius: var(--radius-full);
+  background: var(--color-sky);
+  transition: width 0.3s var(--ease);
 }
 
 .feature-text {
+  position: relative;
+  z-index: 1;
   margin: 0;
   font-size: 13.5px;
   line-height: 1.6;
   color: var(--color-text-muted);
+  transition: color 0.25s var(--ease);
 }
 
 .about-cta {
@@ -140,16 +246,58 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.about-visual:hover .about-image-placeholder {
+  border-color: var(--color-sky);
+  box-shadow: var(--shadow-lg);
 }
 
 .about-image-placeholder svg {
   width: 78%;
   height: 78%;
   color: var(--color-text);
+  transition: transform 0.5s var(--ease);
+}
+
+.about-visual:hover .about-image-placeholder svg {
+  transform: scale(1.03);
 }
 
 .about-image-placeholder .tower-node {
   fill: var(--color-sky);
+  transition: r 0.3s var(--ease);
+}
+
+.about-visual:hover .about-image-placeholder .tower-node {
+  animation: about-node-pulse 1.6s var(--ease) infinite;
+}
+
+.about-image-placeholder .tower-node:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.about-image-placeholder .tower-node:nth-of-type(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes about-node-pulse {
+  0%,
+  100% {
+    r: 6;
+    opacity: 1;
+  }
+  50% {
+    r: 8;
+    opacity: 0.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-visual:hover .about-image-placeholder .tower-node {
+    animation: none;
+  }
 }
 
 /* --- Scroll reveal --- */

@@ -5,6 +5,7 @@
 درخواست: name, phone, email, subject, message, created_at.
 """
 
+from django.conf import settings
 from django.core.validators import RegexValidator
 from django.db import models
 
@@ -15,7 +16,13 @@ phone_validator = RegexValidator(
 
 
 class ContactMessage(models.Model):
-    """یک پیام ارسال‌شده از فرم «تماس با ما»."""
+    """یک پیام ارسال‌شده از فرم «تماس با ما».
+
+    این پیام‌ها به‌جای ارسال ایمیل به یک آدرس بیرونی، مستقیماً در پنل
+    ادمین سایت (صندوق داخلی) نمایش داده می‌شوند. ادمین از همان‌جا پیام
+    را می‌خواند و در صورت نیاز می‌تواند پاسخی بنویسد که به‌صورت خودکار
+    برای ایمیل فرستنده (مشتری) ارسال می‌شود.
+    """
 
     name = models.CharField("نام و نام خانوادگی", max_length=150)
     phone = models.CharField(
@@ -31,6 +38,19 @@ class ContactMessage(models.Model):
 
     # فیلد کمکی برای مدیریت گردش‌کار پیام‌ها در پنل ادمین:
     is_read = models.BooleanField("خوانده‌شده", default=False)
+
+    # پاسخ ادمین به فرستنده — از داخل پنل نوشته می‌شود و برای email کاربر ارسال می‌گردد.
+    reply_text = models.TextField("متن پاسخ", blank=True)
+    replied = models.BooleanField("پاسخ داده‌شده", default=False)
+    replied_at = models.DateTimeField("تاریخ پاسخ", null=True, blank=True)
+    replied_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name="پاسخ‌دهنده",
+        related_name="contact_replies",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
 
     class Meta:
         verbose_name = "پیام تماس"

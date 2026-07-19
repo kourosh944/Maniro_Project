@@ -53,26 +53,30 @@
   color: var(--color-text);
 }
 
-/* --- Infinite horizontal slider --- */
+/* --- Infinity slider --- */
 .values-slider {
   --values-gap: 24px;
   position: relative;
   overflow: hidden;
-  width: 100%;
-  /* Soft edge fade so cards don't feel like they're cut off mid-slide */
+  /* Slack so card hover-lift/shadow isn't clipped by overflow: hidden;
+     the negative margin cancels the extra padding out of normal flow. */
+  padding-block: 12px;
+  margin-block: -12px;
+  /* Soft fade at both edges so cards entering/leaving the viewport don't
+     look like they're being cut off by a hard edge. */
   -webkit-mask-image: linear-gradient(
     to right,
-    transparent 0,
+    transparent,
     #000 48px,
     #000 calc(100% - 48px),
-    transparent 100%
+    transparent
   );
   mask-image: linear-gradient(
     to right,
-    transparent 0,
+    transparent,
     #000 48px,
     #000 calc(100% - 48px),
-    transparent 100%
+    transparent
   );
 }
 
@@ -81,43 +85,30 @@
   align-items: stretch;
   gap: var(--values-gap);
   width: max-content;
-  direction: rtl; /* predictable left-to-right layout for the loop math,
-                     independent of the page's RTL direction */
   will-change: transform;
 }
 
-/* Fallback sizing before JS measures the viewport; JS overrides these
-   with precise pixel widths so exactly N cards are always in view. */
-.values-track .value-card {
-  flex: 0 0 320px;
-  width: 320px;
-}
-
-/* Reduced-motion / no-JS fallback: lay the cards out as a static,
-   wrapping grid instead of an animated strip. */
+/* Fallback for prefers-reduced-motion (JS bails out before duplicating
+   cards and adds this class instead of animating). Wraps back into a
+   static grid-like layout — no transform, no infinite loop. */
 .values-track.is-static {
   flex-wrap: wrap;
   width: 100%;
   transform: none !important;
-  direction: inherit;
 }
 
-.values-track.is-static .value-card {
-  flex: 1 1 300px;
-  width: auto;
-}
-
-.values-slider:hover .values-track,
-.values-slider:focus-within .values-track {
-  animation-play-state: paused;
+@media (prefers-reduced-motion: reduce) {
+  .values-track {
+    flex-wrap: wrap;
+    width: 100%;
+    transform: none !important;
+  }
 }
 
 /* ---------- Card ---------- */
 .value-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex: 0 0 calc((100% - (var(--values-gap) * 2)) / 3);
   padding: 34px 28px;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
@@ -229,20 +220,12 @@
   font-size: 14.5px;
   line-height: 1.8;
   color: var(--color-text-muted);
-  flex-grow: 1;
 }
 
-/* ---------- Responsive ---------
-   JS reads --values-gap via getComputedStyle to size cards, so these
-   breakpoints drive both the visual spacing and the 3 / 2 / 1
-   cards-per-view behaviour of the slider. */
+/* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-  .values {
-    padding-block: 72px;
-  }
-
-  .values-slider {
-    --values-gap: 18px;
+  .value-card {
+    flex-basis: calc((100% - var(--values-gap)) / 2);
   }
 }
 
@@ -255,34 +238,7 @@
     margin-bottom: 40px;
   }
 
-  .values-slider {
-    --values-gap: 14px;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 24px,
-      #000 calc(100% - 24px),
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 24px,
-      #000 calc(100% - 24px),
-      transparent 100%
-    );
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .values-track {
-    flex-wrap: wrap;
-    width: 100%;
-    transform: none !important;
-  }
-
-  .values-track .value-card {
-    flex: 1 1 280px;
-    width: auto;
+  .value-card {
+    flex-basis: 100%;
   }
 }

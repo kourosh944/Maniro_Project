@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Reference/demo page not part of the live site — keep it out of search results
+Disallow: /pages/catalog.html
+
+Sitemap: https://Manirou.com/sitemap.xml

@@ -78,14 +78,17 @@
 }
 
 .footer-link {
+  position: relative;
   font-size: 14px;
   color: var(--color-text-muted);
   width: fit-content;
-  transition: color 0.2s var(--ease);
+  padding-inline-start: 0;
+  transition: color 0.2s var(--ease), padding-inline-start 0.2s var(--ease);
 }
 
 .footer-link:hover {
   color: var(--color-sky-dark);
+  padding-inline-start: 6px;
 }
 
 [data-theme="dark"] .footer-link:hover {

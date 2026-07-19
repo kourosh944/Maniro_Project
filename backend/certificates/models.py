@@ -7,6 +7,8 @@
 
 from django.db import models
 
+from common.validators import MaxFileSizeValidator, validate_image_content
+
 
 def certificate_image_upload_to(instance, filename):
     return f"certificates/images/{filename}"
@@ -17,7 +19,12 @@ class Certificate(models.Model):
 
     title = models.CharField("عنوان گواهینامه", max_length=200)
     image = models.ImageField(
-        "تصویر", upload_to=certificate_image_upload_to, blank=True, null=True
+        "تصویر",
+        upload_to=certificate_image_upload_to,
+        blank=True,
+        null=True,
+        validators=[MaxFileSizeValidator(5), validate_image_content],
+        help_text="فرمت‌های تصویری معتبر، حداکثر حجم ۵ مگابایت.",
     )
     issue_date = models.DateField("تاریخ صدور")
 

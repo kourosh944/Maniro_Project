@@ -10,6 +10,8 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 
+from common.validators import MaxFileSizeValidator, validate_image_content
+
 
 def current_year_plus_one():
     return timezone.now().year + 1
@@ -38,7 +40,12 @@ class Project(models.Model):
         validators=[MinValueValidator(1300), MaxValueValidator(current_year_plus_one)],
     )
     image = models.ImageField(
-        "تصویر", upload_to=project_image_upload_to, blank=True, null=True
+        "تصویر",
+        upload_to=project_image_upload_to,
+        blank=True,
+        null=True,
+        validators=[MaxFileSizeValidator(5), validate_image_content],
+        help_text="فرمت‌های تصویری معتبر، حداکثر حجم ۵ مگابایت.",
     )
     description = models.TextField("توضیحات", blank=True)
 

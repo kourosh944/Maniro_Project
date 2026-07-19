@@ -129,6 +129,17 @@
   line-height: 1.7;
 }
 
+.form-field input:hover,
+.form-field textarea:hover {
+  border-color: color-mix(in srgb, var(--color-sky) 55%, var(--color-border));
+  background: var(--color-surface);
+}
+
+.form-field.is-invalid input:hover,
+.form-field.is-invalid textarea:hover {
+  border-color: var(--field-error-color);
+}
+
 .form-field label {
   position: absolute;
   top: 17px;

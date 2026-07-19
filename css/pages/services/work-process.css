@@ -86,6 +86,15 @@
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--color-text);
+  transition: color 0.35s var(--ease);
+}
+
+.process-step:hover .process-title {
+  color: var(--color-sky-dark);
+}
+
+[data-theme="dark"] .process-step:hover .process-title {
+  color: var(--color-sky);
 }
 
 /* ---------- Connector arrow (desktop: horizontal) ---------- */

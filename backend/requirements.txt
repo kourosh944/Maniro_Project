@@ -1,5 +1,9 @@
 # Maniro backend — وابستگی‌های پایتون
-# نصب: pip install -r requirements.txt (داخل virtualenv)
-
-Django>=5.2,<5.3      # نسخه LTS، پشتیبانی امنیتی تا آوریل ۲۰۲۸
-Pillow>=10.4,<11       # مورد نیاز ImageField مدل Product
+#
+# این فایل برای سازگاری با روش قدیمی نصب باقی مانده و پیش‌فرض همان
+# وابستگی‌های development را نصب می‌کند. برای انتخاب دقیق‌تر محیط:
+#
+#   pip install -r requirements/development.txt   # برای development محلی
+#   pip install -r requirements/production.txt     # برای سرور production
+#
+-r requirements/development.txt

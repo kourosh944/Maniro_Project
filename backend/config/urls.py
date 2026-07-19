@@ -2,8 +2,14 @@
 URLConf ریشهٔ پروژه.
 
 مسیرها:
-    /admin/   -> پنل مدیریت Django
-    /         -> شامل URLهای اپ catalog (خانه، فهرست محصولات، جزئیات محصول)
+    /<ADMIN_URL>/   -> پنل مدیریت Django (پیش‌فرض admin/، قابل تغییر با
+                       متغیر محیطی DJANGO_ADMIN_URL — به config/settings.py
+                       مراجعه کنید)
+    /               -> شامل URLهای اپ catalog (خانه، فهرست محصولات، جزئیات محصول)
+
+خطاهای ۴۰۴/۵۰۰: وقتی DEBUG=False است، Django به‌صورت خودکار قالب‌های
+templates/404.html و templates/500.html (در ریشهٔ backend/) را به‌جای
+صفحهٔ پیش‌فرض خام نمایش می‌دهد؛ نیازی به handler اضافه نیست.
 
 مرجع: https://docs.djangoproject.com/en/5.2/topics/http/urls/
 """
@@ -14,7 +20,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path(settings.ADMIN_URL, admin.site.urls),
     path("contact/", include("contact.urls")),
     path("", include("catalog.urls")),
 ]

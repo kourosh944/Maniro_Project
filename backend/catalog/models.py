@@ -14,6 +14,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 
+from common.validators import MaxFileSizeValidator, validate_image_content, validate_pdf_content
+
 
 class Category(models.Model):
     """دسته‌بندی محصولات (مثلاً «دکل‌های برق»، «تجهیزات صنعتی»)."""
@@ -68,6 +70,8 @@ class Product(models.Model):
         upload_to=product_image_upload_to,
         blank=True,
         null=True,
+        validators=[MaxFileSizeValidator(5), validate_image_content],
+        help_text="فرمت‌های تصویری معتبر، حداکثر حجم ۵ مگابایت.",
     )
     description = models.TextField("توضیحات", blank=True)
     pdf = models.FileField(
@@ -75,7 +79,12 @@ class Product(models.Model):
         upload_to=product_pdf_upload_to,
         blank=True,
         null=True,
-        validators=[FileExtensionValidator(allowed_extensions=["pdf"])],
+        validators=[
+            FileExtensionValidator(allowed_extensions=["pdf"]),
+            MaxFileSizeValidator(15),
+            validate_pdf_content,
+        ],
+        help_text="فقط فایل PDF، حداکثر حجم ۱۵ مگابایت.",
     )
     created_at = models.DateTimeField("تاریخ ایجاد", auto_now_add=True)
 
