@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="../css/base/reveal.css" />
     <link rel="stylesheet" href="../css/base/responsive.css" />
     <link rel="stylesheet" href="../css/layout/footer.css" />
+    <link rel="stylesheet" href="../css/layout/back-to-top.css" />
 
     <style>
       * {
@@ -995,6 +996,31 @@
         </div>
       </div>
     </footer>
+
+    <!-- ============ دکمه بازگشت به بالا ============ -->
+    <button
+      type="button"
+      id="backToTop"
+      class="back-to-top"
+      aria-label="بازگشت به بالای صفحه"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 19V5" />
+        <path d="M5 12l7-7 7 7" />
+      </svg>
+    </button>
+    <script src="../js/base/smooth-scroll.js"></script>
+    <script src="../js/base/back-to-top.js"></script>
     <script src="../js/base/menu.js"></script>
     <script src="../js/base/scroll-reveal.js"></script>
     <script src="../js/pages/catalog/catalog.js"></script>

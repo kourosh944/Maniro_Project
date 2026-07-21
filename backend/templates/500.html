@@ -1,43 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  Maniro — 500 (Server Error)
+
+  Even more important than 404.html to keep bulletproof: a 500 means
+  something is already broken server-side, so this template avoids every
+  tag that could itself fail and cause Django to fall back to its bare,
+  unstyled built-in error page — no {% static %} (needs a working
+  staticfiles manifest), no {% url %} (needs a working URLconf), no DB or
+  context-processor-dependent tags. Everything is inlined and hardcoded.
+  Colors/spacing are copied from css/base/style.css's :root tokens to stay
+  on-brand without importing that file.
+-->
 <html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>خطای سرور | مانیرو</title>
-  <meta name="robots" content="noindex">
-  <style>
-    body {
-      font-family: Tahoma, "Segoe UI", sans-serif;
-      background: #f7f7f8;
-      color: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      text-align: center;
-      padding: 24px;
-      box-sizing: border-box;
-    }
-    .box { max-width: 480px; }
-    h1 { font-size: 72px; margin: 0; color: #c0392b; }
-    p { font-size: 18px; line-height: 1.8; }
-    a {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 10px 24px;
-      background: #c0392b;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-  </style>
-</head>
-<body>
-  <div class="box">
-    <h1>۵۰۰</h1>
-    <p>مشکلی در سرور پیش آمده است. تیم فنی از این موضوع مطلع شده و در حال بررسی است.<br>لطفاً کمی بعد دوباره تلاش کنید.</p>
-    <a href="/">بازگشت به صفحهٔ اصلی</a>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خطای سرور | مانیرو پاسارگاد</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      :root {
+        --color-bg: #ffffff;
+        --color-text: #10161f;
+        --color-text-muted: #5b6b7c;
+        --color-border: #e2e8f0;
+        --color-sky: #0ea5e9;
+        --color-sky-dark: #0369a1;
+        --shadow-md: 0 8px 24px rgba(16, 22, 31, 0.08);
+        --radius-full: 999px;
+        --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-bg: #0b0f14;
+          --color-text: #edf1f5;
+          --color-text-muted: #93a1b0;
+          --color-border: #232c37;
+          --color-sky: #38bdf8;
+          --color-sky-dark: #0ea5e9;
+          --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.45);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: var(--color-bg);
+        color: var(--color-text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "Vazirmatn", Tahoma, "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .error-page {
+        max-width: 440px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .error-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 44px;
+        font-size: 15.5px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--color-text);
+        text-decoration: none;
+      }
+
+      .error-brand::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--color-sky);
+        flex-shrink: 0;
+      }
+
+      .error-code {
+        margin: 0;
+        font-size: 80px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: var(--color-sky-dark);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .error-code {
+          color: var(--color-sky);
+        }
+      }
+
+      .error-title {
+        margin: 22px 0 10px;
+        font-size: 19px;
+        font-weight: 700;
+      }
+
+      .error-text {
+        margin: 0 0 32px;
+        font-size: 14.5px;
+        line-height: 1.9;
+        color: var(--color-text-muted);
+      }
+
+      .error-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 46px;
+        padding-inline: 24px;
+        border-radius: var(--radius-full);
+        font-size: 14.5px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid transparent;
+        cursor: pointer;
+        font-family: inherit;
+        transition: transform 0.2s var(--ease),
+          background-color 0.2s var(--ease), border-color 0.2s var(--ease),
+          color 0.2s var(--ease);
+      }
+
+      .btn:active {
+        transform: translateY(1px) scale(0.99);
+      }
+
+      .btn-primary {
+        background: var(--color-text);
+        color: var(--color-bg);
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-primary:hover {
+        background: var(--color-sky-dark);
+        transform: translateY(-2px);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .btn-primary:hover {
+          background: var(--color-sky);
+          color: var(--color-bg);
+        }
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--color-text);
+        border-color: var(--color-border);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--color-sky);
+        color: var(--color-sky-dark);
+        transform: translateY(-2px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .btn {
+          transition: none;
+        }
+        .btn:hover,
+        .btn:active {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="error-page">
+      <a href="/" class="error-brand">مانیرو پاسارگاد</a>
+      <p class="error-code" aria-hidden="true">500</p>
+      <h1 class="error-title">مشکلی در سرور پیش آمده است</h1>
+      <p class="error-text">
+        تیم فنی از این موضوع مطلع شده و در حال بررسی است. لطفاً کمی بعد
+        دوباره تلاش کنید.
+      </p>
+      <div class="error-actions">
+        <button
+          type="button"
+          class="btn btn-primary"
+          onclick="location.reload()"
+        >
+          تلاش مجدد
+        </button>
+        <a href="/" class="btn btn-secondary">بازگشت به صفحه اصلی</a>
+      </div>
+    </main>
+  </body>
 </html>

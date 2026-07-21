@@ -98,6 +98,25 @@
   stroke: currentColor;
 }
 
+/* The actual markup uses the Stockholm PNG icon set (same one used on the
+   About and Contact pages), not inline SVG — size it to match that same
+   28px family instead of the icon's native 48px, and recolor via filter
+   since a flat PNG can't follow `currentColor` the way an SVG stroke can. */
+.service-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  transition: filter 0.35s var(--ease);
+}
+
+[data-theme="dark"] .service-icon img {
+  filter: invert(1);
+}
+
+.service-card:hover .service-icon img {
+  filter: brightness(0) invert(1);
+}
+
 .service-card:hover .service-icon {
   border-color: var(--color-sky);
   background: var(--color-sky-dark);

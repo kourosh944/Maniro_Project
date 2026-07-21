@@ -109,6 +109,26 @@
   stroke: currentColor;
 }
 
+/* The actual markup uses the Stockholm PNG icon set (same one used on the
+   About and Services pages), not inline SVG — size it to match that same
+   26px family instead of the icon's native 48px, and recolor via filter
+   since a flat PNG can't follow `currentColor` the way an SVG stroke can. */
+.contact-info-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: filter 0.35s var(--ease);
+}
+
+[data-theme="dark"] .contact-info-icon img {
+  filter: invert(1);
+}
+
+.contact-info-card:hover .contact-info-icon img,
+.contact-info-card:focus-within .contact-info-icon img {
+  filter: brightness(0) invert(1);
+}
+
 .contact-info-card:hover .contact-info-icon,
 .contact-info-card:focus-within .contact-info-icon {
   border-color: var(--color-sky);

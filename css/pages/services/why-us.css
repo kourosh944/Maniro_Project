@@ -95,6 +95,25 @@
   stroke: currentColor;
 }
 
+/* Same Stockholm PNG icon set as the About/Contact pages — size it to
+   match that family (was rendering at its native 48px, larger than every
+   other icon on the site) and recolor via filter, since a flat PNG can't
+   follow `currentColor` the way an SVG stroke can. */
+.why-icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  transition: filter 0.35s var(--ease);
+}
+
+[data-theme="dark"] .why-icon img {
+  filter: invert(1);
+}
+
+.why-card:hover .why-icon img {
+  filter: brightness(0) invert(1);
+}
+
 .why-card:hover .why-icon {
   border-color: var(--color-sky);
   background: var(--color-sky-dark);
